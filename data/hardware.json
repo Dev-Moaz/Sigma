@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "cpu-1",
+    "name": "AMD Ryzen 7 7800X3D",
+    "brand": "AMD",
+    "price": 399,
+    "stock": 15,
+    "images": ["/ryzen_7.png"],
+    "rating": 4.9,
+    "reviews": 120,
+    "description": "The ultimate gaming processor.",
+    "isNew": true,
+    "isDeal": true,
+    "category": "CPU",
+    "specs": {
+      "socket": "AM5",
+      "cores": 8,
+      "threads": 16,
+      "baseClock": "4.2 GHz",
+      "boostClock": "5.0 GHz",
+      "tdp": 120,
+      "integratedGraphics": true
+    }
+  },
+  {
+    "id": "gpu-1",
+    "name": "ASUS ROG Strix GeForce RTX 4090",
+    "brand": "ASUS",
+    "price": 1999,
+    "discountPrice": 1899,
+    "stock": 3,
+    "images": ["/rtx_4090.png"],
+    "rating": 4.8,
+    "reviews": 45,
+    "isDeal": true,
+    "isNew": true,
+    "description": "Top tier graphics card for 4K gaming.",
+    "category": "GPU",
+    "specs": {
+      "chipset": "RTX 4090",
+      "vram": "24GB GDDR6X",
+      "coreClock": "2640 MHz",
+      "length": 357,
+      "tdp": 450,
+      "recommendedPSU": 1000
+    }
+  },
+  {
+    "id": "storage-1",
+    "name": "Samsung 990 PRO 2TB",
+    "brand": "Samsung",
+    "price": 169,
+    "stock": 50,
+    "images": ["/images/hardware/990pro-1.jpg"],
+    "rating": 5.0,
+    "reviews": 312,
+    "isDeal": true,
+    "isNew": true,
+    "description": "Blazing fast PCIe 4.0 NVMe SSD.",
+    "category": "Storage",
+    "specs": {
+      "storageType": "NVMe",
+      "capacity": "2TB",
+      "interface": "PCIe 4.0 x4",
+      "formFactor": "M.2 2280",
+      "readSpeed": "7450 MB/s",
+      "writeSpeed": "6900 MB/s"
+    }
+  },
+  {
+    "id": "ram-1",
+    "name": "G.SKILL Trident Z5 RGB 32GB (2x16GB) DDR5-6400",
+    "brand": "G.SKILL",
+    "price": 129,
+    "stock": 22,
+    "images": ["/ram_1.jpg"],
+    "rating": 4.9,
+    "reviews": 189,
+    "isDeal": true,
+    "isNew": false,
+    "description": "High-speed DDR5 memory kit with low latency and RGB lighting.",
+    "category": "Memory",
+    "specs": {
+      "capacity": "32GB (2x16GB)",
+      "speed": "DDR5-6400",
+      "casLatency": "CL32",
+      "voltage": "1.4V",
+      "type": "DDR5 DIMM",
+      "heatSpreader": true
+    }
+  },
+  {
+    "id": "psu-1",
+    "name": "Corsair RM850x (2021) 850W",
+    "brand": "Corsair",
+    "price": 139,
+    "stock": 18,
+    "images": ["/images/hardware/psu-1.jpg"],
+    "rating": 4.9,
+    "reviews": 234,
+    "isDeal": true,
+    "isNew": false,
+    "description": "850W 80+ Gold certified fully modular power supply with quiet operation and 10-year warranty.",
+    "category": "PSU",
+    "specs": {
+      "wattage": "850W",
+      "efficiencyRating": "80+ Gold",
+      "formFactor": "ATX",
+      "modularity": "Fully Modular",
+      "connectors": {
+        "cpu": 2,
+        "pcie": 4,
+        "sata": 10,
+        "molex": 4
+      },
+      "fanSize": 135,
+      "warrantyYears": 10
+    }
+  },
+  {
+    "id": "cooler-1",
+    "name": "Noctua NH-D15",
+    "brand": "Noctua",
+    "price": 99,
+    "stock": 35,
+    "images": ["/images/hardware/cooler-1.jpg"],
+    "rating": 5.0,
+    "reviews": 456,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Flagship air cooler with dual-tower heatsink and dual fans for exceptional cooling performance.",
+    "category": "Cooler",
+    "specs": {
+      "type": "Air Cooler",
+      "fanSize": 140,
+      "noiseLevel": "17-24.6 dBA",
+      "socketCompatibility": "Intel: 115x, 1200, 1700, 20xx | AMD: AM4, AM5",
+      "heatPipes": 6,
+      "material": "Copper, Aluminum"
+    }
+  },
+  {
+    "id": "case-1",
+    "name": "Fractal Design Meshify 2 Compact",
+    "brand": "Fractal Design",
+    "price": 109,
+    "stock": 15,
+    "images": ["/images/hardware/case-1.jpg"],
+    "rating": 4.8,
+    "reviews": 312,
+    "isDeal": true,
+    "isNew": false,
+    "description": "Mid-tower ATX case with mesh front panel for optimal airflow and cable management.",
+    "category": "Case",
+    "specs": {
+      "type": "Mid-Tower",
+      "motherboardSupport": ["ATX", "Micro-ATX", "Mini-ITX"],
+      "maxGpuLength": 360,
+      "maxCpuCoolerHeight": 169,
+      "driveBays": {
+        "35": 2,
+        "25": 4
+      },
+      "fanMounts": {
+        "front": 3,
+        "top": 2,
+        "rear": 1
+      }
+    }
+  },
+  {
+    "id": "monitor-1",
+    "name": "LG 27GP850-B UltraGear",
+    "brand": "LG",
+    "price": 349,
+    "stock": 22,
+    "images": ["/images/hardware/monitor-1.jpg"],
+    "rating": 4.9,
+    "reviews": 156,
+    "isDeal": true,
+    "isNew": false,
+    "description": "27-inch QHD IPS gaming monitor with 144Hz refresh rate, G-Sync compatible, and Nano IPS technology for vibrant colors.",
+    "category": "Monitor",
+    "specs": {
+      "size": "27-inch",
+      "resolution": "2560x1440 (QHD)",
+      "refreshRate": "144Hz",
+      "panelType": "IPS",
+      "responseTime": "1ms (GtG)",
+      "adaptiveSync": [
+        "G-Sync Compatible",
+        "FreeSync Premium"
+      ],
+      "colorGamut": "DCI-P3 98%",
+      "hdr": "HDR10",
+      "dimensions": "24.5 x 16.0-21.9 x 10.9 inches"
+    }
+  },
+  {
+    "id": "keyboard-1",
+    "name": "Logitech G Pro X Mechanical Gaming Keyboard",
+    "brand": "Logitech",
+    "price": 149,
+    "stock": 35,
+    "images": [
+      "/images/hardware/keyboard-1.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 210,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Pro-grade mechanical keyboard with GX Brown tactile switches, GX Blue clicky switches, and GX Red linear switches. Hot-swappable switches for customization.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Mechanical Keyboard",
+      "switchOptions": [
+        "GX Brown (Tactile)",
+        "GX Blue (Clicky)",
+        "GX Red (Linear)"
+      ],
+      "hotswappable": true,
+      "connectivity": [
+        "USB-C",
+        "Bluetooth"
+      ],
+      "lighting": "RGB",
+      "formFactor": "Tenkeyless (TKL)",
+      "features": [
+        "Programmable macro keys",
+        "Durable aluminum top case",
+        "detachable cable"
+      ]
+    }
+  },
+  {
+    "id": "mouse-1",
+    "name": "Razer DeathAdder V3 Pro",
+    "brand": "Razer",
+    "price": 129,
+    "stock": 42,
+    "images": [
+      "/images/hardware/mouse-1.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 312,
+    "isDeal": true,
+    "isNew": false,
+    "description": "Wireless esports mouse with Focus Pro 30K optical sensor, optical mouse switches, and ergonomic right-handed design.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Wireless Gaming Mouse",
+      "sensor": "Focus Pro 30K Optical Sensor",
+      "dpi": "Up to 30,000",
+      "weight": "63g",
+      "buttons": 5,
+      "connectivity": [
+        "Razer HyperSpeed Wireless",
+        "USB-C"
+      ],
+      "batteryLife": "Up to 90 hours",
+      "switchType": "Optical Mouse Switches",
+      "features": [
+        "Ergonomic right-handed design",
+        "SpeedFlex Cable",
+        "Smart Tracking"
+      ]
+    }
+  },
+  {
+    "id": "headset-1",
+    "name": "SteelSeries Arctis Nova Pro Wireless",
+    "brand": "SteelSeries",
+    "price": 349,
+    "stock": 22,
+    "images": [
+      "/images/hardware/headset-1.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 189,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Wireless gaming headset with Nova Acoustic system, SteelSeries GG software integration, and swappable battery system for 40+ hours of playtime.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Wireless Gaming Headset",
+      "connectivity": [
+        "Quantum 2.0 Wireless (USB-C)",
+        "Bluetooth",
+        "3.5mm Jack"
+      ],
+      "drivers": {
+        "size": "40mm",
+        "type": "Neodymium"
+      },
+      "microphone": {
+        "type": "ClearCast Gen 2",
+        "noiseCancellation": "AI-powered"
+      },
+      "batteryLife": "40+ hours",
+      "features": [
+        "Swappable battery system",
+        "SteelSeries GG software",
+        "Multi-system connect"
+      ],
+      "platformCompatibility": [
+        "PC",
+        "PlayStation",
+        "Nintendo Switch",
+        "Xbox",
+        "Mobile"
+      ]
+    }
+  },
+  {
+    "id": "controller-1",
+    "name": "DualSense Wireless Controller",
+    "brand": "Sony",
+    "price": 69,
+    "stock": 123,
+    "images": [
+      "/images/hardware/controller-1.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 456,
+    "isDeal": true,
+    "isNew": false,
+    "description": "PS5 controller with haptic feedback, adaptive triggers, and built-in microphone for immersive gaming experiences.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Wireless Controller",
+      "compatibility": [
+        "PlayStation 5",
+        "PC (with limitations)",
+        "Android",
+        "iOS"
+      ],
+      "connectivity": [
+        "Bluetooth 5.1",
+        "USB Type-C"
+      ],
+      "batteryLife": "6-12 hours",
+      "features": [
+        "Haptic feedback",
+        "Adaptive triggers",
+        "Built-in microphone",
+        "Touchpad",
+        "Motion sensor"
+      ],
+      "colors": [
+        "White",
+        "Black",
+        "Red",
+        "Blue",
+        "Pink",
+        "Purple"
+      ]
+    }
+  },
+  {
+    "id": "headset-2",
+    "name": "Corsair HS80 RGB Wireless",
+    "brand": "Corsair",
+    "price": 149,
+    "stock": 28,
+    "images": [
+      "/images/hardware/headset-2.jpg"
+    ],
+    "rating": 4.7,
+    "reviews": 210,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Corsair's Dolby Atmos-enabled wireless headset with comfortable design and high-quality microphone.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Wireless Gaming Headset",
+      "drivers": {
+        "size": "50mm",
+        "type": "Neodymium"
+      },
+      "microphone": {
+        "type": "Omnidirectional",
+        "noiseCancellation": "Yes"
+      },
+      "connectivity": [
+        "Slipstream Wireless (USB Dongle)",
+        "USB-C"
+      ],
+      "batteryLife": "20 hours",
+      "features": [
+        "Dolby Atmos 7.1 Surround Sound",
+        "RGB lighting",
+        "Comfort-focused design",
+        "Detachable cable"
+      ],
+      "platformCompatibility": [
+        "PC",
+        "PlayStation",
+        "Xbox"
+      ]
+    }
+  },
+  {
+    "id": "webcam-1",
+    "name": "Logitech C920x Pro HD Webcam",
+    "brand": "Logitech",
+    "price": 79,
+    "stock": 89,
+    "images": [
+      "/images/hardware/webcam-1.jpg"
+    ],
+    "rating": 4.6,
+    "reviews": 567,
+    "isDeal": true,
+    "isNew": false,
+    "description": "Full HD 1080p webcam with automatic light correction and stereo audio for streamers and content creators.",
+    "category": "Peripherals",
+    "specs": {
+      "type": "Webcam",
+      "resolution": {
+        "capture": "1080p",
+        "recording": "1080p"
+      },
+      "frameRate": "30 fps",
+      "fieldOfView": "78-degree",
+      "autofocus": "Yes",
+      "connectivity": [
+        "USB-A"
+      ],
+      "microphone": {
+        "type": "Dual stereo mics"
+      },
+      "features": [
+        "Automatic light correction",
+        "Tripod-ready mount",
+        "Privacy shutter (optional)"
+      ],
+      "compatibility": [
+        "Windows",
+        "macOS",
+        "ChromeOS"
+      ]
+    }
+  },
+  {
+    "id": "motherboard-1",
+    "name": "MSI MPG Z790 CARBON WIFI",
+    "brand": "MSI",
+    "price": 449,
+    "stock": 12,
+    "images": [
+      "/images/hardware/motherboard-1.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 98,
+    "isDeal": true,
+    "isNew": false,
+    "description": "High-end ATX motherboard with Z790 chipset, Wi-Fi 6E, DDR5 support, and extensive VRM for overclocking.",
+    "category": "Motherboard",
+    "specs": {
+      "socket": "LGA 1700",
+      "chipset": "Intel Z790",
+      "formFactor": "ATX",
+      "memorySupport": [
+        "DDR5",
+        "6400+ MHz (OC)"
+      ],
+      "pcieSlots": [
+        "1x PCIe 5.0 x16",
+        "1x PCIe 4.0 x4",
+        "3x PCIe 3.0 x1"
+      ],
+      "storage": {
+        "m2": 4,
+        "sata": 6
+      },
+      "connectivity": {
+        "wifi": "Wi-Fi 6E",
+        "bluetooth": "Bluetooth 5.3",
+        "ethernet": "2.5G LAN"
+      },
+      "audio": {
+        "codec": "Realtek ALC4080",
+        "channels": "7.1"
+      },
+      "features": [
+        "M.2 Shield Frozr",
+        "Debug LED",
+        "ARGB Gen 2"
+      ]
+    }
+  },
+  {
+    "id": "gpu-2",
+    "name": "AMD Radeon RX 7800 XT",
+    "brand": "AMD",
+    "price": 499,
+    "stock": 18,
+    "images": [
+      "/images/hardware/gpu-2.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 156,
+    "isDeal": false,
+    "isNew": true,
+    "description": "High-performance RDNA 3 GPU with 16GB GDDR6 memory, ideal for 1440p gaming.",
+    "category": "GPU",
+    "specs": {
+      "architecture": "RDNA 3",
+      "vram": "16GB GDDR6",
+      "memoryBus": "256-bit",
+      "interface": "PCIe 4.0",
+      "displayOutputs": [
+        "3x DisplayPort 2.1",
+        "1x HDMI 2.1"
+      ],
+      "powerConnectors": [
+        "8-pin",
+        "8-pin"
+      ],
+      "recommendedPsu": "700W",
+      "dimensions": {
+        "length": "276 mm",
+        "slots": 2.5
+      },
+      "features": [
+        "FSR 3",
+        "Infinity Cache",
+        "AMD HYPR-RX"
+      ]
+    }
+  },
+  {
+    "id": "cpu-2",
+    "name": "Intel Core i5-13600K",
+    "brand": "Intel",
+    "price": 309,
+    "stock": 45,
+    "images": [
+      "/ryzen_7.png"
+    ],
+    "rating": 4.9,
+    "reviews": 234,
+    "isDeal": true,
+    "isNew": false,
+    "description": "13th Gen Intel Core i5 processor with 14 cores (6 Performance + 8 Efficient), 20 threads, and unlocked for overclocking.",
+    "category": "CPU",
+    "specs": {
+      "socket": "LGA 1700",
+      "coreCount": 14,
+      "threadCount": 20,
+      "baseClock": {
+        "pCore": "3.5 GHz",
+        "eCore": "2.6 GHz"
+      },
+      "boostClock": {
+        "pCore": "5.1 GHz",
+        "eCore": "3.9 GHz"
+      },
+      "cache": {
+        "l2": "20MB",
+        "l3": "24MB"
+      },
+      "tDP": {
+        "base": "125W",
+        "max": "181W"
+      },
+      "memorySupport": [
+        "DDR5 5600 MHz",
+        "DDR4 3200 MHz"
+      ],
+      "integratedGraphics": "Intel UHD Graphics 770",
+      "unlocked": true
+    }
+  },
+  {
+    "id": "ram-2",
+    "name": "Corsair Vengeance RGB Pro 16GB (2x8GB) DDR4-3600",
+    "brand": "Corsair",
+    "price": 69,
+    "stock": 123,
+    "images": [
+      "/images/hardware/ram-2.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 456,
+    "isDeal": false,
+    "isNew": true,
+    "description": "High-performance DDR4 memory kit with CL18 latency and RGB lighting for gaming and productivity.",
+    "category": "Memory",
+    "specs": {
+      "capacity": "16GB (2x8GB)",
+      "speed": "DDR4-3600 MHz",
+      "latency": "CL18",
+      "voltage": "1.35V",
+      "timing": "18-22-22-42",
+      "type": "DDR4 DIMM",
+      "heatSpreader": true,
+      "rgb": true,
+      "platformSupport": [
+        "Intel XMP 2.0"
+      ]
+    }
+  },
+  {
+    "id": "storage-2",
+    "name": "Samsung 980 Pro 1TB NVMe SSD",
+    "brand": "Samsung",
+    "price": 109,
+    "stock": 67,
+    "images": [
+      "/images/hardware/storage-2.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 312,
+    "isDeal": true,
+    "isNew": false,
+    "description": "PCIe 4.0 NVMe SSD with sequential read speeds up to 7,000 MB/s and random read speeds up to 1,000K IOPS.",
+    "category": "Storage",
+    "specs": {
+      "storageType": "NVMe",
+      "capacity": "1TB",
+      "interface": "PCIe 4.0 x4",
+      "formFactor": "M.2 2280",
+      "readSpeed": "7,000 MB/s",
+      "writeSpeed": "5,000 MB/s",
+      "randomRead": "1,000K IOPS",
+      "randomWrite": "880K IOPS",
+      "endurance": "600 TBW",
+      "warrantyYears": 5
+    }
+  },
+  {
+    "id": "psu-2",
+    "name": "EVGA SuperNOVA 750 G6",
+    "brand": "EVGA",
+    "price": 119,
+    "stock": 32,
+    "images": [
+      "/images/hardware/psu-2.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 289,
+    "isDeal": false,
+    "isNew": false,
+    "description": "80+ Gold certified fully modular PSU with 10-year warranty and quiet operation.",
+    "category": "PSU",
+    "specs": {
+      "wattage": "750W",
+      "efficiencyRating": "80+ Gold",
+      "formFactor": "ATX",
+      "modularity": "Fully Modular",
+      "connectors": {
+        "cpu": 2,
+        "pcie": 4,
+        "sata": 8,
+        "molex": 4
+      },
+      "fanSize": 135,
+      "warrantyYears": 10,
+      "features": [
+        "ECO Mode",
+        "100% Japanese Capacitors"
+      ]
+    }
+  },
+  {
+    "id": "cooler-2",
+    "name": "Deepcool AK620",
+    "brand": "Deepcool",
+    "price": 64,
+    "stock": 56,
+    "images": [
+      "/images/hardware/cooler-2.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 210,
+    "isDeal": true,
+    "isNew": false,
+    "description": "Dual-tower air cooler with 6 heat pipes and two 120mm fans for efficient cooling.",
+    "category": "Cooler",
+    "specs": {
+      "type": "Air Cooler",
+      "fanSize": 120,
+      "noiseLevel": "26 dBA",
+      "socketCompatibility": "Intel: 115x, 1200, 1700 | AMD: AM4, AM5",
+      "heatPipes": 6,
+      "material": "Copper, Aluminum",
+      "features": [
+        "Dual-tower design",
+        "High-performance fans",
+        "Wide CPU socket support"
+      ]
+    }
+  },
+  {
+    "id": "case-1",
+    "name": "NZXT H7 Flow",
+    "brand": "NZXT",
+    "price": 129,
+    "stock": 23,
+    "images": [
+      "/images/hardware/case-1.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 178,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Mid-tower ATX case with excellent airflow, tool-less design, and modern aesthetics.",
+    "category": "Case",
+    "specs": {
+      "type": "Mid-Tower ATX",
+      "material": "Steel, Tempered Glass",
+      "maxGpuLength": "400mm",
+      "maxCpuCoolerHeight": "185mm",
+      "driveBays": {
+        "ssd": 2,
+        "hdd": 2
+      },
+      "fansIncluded": [
+        "2 x 120mm Front",
+        "1 x 140mm Rear"
+      ],
+      "colorOptions": [
+        "Black",
+        "White"
+      ],
+      "features": [
+        "Top-mounted I/O",
+        "Cable management system",
+        "Tool-free access"
+      ]
+    }
+  },
+  {
+    "id": "monitor-1",
+    "name": "Dell 27 inch QHD Gaming Monitor",
+    "brand": "Dell",
+    "price": 399,
+    "stock": 34,
+    "images": [
+      "/images/hardware/monitor-1.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 243,
+    "isDeal": true,
+    "isNew": false,
+    "description": "27-inch QHD IPS gaming monitor with 165Hz refresh rate, 1ms response time, and FreeSync Premium.",
+    "category": "Monitor",
+    "specs": {
+      "size": "27 inch",
+      "resolution": "2560 x 1440 (QHD)",
+      "panelType": "IPS",
+      "refreshRate": "165Hz",
+      "responseTime": "1ms (MPRT)",
+      "syncTechnology": "AMD FreeSync Premium",
+      "colorGamut": "95% DCI-P3",
+      "connectivity": [
+        "2 x HDMI 2.0",
+        "1 x DisplayPort 1.2",
+        "3 x USB 3.0"
+      ],
+      "features": [
+        "Adjustable stand",
+        "Low Blue Light mode",
+        "HDR400 support"
+      ]
+    }
+  },
+  {
+    "id": "case-2",
+    "name": "Corsair 4000D Airflow",
+    "brand": "Corsair",
+    "price": 99,
+    "stock": 31,
+    "images": [
+      "/images/hardware/case-2.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 192,
+    "isDeal": false,
+    "isNew": false,
+    "description": "Popular mid-tower case with high-airflow front panel, tool-free side panels, and excellent cable management.",
+    "category": "Case",
+    "specs": {
+      "type": "Mid-Tower ATX",
+      "material": "Steel, Tempered Glass",
+      "maxGpuLength": "360mm",
+      "maxCpuCoolerHeight": "170mm",
+      "driveBays": {
+        "ssd": 2,
+        "hdd": 2
+      },
+      "fansIncluded": [
+        "2 x 120mm AirGuide Fans"
+      ],
+      "colorOptions": [
+        "Black",
+        "White"
+      ],
+      "features": [
+        "High-airflow front panel",
+        "RapidRoute cable management",
+        "Tool-free side panels"
+      ]
+    }
+  },
+  {
+    "id": "monitor-2",
+    "name": "ASUS ROG Swift PG279Q",
+    "brand": "ASUS",
+    "price": 549,
+    "stock": 15,
+    "images": [
+      "/images/hardware/monitor-2.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 312,
+    "isDeal": true,
+    "isNew": false,
+    "description": "27-inch QHD IPS gaming monitor with 144Hz refresh rate, G-Sync, and IPS Glow Reduction technology.",
+    "category": "Monitor",
+    "specs": {
+      "size": "27 inch",
+      "resolution": "2560 x 1440 (QHD)",
+      "panelType": "IPS",
+      "refreshRate": "144Hz",
+      "responseTime": "4ms (GTG)",
+      "syncTechnology": "NVIDIA G-Sync",
+      "colorGamut": "100% sRGB",
+      "connectivity": [
+        "DisplayPort 1.2",
+        "HDMI 1.4",
+        "USB 3.0 Hub"
+      ],
+      "features": [
+        "Adjustable stand",
+        "Flicker-Free technology",
+        "Ultra-Low Blue Light"
+      ]
+    }
+  },
+  {
+    "id": "case-3",
+    "name": "Lian Li PC-O11 Dynamic",
+    "brand": "Lian Li",
+    "price": 149,
+    "stock": 19,
+    "images": [
+      "/images/hardware/case-3.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 456,
+    "isDeal": false,
+    "isNew": true,
+    "description": "Dual-chamber mid-tower case popular for water cooling builds, with tempered glass on three sides.",
+    "category": "Case",
+    "specs": {
+      "type": "Mid-Tower ATX",
+      "material": "Aluminum, Tempered Glass",
+      "maxGpuLength": "420mm",
+      "maxCpuCoolerHeight": "155mm",
+      "driveBays": {
+        "ssd": 4,
+        "hdd": 2
+      },
+      "fansSupported": {
+        "top": 3,
+        "bottom": 3,
+        "side": 2
+      },
+      "colorOptions": [
+        "Black",
+        "White",
+        "Gray"
+      ],
+      "features": [
+        "Dual-chamber design",
+        "Extensive water cooling support",
+        "Multiple fan mounting options"
+      ]
+    }
+  },
+  {
+    "id": "psu-1",
+    "name": "Corsair RM850x (2021)",
+    "brand": "Corsair",
+    "price": 139,
+    "stock": 42,
+    "images": [
+      "/images/hardware/psu-1.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 678,
+    "isDeal": true,
+    "isNew": false,
+    "description": "850W 80+ Gold certified fully modular PSU with Cybenetics A++ rating, 10-year warranty, and low-noise operation.",
+    "category": "PSU",
+    "specs": {
+      "wattage": "850W",
+      "efficiencyRating": "80+ Gold",
+      "formFactor": "ATX",
+      "modularity": "Fully Modular",
+      "connectors": {
+        "cpu": 2,
+        "pcie": 6,
+        "sata": 10,
+        "molex": 4
+      },
+      "fanSize": 135,
+      "warrantyYears": 10,
+      "features": [
+        "Zero RPM fan mode",
+        "100% Japanese Capacitors",
+        "Corsair iCUE support (via Commander Pro)"
+      ]
+    }
+  },
+  {
+    "id": "cooler-1",
+    "name": "Noctua NH-D15",
+    "brand": "Noctua",
+    "price": 99,
+    "stock": 25,
+    "images": [
+      "/images/hardware/cooler-1.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 567,
+    "isDeal": false,
+    "isNew": false,
+    "description": "Premium dual-tower air cooler with 6 heat pipes, dual NF-A15 fans, and exceptional cooling performance.",
+    "category": "Cooler",
+    "specs": {
+      "type": "Air Cooler",
+      "fanSize": 140,
+      "noiseLevel": "24.6 dBA",
+      "socketCompatibility": "Intel: 115x, 1200, 1700 | AMD: AM4, AM5",
+      "heatPipes": 6,
+      "material": "Copper, Aluminum",
+      "features": [
+        "Dual-tower design",
+        "SecuFirm2 mounting system",
+        "Low-noise operation"
+      ]
+    }
+  },
+  {
+    "id": "gpu-3",
+    "name": "NVIDIA GeForce RTX 4060 Ti",
+    "brand": "NVIDIA",
+    "price": 399,
+    "stock": 31,
+    "images": [
+      "/images/hardware/gpu-3.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 278,
+    "isDeal": true,
+    "isNew": false,
+    "description": "8GB GDDR6 GPU with Ada Lovelace architecture, DLSS 3, and ray tracing support for 1080p gaming.",
+    "category": "GPU",
+    "specs": {
+      "architecture": "Ada Lovelace",
+      "vram": "8GB GDDR6",
+      "memoryBus": "128-bit",
+      "interface": "PCIe 4.0",
+      "displayOutputs": [
+        "3x DisplayPort 1.4a",
+        "1x HDMI 2.1"
+      ],
+      "powerConnectors": [
+        "8-pin"
+      ],
+      "recommendedPsu": "550W",
+      "dimensions": {
+        "length": "200 mm",
+        "width": "200 mm",
+        "height": "200 mm"
+      },
+      "features": {
+        "DLSS 3": true,
+        "Ray Tracing": true,
+        "NVIDIA Reflex": true
+      }
+    }
+  },
+  {
+    "id": "case-4",
+    "name": "Fractal Design Meshify 2 Compact",
+    "brand": "Fractal Design",
+    "price": 109,
+    "stock": 29,
+    "images": [
+      "/images/hardware/case-4.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 183,
+    "isDeal": false,
+    "isNew": false,
+    "description": "Compact mid-tower case with mesh front panel for high airflow and modular interior design.",
+    "category": "Case",
+    "specs": {
+      "type": "Mid-Tower ATX",
+      "material": "Steel, Tempered Glass",
+      "maxGpuLength": "360mm",
+      "maxCpuCoolerHeight": "165mm",
+      "driveBays": {
+        "ssd": 3,
+        "hdd": 2
+      },
+      "fansIncluded": [
+        "2 x 120mm Dynamic X2 GP-12"
+      ],
+      "colorOptions": [
+        "Black",
+        "White"
+      ],
+      "features": [
+        "Mesh front panel",
+        "Modular interior",
+        "Easy cable management"
+      ]
+    }
+  },
+  {
+    "id": "monitor-3",
+    "name": "LG 24GN600-B Ultragear",
+    "brand": "LG",
+    "price": 159,
+    "stock": 45,
+    "images": [
+      "/images/hardware/monitor-3.jpg"
+    ],
+    "rating": 4.7,
+    "reviews": 189,
+    "isDeal": true,
+    "isNew": false,
+    "description": "23.8-inch Full HD IPS gaming monitor with 144Hz refresh rate and 1ms response time.",
+    "category": "Monitor",
+    "specs": {
+      "size": "23.8 inch",
+      "resolution": "1920 x 1080 (FHD)",
+      "panelType": "IPS",
+      "refreshRate": "144Hz",
+      "responseTime": "1ms (MPRT)",
+      "syncTechnology": "AMD FreeSync Premium",
+      "colorGamut": "95% sRGB",
+      "connectivity": [
+        "2 x HDMI 2.0",
+        "1 x DisplayPort 1.2"
+      ],
+      "features": [
+        "Adjustable tilt",
+        "Dynamic Action Sync",
+        "Black Stabilizer"
+      ]
+    }
+  },
+  {
+    "id": "psu-3",
+    "name": "Seasonic FOCUS GX-650",
+    "brand": "Seasonic",
+    "price": 94,
+    "stock": 39,
+    "images": [
+      "/images/hardware/psu-3.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 324,
+    "isDeal": true,
+    "isNew": false,
+    "description": "650W 80+ Gold fully modular PSU with Seasonic's legendary reliability and quiet operation.",
+    "category": "PSU",
+    "specs": {
+      "wattage": "650W",
+      "efficiencyRating": "80+ Gold",
+      "formFactor": "ATX",
+      "modularity": "Fully Modular",
+      "connectors": {
+        "cpu": 2,
+        "pcie": 4,
+        "sata": 8,
+        "molex": 4
+      },
+      "fanSize": 120,
+      "warrantyYears": 10,
+      "features": [
+        "Hybrid Silent Fan Control",
+        "100% Japanese Capacitors",
+        "Compact size (140mm)"
+      ]
+    }
+  },
+  {
+    "id": "cooler-3",
+    "name": "Thermalright Peerless Assassin 120 SE",
+    "brand": "Thermalright",
+    "price": 35,
+    "stock": 89,
+    "images": [
+      "/images/hardware/cooler-3.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 456,
+    "isDeal": true,
+    "isNew": false,
+    "description": "Best value dual-tower air cooler with 6 heat pipes and exceptional cooling performance for the price.",
+    "category": "Cooler",
+    "specs": {
+      "type": "Air Cooler",
+      "fanSize": 120,
+      "noiseLevel": "25.4 dBA",
+      "socketCompatibility": "Intel: 115x, 1200, 1700 | AMD: AM4, AM5",
+      "heatPipes": 6,
+      "material": "Copper, Aluminum",
+      "features": [
+        "Dual-tower design",
+        "TL-C12B fans",
+        "Excellent value"
+      ]
+    }
+  },
+  {
+    "id": "gpu-4",
+    "name": "NVIDIA GeForce RTX 4060",
+    "brand": "NVIDIA",
+    "price": 299,
+    "stock": 56,
+    "images": [
+      "/images/hardware/gpu-4.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 342,
+    "isDeal": false,
+    "isNew": true,
+    "description": "8GB GDDR6 GPU with Ada Lovelace architecture, DLSS 3, and ray tracing support for 1080p gaming.",
+    "category": "GPU",
+    "specs": {
+      "architecture": "Ada Lovelace",
+      "vram": "8GB GDDR6",
+      "memoryBus": "128-bit",
+      "interface": "PCIe 4.0",
+      "displayOutputs": [
+        "3x DisplayPort 1.4a",
+        "1x HDMI 2.1"
+      ],
+      "powerConnectors": [
+        "8-pin"
+      ],
+      "recommendedPsu": "550W",
+      "dimensions": {
+        "length": "200 mm",
+        "slots": 2
+      },
+      "features": {
+        "DLSS 3": true,
+        "Ray Tracing": true,
+        "NVIDIA Reflex": true
+      }
+    }
+  },
+  {
+    "id": "motherboard-1",
+    "name": "ASUS ROG STRIX B550-F GAMING",
+    "brand": "ASUS",
+    "price": 189,
+    "stock": 19,
+    "images": [
+      "/images/hardware/motherboard-1.jpg"
+    ],
+    "rating": 4.8,
+    "reviews": 342,
+    "isDeal": false,
+    "isNew": true,
+    "description": "ATX AM4 motherboard with PCIe 4.0 support, 12+2 power stages, and ROG SupremeFX audio.",
+    "category": "Motherboard",
+    "specs": {
+      "socket": "AM4",
+      "chipset": "AMD B550",
+      "formFactor": "ATX",
+      "memorySlots": 4,
+      "maxMemory": "128GB DDR4",
+      "pciExpress": {
+        "pcie4_0": 1,
+        "pcie3_0": 2
+      },
+      "storage": {
+        "sata3": 6,
+        "m2_slots": 2,
+        "m2_support": "PCIe 4.0 + PCIe 3.0"
+      },
+      "audio": "ROG SupremeFX S1220A",
+      "networking": "Intel 2.5Gb Ethernet",
+      "rear_io": [
+        "USB 3.2 Gen 2",
+        "HDMI",
+        "DisplayPort",
+        "BIOS FlashBack"
+      ],
+      "features": [
+        "AI Networking",
+        "Durable Components",
+        "SafeSlot"
+      ]
+    }
+  },
+  {
+    "id": "motherboard-2",
+    "name": "MSI MAG B650 TOMAHAWK WIFI",
+    "brand": "MSI",
+    "price": 249,
+    "stock": 14,
+    "images": [
+      "/images/hardware/motherboard-2.jpg"
+    ],
+    "rating": 4.9,
+    "reviews": 298,
+    "isDeal": false,
+    "isNew": true,
+    "description": "ATX AM5 motherboard with PCIe 5.0 support, 14+2+1 power stages, and Wi-Fi 6E.",
+    "category": "Motherboard",
+    "specs": {
+      "socket": "AM5",
+      "chipset": "AMD B650",
+      "formFactor": "ATX",
+      "memorySlots": 4,
+      "maxMemory": "192GB DDR5",
+      "pciExpress": {
+        "pcie5_0": 1,
+        "pcie4_0": 2
+      },
+      "storage": {
+        "sata3": 4,
+        "m2_slots": 2,
+        "m2_support": "PCIe 5.0 + PCIe 4.0"
+      },
+      "audio": "Realtek ALC4080",
+      "networking": "Wi-Fi 6E, 2.5Gb Ethernet",
+      "rear_io": [
+        "USB 3.2 Gen 2x2 Type-C",
+        "USB 3.2 Gen 2 Type-A",
+        "DisplayPort",
+        "HDMI"
+      ],
+      "features": [
+        "M.2 Shield Frozr",
+        "EZ Debug LED",
+        "Extended Heatsink Design"
+      ]
+    }
+  }
+]

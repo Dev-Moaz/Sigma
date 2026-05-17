@@ -1,0 +1,6955 @@
+[
+  {
+    "id": "gaming_001",
+    "name": "Razer Blade 16",
+    "brand": "Razer",
+    "tagline": "Ultimate portable gaming power",
+    "price": 3299.99,
+    "originalPrice": 3699.99,
+    "category": "Gaming",
+    "subCategory": "Performance",
+    "rating": 4.7,
+    "reviewCount": 1240,
+    "isDeal": true,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-14900HX",
+        "color": "#0071ce",
+        "raw_value": "i9-14900HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 240Hz QHD+",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-14900HX",
+      "ram_gb": 32,
+      "storage_gb": 2048,
+      "screen_size": 16,
+      "display_hz": 240,
+      "battery_hours": 12,
+      "nvme_speed_gbs": 7,
+      "connectivity": [
+        "Wi-Fi 6E",
+        "Bluetooth 5.3",
+        "Thunderbolt 4"
+      ],
+      "vram_gb": 16,
+      "gpu_tdp_watts": 150,
+      "gpu_memory_type": "GDDR6X",
+      "cpu_cores": 24,
+      "cpu_threads": 32,
+      "cpu_speed": 5.5,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "name": "Mercury",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 45,
+    "description": "The Razer Blade 16 sets a new standard for gaming laptops with an RTX 4090 and a stunning 240Hz display.",
+    "features": [
+      "THX Spatial Audio",
+      "RGB Chroma keyboard",
+      "Vapor chamber cooling"
+    ],
+    "images": [
+      "https://assets2.razerzone.com/images/pnx.assets/448654075afd4071d60f6fef61f28021/razer-blade-16-2026-500x500.webp"
+    ]
+  },
+  {
+    "id": "gaming_002",
+    "name": "ASUS ROG Strix G18",
+    "brand": "ASUS",
+    "tagline": "Desktop-grade performance",
+    "price": 2499.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Enthusiast",
+    "rating": 4.5,
+    "reviewCount": 892,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4080",
+        "color": "#76b900",
+        "raw_value": "4080"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7945HX",
+        "color": "#ed1c24",
+        "raw_value": "7945HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "18\" 240Hz IPS",
+        "color": "#00aeef",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4080",
+      "cpu": "AMD Ryzen 9 7945HX",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 18,
+      "display_hz": 240,
+      "battery_hours": 8,
+      "nvme_speed_gbs": 5,
+      "connectivity": [
+        "Wi-Fi 6E",
+        "Bluetooth 5.2",
+        "Thunderbolt 4"
+      ],
+      "vram_gb": 16,
+      "gpu_tdp_watts": 220,
+      "gpu_memory_type": "GDDR6X",
+      "cpu_cores": 16,
+      "cpu_threads": 32,
+      "cpu_speed": 5.4,
+      "display_type": "IPS",
+      "display_response_ms": 0.2
+    },
+    "colorVariants": [
+      {
+        "name": "Eclipse Gray",
+        "hex": "#2c2c2c"
+      }
+    ],
+    "stock": 23,
+    "description": "Massive 18-inch screen with blazing fast 240Hz refresh rate, perfect for competitive gaming.",
+    "features": [
+      "MUX Switch",
+      "Dolby Atmos",
+      "Aura Sync lighting"
+    ],
+    "images": [
+      "https://dlcdnwebimgs.asus.com/gain/905AEF8C-7575-4BC2-9B7F-B47DBA98476E/w250/fwebp"
+    ]
+  },
+  {
+    "id": "gaming_003",
+    "name": "MSI Titan GT77",
+    "brand": "MSI",
+    "tagline": "The ultimate desktop replacement",
+    "price": 3999.99,
+    "originalPrice": 4599.99,
+    "category": "Gaming",
+    "subCategory": "Extreme",
+    "rating": 4.9,
+    "reviewCount": 345,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13980HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13980HX"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "4TB NVMe RAID",
+        "color": "#e6007e",
+        "raw_value": "4096"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" 4K 144Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13980HX",
+      "ram_gb": 64,
+      "storage_gb": 4096,
+      "screen_size": 17.3,
+      "display_hz": 144,
+      "battery_hours": 6,
+      "nvme_speed_gbs": 7,
+      "connectivity": [
+        "Wi-Fi 6E",
+        "Bluetooth 5.3",
+        "Thunderbolt 4"
+      ],
+      "vram_gb": 24,
+      "gpu_tdp_watts": 350,
+      "gpu_memory_type": "GDDR6X",
+      "cpu_cores": 24,
+      "cpu_threads": 32,
+      "cpu_speed": 5.6,
+      "display_type": "MiniLED",
+      "display_response_ms": 0.2
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 10,
+    "description": "Mechanical keyboard, 4K MiniLED, and unbeatable performance for enthusiasts.",
+    "features": [
+      "Cherry MX Ultra mechanical switches",
+      "4x M.2 slots",
+      "99.9Wh battery"
+    ],
+    "images": [
+      "https://storage-asset.msi.com/global/picture/product/product_1737602995c95879e6463325254f810682a141b82d.webp"
+    ]
+  },
+  {
+    "id": "gaming_004",
+    "name": "Acer Predator Helios 16",
+    "brand": "Acer",
+    "tagline": "Arena-ready gaming",
+    "price": 1799.99,
+    "originalPrice": 1999.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.3,
+    "reviewCount": 2150,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700HX",
+        "color": "#0071ce",
+        "raw_value": "i7-13700HX"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" WQXGA 240Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13700HX",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Abyss Black",
+        "hex": "#0a0a0a"
+      }
+    ],
+    "stock": 78,
+    "description": "Great value for high refresh rate gaming with solid build quality.",
+    "features": [
+      "5th Gen AeroBlade fans",
+      "Killer DoubleShot Pro",
+      "Per-key RGB"
+    ],
+    "images": [
+      "https://example.com/images/predator_helios_16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_005",
+    "name": "Lenovo Legion Pro 7i",
+    "brand": "Lenovo",
+    "tagline": "Pro-level esports ready",
+    "price": 2199.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Performance",
+    "rating": 4.6,
+    "reviewCount": 1670,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4080",
+        "color": "#76b900",
+        "raw_value": "4080"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13900HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 240Hz HDR",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4080",
+      "cpu": "Intel i9-13900HX",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 16,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 34,
+    "description": "Coldfront cooling system keeps the Legion 7i performing at peak during long sessions.",
+    "features": [
+      "AI chip tuning",
+      "16:10 display",
+      "180-degree hinge"
+    ],
+    "images": [
+      "https://example.com/images/legion_pro_7i.jpg"
+    ]
+  },
+  {
+    "id": "gaming_006",
+    "name": "Dell Alienware m18",
+    "brand": "Dell",
+    "tagline": "Command the game",
+    "price": 2899.99,
+    "originalPrice": 3299.99,
+    "category": "Gaming",
+    "subCategory": "Enthusiast",
+    "rating": 4.4,
+    "reviewCount": 987,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7945HX",
+        "color": "#ed1c24",
+        "raw_value": "7945HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "18\" QHD+ 165Hz",
+        "color": "#00aeef",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "AMD Ryzen 9 7945HX",
+      "ram_gb": 32,
+      "storage_gb": 2048,
+      "screen_size": 18,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Dark Metallic Moon",
+        "hex": "#1e1e1e"
+      }
+    ],
+    "stock": 18,
+    "description": "Alienware Cryo-tech cooling and legendary build quality for uncompromising gaming.",
+    "features": [
+      "AlienFX RGB",
+      "CherryMX ultra-low profile",
+      "Eyebox eye-tracking"
+    ],
+    "images": [
+      "https://example.com/images/alienware_m18.jpg"
+    ]
+  },
+  {
+    "id": "gaming_007",
+    "name": "HP OMEN 17",
+    "brand": "HP",
+    "tagline": "Dominate every frame",
+    "price": 1599.99,
+    "originalPrice": 1799.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.2,
+    "reviewCount": 1130,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13620H",
+        "color": "#0071ce",
+        "raw_value": "i7-13620H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13620H",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 17.3,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Shadow Black",
+        "hex": "#222222"
+      }
+    ],
+    "stock": 124,
+    "description": "Affordable 17-inch gaming machine with great thermal design.",
+    "features": [
+      "OMEN Tempest Cooling",
+      "Anti-ghosting keyboard",
+      "Wi-Fi 6E"
+    ],
+    "images": [
+      "https://example.com/images/omen_17.jpg"
+    ]
+  },
+  {
+    "id": "gaming_008",
+    "name": "Gigabyte Aorus 15",
+    "brand": "Gigabyte",
+    "tagline": "Lightweight, powerful",
+    "price": 1899.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.5,
+    "reviewCount": 742,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" QHD 165Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 15.6,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 41,
+    "description": "Sleek design with a powerful punch, great for LAN parties.",
+    "features": [
+      "Windforce Infinity cooling",
+      "Mechanical switches",
+      "DCI-P3 100%"
+    ],
+    "images": [
+      "https://example.com/images/aorus_15.jpg"
+    ]
+  },
+  {
+    "id": "gaming_009",
+    "name": "ASUS TUF Gaming A16",
+    "brand": "ASUS",
+    "tagline": "Durable and fast",
+    "price": 1099.99,
+    "originalPrice": 1299.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.4,
+    "reviewCount": 3150,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RX 7600S",
+        "color": "#ed1c24",
+        "raw_value": "7600S"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7735HS",
+        "color": "#ed1c24",
+        "raw_value": "7735HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 165Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RX 7600S",
+      "cpu": "AMD Ryzen 7 7735HS",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 16,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Off Black",
+        "hex": "#2a2a2a"
+      },
+      {
+        "name": "Sand",
+        "hex": "#c2b280"
+      }
+    ],
+    "stock": 201,
+    "description": "Military-grade durability meets solid 1080p gaming performance.",
+    "features": [
+      "MIL-STD-810H",
+      "Self-cleaning fans",
+      "86% screen-to-body"
+    ],
+    "images": [
+      "https://example.com/images/tuf_a16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_010",
+    "name": "MSI Stealth 14 Studio",
+    "brand": "MSI",
+    "tagline": "Slim, stealthy, deadly",
+    "price": 2099.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.7,
+    "reviewCount": 518,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" OLED 240Hz",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14,
+      "display_type": "OLED",
+      "display_response_ms": 0.2
+    },
+    "colorVariants": [
+      {
+        "name": "Pure White",
+        "hex": "#ffffff"
+      },
+      {
+        "name": "Carbon Gray",
+        "hex": "#333333"
+      }
+    ],
+    "stock": 29,
+    "description": "Ultraportable 14-inch OLED display with high refresh rate gaming.",
+    "features": [
+      "Vapor chamber",
+      "RGB per-key",
+      "Phase-change thermal pad"
+    ],
+    "images": [
+      "https://example.com/images/stealth_14.jpg"
+    ]
+  },
+  {
+    "id": "gaming_011",
+    "name": "Razer Blade 14",
+    "brand": "Razer",
+    "tagline": "Small but savage",
+    "price": 2699.99,
+    "originalPrice": 2999.99,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.8,
+    "reviewCount": 953,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4080",
+        "color": "#76b900",
+        "raw_value": "4080"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7940HS",
+        "color": "#ed1c24",
+        "raw_value": "7940HS"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 240Hz QHD+",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4080",
+      "cpu": "AMD Ryzen 9 7940HS",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14,
+      "display_type": "OLED",
+      "display_response_ms": 0.2
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 32,
+    "description": "Premium compact gaming laptop with incredible power density.",
+    "features": [
+      "Anodized aluminum",
+      "THX Spatial",
+      "HD IR webcam"
+    ],
+    "images": [
+      "https://example.com/images/razer_blade_14.jpg"
+    ]
+  },
+  {
+    "id": "gaming_012",
+    "name": "Lenovo Legion Slim 5",
+    "brand": "Lenovo",
+    "tagline": "Slim, not weak",
+    "price": 1399.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.3,
+    "reviewCount": 1102,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840HS",
+        "color": "#ed1c24",
+        "raw_value": "7840HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 165Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "AMD Ryzen 7 7840HS",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 16,
+      "display_type": "IPS",
+      "display_response_ms": 1
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 87,
+    "description": "Thin and light design without sacrificing gaming performance.",
+    "features": [
+      "85Wh battery",
+      "Dual noise-cancelling mics",
+      "Rapid Charge Pro"
+    ],
+    "images": [
+      "https://example.com/images/legion_slim_5.jpg"
+    ]
+  },
+  {
+    "id": "gaming_013",
+    "name": "HP Victus 16",
+    "brand": "HP",
+    "tagline": "Everyday gaming hero",
+    "price": 999.99,
+    "originalPrice": 1199.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.1,
+    "reviewCount": 4300,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4050",
+        "color": "#76b900",
+        "raw_value": "4050"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i5-13500H",
+        "color": "#0071ce",
+        "raw_value": "i5-13500H"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16.1\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "16.1"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4050",
+      "cpu": "Intel i5-13500H",
+      "ram_gb": 8,
+      "storage_gb": 512,
+      "screen_size": 16.1
+    },
+    "colorVariants": [
+      {
+        "name": "Mica Silver",
+        "hex": "#b0b0b0"
+      },
+      {
+        "name": "Performance Blue",
+        "hex": "#2c5f8a"
+      }
+    ],
+    "stock": 210,
+    "description": "Best entry-level gaming laptop with modern features.",
+    "features": [
+      "Temporal noise reduction",
+      "OMEN Gaming Hub",
+      "Eco mode"
+    ],
+    "images": [
+      "https://example.com/images/victus_16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_014",
+    "name": "Dell G16 7630",
+    "brand": "Dell",
+    "tagline": "Mainstream power",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.3,
+    "reviewCount": 876,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13650HX",
+        "color": "#0071ce",
+        "raw_value": "i7-13650HX"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" QHD+ 165Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13650HX",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Metallic Nightshade",
+        "hex": "#1a2a3a"
+      }
+    ],
+    "stock": 54,
+    "description": "Alienware-inspired thermal design at a more accessible price.",
+    "features": [
+      "Cherry mechanical option",
+      "Game Shift technology",
+      "Dolby Vision"
+    ],
+    "images": [
+      "https://example.com/images/dell_g16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_015",
+    "name": "Acer Nitro 17",
+    "brand": "Acer",
+    "tagline": "Budget beast",
+    "price": 1199.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.2,
+    "reviewCount": 2870,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 7535HS",
+        "color": "#ed1c24",
+        "raw_value": "7535HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" 165Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "AMD Ryzen 5 7535HS",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 17.3
+    },
+    "colorVariants": [
+      {
+        "name": "Obsidian Black",
+        "hex": "#1a1a1a"
+      }
+    ],
+    "stock": 147,
+    "description": "Large screen and solid components for the price, ideal for 1080p gaming.",
+    "features": [
+      "Dual fans",
+      "Killer Ethernet E2600",
+      "NitroSense utility"
+    ],
+    "images": [
+      "https://example.com/images/nitro_17.jpg"
+    ]
+  },
+  {
+    "id": "gaming_016",
+    "name": "ASUS ROG Zephyrus M16",
+    "brand": "ASUS",
+    "tagline": "Thin, fast, and bright",
+    "price": 2399.99,
+    "originalPrice": 2699.99,
+    "category": "Gaming",
+    "subCategory": "Premium Slim",
+    "rating": 4.9,
+    "reviewCount": 670,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4080",
+        "color": "#76b900",
+        "raw_value": "4080"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900H",
+        "color": "#0071ce",
+        "raw_value": "i9-13900H"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" Mini-LED 240Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4080",
+      "cpu": "Intel i9-13900H",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Eclipse Gray",
+        "hex": "#2c2c2c"
+      }
+    ],
+    "stock": 19,
+    "description": "Incredible Mini-LED display with HDR 1000 nits and superb slim chassis.",
+    "features": [
+      "AniMe Matrix lid",
+      "Liquid metal cooling",
+      "Dolby Atmos"
+    ],
+    "images": [
+      "https://example.com/images/zephyrus_m16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_017",
+    "name": "MSI Crosshair 17",
+    "brand": "MSI",
+    "tagline": "Mid-range marksman",
+    "price": 1399.99,
+    "originalPrice": 1549.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4,
+    "reviewCount": 412,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13620H",
+        "color": "#0071ce",
+        "raw_value": "i7-13620H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13620H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 17.3
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 63,
+    "description": "Solid 1440p gaming performer with good connectivity.",
+    "features": [
+      "Red backlit keyboard",
+      "MSI Center",
+      "Hi-Res Audio"
+    ],
+    "images": [
+      "https://example.com/images/crosshair_17.jpg"
+    ]
+  },
+  {
+    "id": "gaming_018",
+    "name": "Gigabyte G5 KF",
+    "brand": "Gigabyte",
+    "tagline": "Best bang for buck",
+    "price": 899.99,
+    "originalPrice": 1099.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.1,
+    "reviewCount": 1589,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4050",
+        "color": "#76b900",
+        "raw_value": "4050"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i5-12500H",
+        "color": "#0071ce",
+        "raw_value": "i5-12500H"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR4",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4050",
+      "cpu": "Intel i5-12500H",
+      "ram_gb": 8,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Dark Green",
+        "hex": "#1e3a2f"
+      }
+    ],
+    "stock": 198,
+    "description": "Incredible value for entry-level gaming, handles esports titles easily.",
+    "features": [
+      "Upgradable RAM/SSD",
+      "Win 11 Home",
+      "Gigabyte Control Center"
+    ],
+    "images": [
+      "https://example.com/images/g5_kf.jpg"
+    ]
+  },
+  {
+    "id": "gaming_019",
+    "name": "Lenovo Legion 9i",
+    "brand": "Lenovo",
+    "tagline": "Flagship liquid-cooled",
+    "price": 4499.99,
+    "originalPrice": 4999.99,
+    "category": "Gaming",
+    "subCategory": "Extreme",
+    "rating": 4.9,
+    "reviewCount": 246,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13980HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13980HX"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe RAID0",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 3.2K Mini-LED 165Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13980HX",
+      "ram_gb": 64,
+      "storage_gb": 2048,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Carbon Black",
+        "hex": "#181818"
+      }
+    ],
+    "stock": 5,
+    "description": "World's first built-in liquid-cooling gaming laptop with forged carbon lid.",
+    "features": [
+      "Liquid cooling",
+      "Forged carbon fiber",
+      "Tobii Horizon"
+    ],
+    "images": [
+      "https://example.com/images/legion_9i.jpg"
+    ]
+  },
+  {
+    "id": "gaming_020",
+    "name": "ASUS ROG Strix Scar 17",
+    "brand": "ASUS",
+    "tagline": "Uncompromising eSports",
+    "price": 2999.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Enthusiast",
+    "rating": 4.6,
+    "reviewCount": 789,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7945HX",
+        "color": "#ed1c24",
+        "raw_value": "7945HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" QHD 240Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "AMD Ryzen 9 7945HX",
+      "ram_gb": 32,
+      "storage_gb": 2048,
+      "screen_size": 17.3
+    },
+    "colorVariants": [
+      {
+        "name": "Off Black",
+        "hex": "#262626"
+      }
+    ],
+    "stock": 14,
+    "description": "High-refresh 240Hz QHD panel with mechanical per-key RGB.",
+    "features": [
+      "Optical mechanical switches",
+      "ROG Intelligent Cooling",
+      "Dolby Vision"
+    ],
+    "images": [
+      "https://example.com/images/strix_scar_17.jpg"
+    ]
+  },
+  {
+    "id": "gaming_021",
+    "name": "Dell Alienware x16",
+    "brand": "Dell",
+    "tagline": "Sleek, premium, powerful",
+    "price": 3199.99,
+    "originalPrice": 3499.99,
+    "category": "Gaming",
+    "subCategory": "Premium Slim",
+    "rating": 4.7,
+    "reviewCount": 430,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900HK",
+        "color": "#0071ce",
+        "raw_value": "i9-13900HK"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5X",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" OLED 480Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13900HK",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Lunar Silver",
+        "hex": "#d3d3d3"
+      }
+    ],
+    "stock": 11,
+    "description": "Thin, premium chassis with an astonishing 480Hz OLED panel.",
+    "features": [
+      "Cryo-Tech",
+      "6 speakers with Dolby Atmos",
+      "AlienFX per-key"
+    ],
+    "images": [
+      "https://example.com/images/alienware_x16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_022",
+    "name": "HP OMEN Transcend 14",
+    "brand": "HP",
+    "tagline": "Ultraportable gaming",
+    "price": 1799.99,
+    "originalPrice": 1999.99,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.4,
+    "reviewCount": 285,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel Ultra 7 155H",
+        "color": "#0071ce",
+        "raw_value": "155H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5X",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" OLED 120Hz",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel Ultra 7 155H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Shadow Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 39,
+    "description": "Ultra-thin gaming machine with Meteor Lake and OLED display.",
+    "features": [
+      "HyperX audio",
+      "Low blue light",
+      "Tempest Cooling"
+    ],
+    "images": [
+      "https://example.com/images/omen_transcend_14.jpg"
+    ]
+  },
+  {
+    "id": "gaming_023",
+    "name": "MSI Vector 17",
+    "brand": "MSI",
+    "tagline": "Raw performance",
+    "price": 2199.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Performance",
+    "rating": 4.5,
+    "reviewCount": 361,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4080",
+        "color": "#76b900",
+        "raw_value": "4080"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13980HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13980HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "17\" QHD 240Hz",
+        "color": "#00aeef",
+        "raw_value": "17"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4080",
+      "cpu": "Intel i9-13980HX",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 17
+    },
+    "colorVariants": [
+      {
+        "name": "Core Black",
+        "hex": "#1e1e1e"
+      }
+    ],
+    "stock": 27,
+    "description": "No-frills performance-focused laptop with excellent cooling.",
+    "features": [
+      "Phase-change liquid metal",
+      "MSI Cooler Boost 5",
+      "SteelSeries keyboard"
+    ],
+    "images": [
+      "https://example.com/images/vector_17.jpg"
+    ]
+  },
+  {
+    "id": "gaming_024",
+    "name": "Acer Predator Triton 17 X",
+    "brand": "Acer",
+    "tagline": "Titanic performance",
+    "price": 3799.99,
+    "originalPrice": 3999.99,
+    "category": "Gaming",
+    "subCategory": "Extreme",
+    "rating": 4.8,
+    "reviewCount": 124,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13900HX"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "17\" Mini-LED 250Hz",
+        "color": "#00aeef",
+        "raw_value": "17"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13900HX",
+      "ram_gb": 64,
+      "storage_gb": 2048,
+      "screen_size": 17
+    },
+    "colorVariants": [
+      {
+        "name": "Abyss Black",
+        "hex": "#0a0a0a"
+      }
+    ],
+    "stock": 8,
+    "description": "Mini-LED, 1000 nits brightness, and mechanical keyboard.",
+    "features": [
+      "MagKey 3.0",
+      "AeroBlade 3D fans",
+      "HDMI 2.1"
+    ],
+    "images": [
+      "https://example.com/images/triton_17x.jpg"
+    ]
+  },
+  {
+    "id": "gaming_025",
+    "name": "Gigabyte Aero 16 OLED",
+    "brand": "Gigabyte",
+    "tagline": "Creator & gamer hybrid",
+    "price": 2099.99,
+    "originalPrice": 2299.99,
+    "category": "Gaming",
+    "subCategory": "Creator",
+    "rating": 4.4,
+    "reviewCount": 532,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 4K OLED",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Celestial Silver",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 36,
+    "description": "Color-accurate 4K OLED for creators who also enjoy gaming.",
+    "features": [
+      "Pantone validated",
+      "X-Rite 2.0",
+      "99% DCI-P3"
+    ],
+    "images": [
+      "https://example.com/images/aero_16_oled.jpg"
+    ]
+  },
+  {
+    "id": "gaming_026",
+    "name": "ASUS TUF Dash F15",
+    "brand": "ASUS",
+    "tagline": "Slim, tough, fast",
+    "price": 1299.99,
+    "originalPrice": 1449.99,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.3,
+    "reviewCount": 982,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-12650H",
+        "color": "#0071ce",
+        "raw_value": "i7-12650H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-12650H",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Off Black",
+        "hex": "#1a1a1a"
+      }
+    ],
+    "stock": 104,
+    "description": "Thin and light with MIL-STD-810H durability.",
+    "features": [
+      "Thunderbolt 4",
+      "MUX Switch",
+      "76Wh battery"
+    ],
+    "images": [
+      "https://example.com/images/tuf_dash_f15.jpg"
+    ]
+  },
+  {
+    "id": "gaming_027",
+    "name": "Razer Blade 18",
+    "brand": "Razer",
+    "tagline": "Desktop-class 18-inch",
+    "price": 3899.99,
+    "originalPrice": 4299.99,
+    "category": "Gaming",
+    "subCategory": "Enthusiast",
+    "rating": 4.8,
+    "reviewCount": 303,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13950HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13950HX"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "18\" QHD+ 300Hz",
+        "color": "#00aeef",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13950HX",
+      "ram_gb": 32,
+      "storage_gb": 2048,
+      "screen_size": 18
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 9,
+    "description": "Massive 18-inch QHD+ display with the fastest refresh.",
+    "features": [
+      "THX Spatial",
+      "6 speakers",
+      "HDMI 2.1"
+    ],
+    "images": [
+      "https://example.com/images/razer_blade_18.jpg"
+    ]
+  },
+  {
+    "id": "gaming_028",
+    "name": "Dell Alienware x14 R2",
+    "brand": "Dell",
+    "tagline": "Ultraportable alien",
+    "price": 1699.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.3,
+    "reviewCount": 601,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13620H",
+        "color": "#0071ce",
+        "raw_value": "i7-13620H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" QHD+ 165Hz",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13620H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Lunar Silver",
+        "hex": "#d3d3d3"
+      }
+    ],
+    "stock": 47,
+    "description": "Small form factor, large gaming potential.",
+    "features": [
+      "Alienware Cryo-Tech",
+      "14-layer PCB",
+      "Type-C charging"
+    ],
+    "images": [
+      "https://example.com/images/alienware_x14.jpg"
+    ]
+  },
+  {
+    "id": "gaming_029",
+    "name": "HP Victus 15",
+    "brand": "HP",
+    "tagline": "Compact budget gamer",
+    "price": 799.99,
+    "originalPrice": 999.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4,
+    "reviewCount": 3360,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 3050",
+        "color": "#76b900",
+        "raw_value": "3050"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 7535HS",
+        "color": "#ed1c24",
+        "raw_value": "7535HS"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3050",
+      "cpu": "AMD Ryzen 5 7535HS",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Mica Silver",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 256,
+    "description": "Lowest priced entry to 144Hz gaming.",
+    "features": [
+      "Wi-Fi 6",
+      "HP Fast Charge",
+      "OMEN Gaming Hub"
+    ],
+    "images": [
+      "https://example.com/images/victus_15.jpg"
+    ]
+  },
+  {
+    "id": "gaming_030",
+    "name": "Lenovo Legion Slim 7",
+    "brand": "Lenovo",
+    "tagline": "Premium ultraportable gaming",
+    "price": 1899.99,
+    "originalPrice": 2099.99,
+    "category": "Gaming",
+    "subCategory": "Premium Slim",
+    "rating": 4.6,
+    "reviewCount": 778,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840HS",
+        "color": "#ed1c24",
+        "raw_value": "7840HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5X",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 240Hz IPS",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "AMD Ryzen 7 7840HS",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 42,
+    "description": "Astonishingly thin and light for a 16-inch gaming laptop.",
+    "features": [
+      "Fingerprint reader",
+      "Corning Gorilla Glass",
+      "Rapid Charge"
+    ],
+    "images": [
+      "https://example.com/images/legion_slim_7.jpg"
+    ]
+  },
+  {
+    "id": "gaming_031",
+    "name": "MSI Katana 15",
+    "brand": "MSI",
+    "tagline": "Samurai precision",
+    "price": 1199.99,
+    "originalPrice": 1349.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.2,
+    "reviewCount": 1105,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13620H",
+        "color": "#0071ce",
+        "raw_value": "i7-13620H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13620H",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 88,
+    "description": "Affordable RTX 4060 gaming with a decent display.",
+    "features": [
+      "Cooler Boost 5",
+      "Nahimic 3 Audio",
+      "MSI Center"
+    ],
+    "images": [
+      "https://example.com/images/katana_15.jpg"
+    ]
+  },
+  {
+    "id": "gaming_032",
+    "name": "ASUS ROG Zephyrus G14",
+    "brand": "ASUS",
+    "tagline": "14-inch beast",
+    "price": 1599.99,
+    "originalPrice": 1799.99,
+    "category": "Gaming",
+    "subCategory": "Portable",
+    "rating": 4.7,
+    "reviewCount": 3420,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7940HS",
+        "color": "#ed1c24",
+        "raw_value": "7940HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" QHD+ 165Hz",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "AMD Ryzen 9 7940HS",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Moonlight White",
+        "hex": "#e6e6e6"
+      },
+      {
+        "name": "Eclipse Gray",
+        "hex": "#2c2c2c"
+      }
+    ],
+    "stock": 73,
+    "description": "Anime Matrix lid and incredible performance per cubic inch.",
+    "features": [
+      "AniMe Matrix",
+      "Dolby Atmos",
+      "76Wh battery"
+    ],
+    "images": [
+      "https://example.com/images/zephyrus_g14.jpg"
+    ]
+  },
+  {
+    "id": "gaming_033",
+    "name": "Acer Nitro 5",
+    "brand": "Acer",
+    "tagline": "Proven budget champion",
+    "price": 899.99,
+    "originalPrice": 1099.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.1,
+    "reviewCount": 8910,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 3050 Ti",
+        "color": "#76b900",
+        "raw_value": "3050Ti"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i5-12500H",
+        "color": "#0071ce",
+        "raw_value": "i5-12500H"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR4",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 144Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3050 Ti",
+      "cpu": "Intel i5-12500H",
+      "ram_gb": 8,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Obsidian Black",
+        "hex": "#1a1a1a"
+      }
+    ],
+    "stock": 312,
+    "description": "One of the best-selling budget gaming laptops for a reason.",
+    "features": [
+      "NitroSense",
+      "Dual fans",
+      "Killer Ethernet"
+    ],
+    "images": [
+      "https://example.com/images/nitro_5.jpg"
+    ]
+  },
+  {
+    "id": "gaming_034",
+    "name": "Gigabyte Aorus 17X",
+    "brand": "Gigabyte",
+    "tagline": "Desktop killer",
+    "price": 3599.99,
+    "originalPrice": 3899.99,
+    "category": "Gaming",
+    "subCategory": "Extreme",
+    "rating": 4.7,
+    "reviewCount": 198,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4090",
+        "color": "#76b900",
+        "raw_value": "4090"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i9-13980HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13980HX"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" QHD 240Hz",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4090",
+      "cpu": "Intel i9-13980HX",
+      "ram_gb": 64,
+      "storage_gb": 2048,
+      "screen_size": 17.3
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 6,
+    "description": "Massive cooling and full-power components.",
+    "features": [
+      "Winmax fan",
+      "Mechanical switches",
+      "99Wh battery"
+    ],
+    "images": [
+      "https://example.com/images/aorus_17x.jpg"
+    ]
+  },
+  {
+    "id": "gaming_035",
+    "name": "Dell G15 5535",
+    "brand": "Dell",
+    "tagline": "AMD advantage",
+    "price": 1099.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.4,
+    "reviewCount": 1132,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RX 7600M XT",
+        "color": "#ed1c24",
+        "raw_value": "7600MXT"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840HS",
+        "color": "#ed1c24",
+        "raw_value": "7840HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 165Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RX 7600M XT",
+      "cpu": "AMD Ryzen 7 7840HS",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Dark Shadow Gray",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 66,
+    "description": "All-AMD gaming laptop with smart shift technology.",
+    "features": [
+      "Alienware Command Center",
+      "Game Shift",
+      "Dolby Audio"
+    ],
+    "images": [
+      "https://example.com/images/g15_5535.jpg"
+    ]
+  },
+  {
+    "id": "gaming_036",
+    "name": "ASUS ROG Strix G16",
+    "brand": "ASUS",
+    "tagline": "Style and speed",
+    "price": 1899.99,
+    "originalPrice": 2149.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.5,
+    "reviewCount": 954,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13650HX",
+        "color": "#0071ce",
+        "raw_value": "i7-13650HX"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 165Hz IPS",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13650HX",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Volt Green",
+        "hex": "#a9e61d"
+      }
+    ],
+    "stock": 38,
+    "description": "Eye-catching design with solid performance.",
+    "features": [
+      "ROG Intelligent Cooling",
+      "Dolby Vision",
+      "RGB light bar"
+    ],
+    "images": [
+      "https://example.com/images/strix_g16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_037",
+    "name": "MSI Pulse 15",
+    "brand": "MSI",
+    "tagline": "Style and power",
+    "price": 1599.99,
+    "originalPrice": null,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.2,
+    "reviewCount": 467,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" QHD 165Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Core Black",
+        "hex": "#1e1e1e"
+      }
+    ],
+    "stock": 52,
+    "description": "Fashion-forward design with good thermals.",
+    "features": [
+      "Cooler Boost 5",
+      "RGB keyboard",
+      "Hi-Res Audio"
+    ],
+    "images": [
+      "https://example.com/images/pulse_15.jpg"
+    ]
+  },
+  {
+    "id": "gaming_038",
+    "name": "Lenovo IdeaPad Gaming 3",
+    "brand": "Lenovo",
+    "tagline": "Entry-level excellence",
+    "price": 799.99,
+    "originalPrice": 949.99,
+    "category": "Gaming",
+    "subCategory": "Budget",
+    "rating": 4.3,
+    "reviewCount": 5210,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 3050",
+        "color": "#76b900",
+        "raw_value": "3050"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 7535HS",
+        "color": "#ed1c24",
+        "raw_value": "7535HS"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 120Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3050",
+      "cpu": "AMD Ryzen 5 7535HS",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Onyx Grey",
+        "hex": "#333333"
+      }
+    ],
+    "stock": 178,
+    "description": "Solid build, good battery life for a budget gaming laptop.",
+    "features": [
+      "Nahimic Audio",
+      "Privacy shutter",
+      "Rapid Charge"
+    ],
+    "images": [
+      "https://example.com/images/ideapad_gaming3.jpg"
+    ]
+  },
+  {
+    "id": "gaming_039",
+    "name": "HP OMEN 16",
+    "brand": "HP",
+    "tagline": "Smooth and quiet",
+    "price": 1399.99,
+    "originalPrice": 1599.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.4,
+    "reviewCount": 1990,
+    "badge": null,
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840HS",
+        "color": "#ed1c24",
+        "raw_value": "7840HS"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16.1\" QHD 165Hz",
+        "color": "#00aeef",
+        "raw_value": "16.1"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "AMD Ryzen 7 7840HS",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16.1
+    },
+    "colorVariants": [
+      {
+        "name": "Mica Silver",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 81,
+    "description": "Quiet fans and excellent performance balance.",
+    "features": [
+      "Tempest Cooling",
+      "TNR camera",
+      "OMEN Light Studio"
+    ],
+    "images": [
+      "https://example.com/images/omen_16.jpg"
+    ]
+  },
+  {
+    "id": "gaming_040",
+    "name": "Acer Predator Helios 300",
+    "brand": "Acer",
+    "tagline": "Classic gamer choice",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "Gaming",
+    "subCategory": "Mainstream",
+    "rating": 4.5,
+    "reviewCount": 2780,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "GPU",
+        "value": "RTX 3070 Ti",
+        "color": "#76b900",
+        "raw_value": "3070Ti"
+      },
+      {
+        "label": "CPU",
+        "value": "Intel i7-12700H",
+        "color": "#0071ce",
+        "raw_value": "i7-12700H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" QHD 165Hz",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3070 Ti",
+      "cpu": "Intel i7-12700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Abyss Black",
+        "hex": "#0a0a0a"
+      }
+    ],
+    "stock": 63,
+    "description": "One of the most consistent mid-range performers.",
+    "features": [
+      "AeroBlade 3D",
+      "PredatorSense",
+      "Killer Wi-Fi 6"
+    ],
+    "images": [
+      "https://example.com/images/predator_helios_300.jpg"
+    ]
+  },
+  {
+    "id": "business_001",
+    "name": "Lenovo ThinkPad X1 Carbon Gen 11",
+    "brand": "Lenovo",
+    "tagline": "Ultimate executive ultrabook",
+    "price": 1999.99,
+    "originalPrice": 2299.99,
+    "category": "Business",
+    "subCategory": "Executive",
+    "rating": 4.8,
+    "reviewCount": 1520,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Weight",
+        "value": "2.48 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.12"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "name": "Deep Grey",
+        "hex": "#5a5a5a"
+      }
+    ],
+    "stock": 87,
+    "description": "Legendary keyboard, MIL-SPEC durability, and lightweight carbon fiber.",
+    "features": [
+      "Fingerprint reader",
+      "PrivacyGuard",
+      "WWAN ready"
+    ],
+    "images": [
+      "https://example.com/images/thinkpad_x1_carbon.jpg"
+    ]
+  },
+  {
+    "id": "business_002",
+    "name": "Dell Latitude 9440",
+    "brand": "Dell",
+    "tagline": "Zero-lattice keyboard",
+    "price": 2599.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Premium",
+    "rating": 4.7,
+    "reviewCount": 340,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1370P",
+        "color": "#0071ce",
+        "raw_value": "i7-1370P"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" QHD+ IPS",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Battery",
+        "value": "10hrs+",
+        "color": "#8bc34a",
+        "raw_value": "10"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1370P",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Titan Gray",
+        "hex": "#888888"
+      }
+    ],
+    "stock": 24,
+    "description": "Mini-LED backlit keyboard with haptic touchpad.",
+    "features": [
+      "ExpressConnect",
+      "SafeScreen",
+      "AI noise cancellation"
+    ],
+    "images": [
+      "https://example.com/images/latitude_9440.jpg"
+    ]
+  },
+  {
+    "id": "business_003",
+    "name": "HP Elite Dragonfly G4",
+    "brand": "HP",
+    "tagline": "Lightest business convertible",
+    "price": 2399.99,
+    "originalPrice": 2699.99,
+    "category": "Business",
+    "subCategory": "Convertible",
+    "rating": 4.6,
+    "reviewCount": 412,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" 3:2 OLED",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Weight",
+        "value": "2.2 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.0"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Slate Blue",
+        "hex": "#4a5d70"
+      }
+    ],
+    "stock": 19,
+    "description": "Ultra-portable with a stunning 3:2 OLED and 5G option.",
+    "features": [
+      "HP Sure View",
+      "Tile tracking",
+      "Bang & Olufsen"
+    ],
+    "images": [
+      "https://example.com/images/elite_dragonfly_g4.jpg"
+    ]
+  },
+  {
+    "id": "business_004",
+    "name": "Apple MacBook Pro 14 (M3 Pro)",
+    "brand": "Apple",
+    "tagline": "Pro performance, pro battery",
+    "price": 1999.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Creative",
+    "rating": 4.9,
+    "reviewCount": 2870,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "M3 Pro (11-core)",
+        "color": "#626262",
+        "raw_value": "M3Pro11"
+      },
+      {
+        "label": "RAM",
+        "value": "18GB Unified",
+        "color": "#f5a623",
+        "raw_value": "18"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB SSD",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14.2\" Liquid Retina XDR",
+        "color": "#00aeef",
+        "raw_value": "14.2"
+      },
+      {
+        "label": "Battery",
+        "value": "18hrs",
+        "color": "#8bc34a",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "M3 Pro 14-core",
+      "cpu": "M3 Pro",
+      "ram_gb": 18,
+      "storage_gb": 512,
+      "screen_size": 14.2
+    },
+    "colorVariants": [
+      {
+        "name": "Space Black",
+        "hex": "#231f20"
+      },
+      {
+        "name": "Silver",
+        "hex": "#e3e4e5"
+      }
+    ],
+    "stock": 102,
+    "description": "Incredible performance and battery life for business professionals.",
+    "features": [
+      "Liquid Retina XDR",
+      "1080p webcam",
+      "Six speakers"
+    ],
+    "images": [
+      "https://example.com/images/mbp14_m3pro.jpg"
+    ]
+  },
+  {
+    "id": "business_005",
+    "name": "Microsoft Surface Laptop Studio 2",
+    "brand": "Microsoft",
+    "tagline": "Dynamic woven hinge",
+    "price": 2299.99,
+    "originalPrice": 2599.99,
+    "category": "Business",
+    "subCategory": "Convertible",
+    "rating": 4.5,
+    "reviewCount": 830,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-13800H",
+        "color": "#0071ce",
+        "raw_value": "i7-13800H"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14.4\" 120Hz",
+        "color": "#00aeef",
+        "raw_value": "14.4"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13800H",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14.4
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      }
+    ],
+    "stock": 31,
+    "description": "Unique hinge transforms from laptop to studio to tablet.",
+    "features": [
+      "Slim Pen 2",
+      "Haptic touchpad",
+      "AI-accelerated"
+    ],
+    "images": [
+      "https://example.com/images/surface_laptop_studio2.jpg"
+    ]
+  },
+  {
+    "id": "business_006",
+    "name": "ASUS ExpertBook B9 OLED",
+    "brand": "ASUS",
+    "tagline": "Lightweight titanium",
+    "price": 1899.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Ultraportable",
+    "rating": 4.4,
+    "reviewCount": 238,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1355U",
+        "color": "#0071ce",
+        "raw_value": "i7-1355U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" OLED",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Weight",
+        "value": "2.2 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.0"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1355U",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Star Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 44,
+    "description": "Magnesium-lithium alloy chassis, MIL-STD-810H.",
+    "features": [
+      "NumberPad 2.0",
+      "Dual SSD slots",
+      "Wi-Fi 6E"
+    ],
+    "images": [
+      "https://example.com/images/expertbook_b9.jpg"
+    ]
+  },
+  {
+    "id": "business_007",
+    "name": "Dell XPS 15 9530",
+    "brand": "Dell",
+    "tagline": "Creator's business choice",
+    "price": 2199.99,
+    "originalPrice": 2499.99,
+    "category": "Business",
+    "subCategory": "Performance",
+    "rating": 4.7,
+    "reviewCount": 1750,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" OLED 3.5K",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum Silver",
+        "hex": "#c0c0c0"
+      },
+      {
+        "name": "Alpine White",
+        "hex": "#f0f0f0"
+      }
+    ],
+    "stock": 56,
+    "description": "Beautiful infinity edge display, powerful for coding and design.",
+    "features": [
+      "Precision touchpad",
+      "Windows Hello",
+      "CNC aluminum"
+    ],
+    "images": [
+      "https://example.com/images/xps15_9530.jpg"
+    ]
+  },
+  {
+    "id": "business_008",
+    "name": "Lenovo ThinkPad T14s Gen 4",
+    "brand": "Lenovo",
+    "tagline": "Reliable workhorse",
+    "price": 1599.99,
+    "originalPrice": 1799.99,
+    "category": "Business",
+    "subCategory": "Essential",
+    "rating": 4.6,
+    "reviewCount": 1120,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840U",
+        "color": "#ed1c24",
+        "raw_value": "7840U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 400nit IPS",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Ports",
+        "value": "2x USB4",
+        "color": "#8bc34a",
+        "raw_value": "usb4"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon 780M",
+      "cpu": "AMD Ryzen 7 7840U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Thunder Black",
+        "hex": "#222222"
+      }
+    ],
+    "stock": 113,
+    "description": "The classic ThinkPad with AMD advantage, great battery life.",
+    "features": [
+      "Spill-resistant keyboard",
+      "Dolby Atmos",
+      "FHD IR camera"
+    ],
+    "images": [
+      "https://example.com/images/thinkpad_t14s.jpg"
+    ]
+  },
+  {
+    "id": "business_009",
+    "name": "HP EliteBook 1040 G10",
+    "brand": "HP",
+    "tagline": "Security focused",
+    "price": 1899.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Premium",
+    "rating": 4.3,
+    "reviewCount": 298,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.2K",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Security",
+        "value": "Wolf Pro",
+        "color": "#8bc34a",
+        "raw_value": "hp_wolf"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Natural Silver",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 38,
+    "description": "HP Wolf Security for business-grade protection.",
+    "features": [
+      "Sure View Reflect",
+      "Auto Frame",
+      "5MP camera"
+    ],
+    "images": [
+      "https://example.com/images/elitebook_1040.jpg"
+    ]
+  },
+  {
+    "id": "business_010",
+    "name": "Apple MacBook Air 15 (M2)",
+    "brand": "Apple",
+    "tagline": "Big screen, thin design",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "Business",
+    "subCategory": "Ultraportable",
+    "rating": 4.8,
+    "reviewCount": 4200,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "M2 (8-core)",
+        "color": "#626262",
+        "raw_value": "M2"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB Unified",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB SSD",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.3\" Liquid Retina",
+        "color": "#00aeef",
+        "raw_value": "15.3"
+      },
+      {
+        "label": "Weight",
+        "value": "3.3 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.5"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "M2 10-core",
+      "cpu": "M2",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.3
+    },
+    "colorVariants": [
+      {
+        "name": "Midnight",
+        "hex": "#1b262c"
+      },
+      {
+        "name": "Starlight",
+        "hex": "#f5e6d3"
+      }
+    ],
+    "stock": 205,
+    "description": "Lightweight large-screen laptop with insane battery life.",
+    "features": [
+      "MagSafe 3",
+      "1080p webcam",
+      "Six speakers"
+    ],
+    "images": [
+      "https://example.com/images/macbook_air_15.jpg"
+    ]
+  },
+  {
+    "id": "business_011",
+    "name": "Microsoft Surface Laptop 5",
+    "brand": "Microsoft",
+    "tagline": "Elegant and fast",
+    "price": 1299.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Essential",
+    "rating": 4.4,
+    "reviewCount": 1630,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1265U",
+        "color": "#0071ce",
+        "raw_value": "i7-1265U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" PixelSense",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Touch",
+        "value": "10-point",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1265U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      },
+      {
+        "name": "Matte Black",
+        "hex": "#1d1d1d"
+      }
+    ],
+    "stock": 92,
+    "description": "Premium build, excellent keyboard, and 3:2 aspect ratio.",
+    "features": [
+      "Dolby Vision IQ",
+      "Omnisonic speakers",
+      "Fingerprint reader"
+    ],
+    "images": [
+      "https://example.com/images/surface_laptop5.jpg"
+    ]
+  },
+  {
+    "id": "business_012",
+    "name": "ASUS Zenbook 14 Flip OLED",
+    "brand": "ASUS",
+    "tagline": "Versatile convertible",
+    "price": 1399.99,
+    "originalPrice": 1599.99,
+    "category": "Business",
+    "subCategory": "Convertible",
+    "rating": 4.5,
+    "reviewCount": 687,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Pen",
+        "value": "ASUS Pen 2.0",
+        "color": "#8bc34a",
+        "raw_value": "included"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Jade Black",
+        "hex": "#2b3b2c"
+      }
+    ],
+    "stock": 47,
+    "description": "360-degree hinge with stunning OLED display.",
+    "features": [
+      "NumberPad 2.0",
+      "Harman Kardon",
+      "Wi-Fi 6E"
+    ],
+    "images": [
+      "https://example.com/images/zenbook_flip_14.jpg"
+    ]
+  },
+  {
+    "id": "business_013",
+    "name": "Dell Latitude 7340",
+    "brand": "Dell",
+    "tagline": "Compact business partner",
+    "price": 1699.99,
+    "originalPrice": 1899.99,
+    "category": "Business",
+    "subCategory": "Ultraportable",
+    "rating": 4.3,
+    "reviewCount": 445,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" FHD+",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Security",
+        "value": "TPM 2.0",
+        "color": "#8bc34a",
+        "raw_value": "tpm2"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Gray",
+        "hex": "#6b6b6b"
+      }
+    ],
+    "stock": 61,
+    "description": "Compact 13-inch business laptop with great port selection.",
+    "features": [
+      "ExpressCharge",
+      "FHD IR camera",
+      "WWAN option"
+    ],
+    "images": [
+      "https://example.com/images/latitude_7340.jpg"
+    ]
+  },
+  {
+    "id": "business_014",
+    "name": "HP ZBook Firefly 14 G10",
+    "brand": "HP",
+    "tagline": "Mobile workstation",
+    "price": 2099.99,
+    "originalPrice": 2499.99,
+    "category": "Business",
+    "subCategory": "Workstation",
+    "rating": 4.6,
+    "reviewCount": 213,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1370P",
+        "color": "#0071ce",
+        "raw_value": "i7-1370P"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX A500",
+        "color": "#76b900",
+        "raw_value": "A500"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" DreamColor",
+        "color": "#00aeef",
+        "raw_value": "14"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX A500",
+      "cpu": "Intel i7-1370P",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Silver",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 18,
+    "description": "ISV-certified for CAD and engineering work.",
+    "features": [
+      "HP Sure Start",
+      "Dual fans",
+      "Dolby Vision"
+    ],
+    "images": [
+      "https://example.com/images/zbook_firefly.jpg"
+    ]
+  },
+  {
+    "id": "business_015",
+    "name": "Lenovo ThinkBook 16p Gen 4",
+    "brand": "Lenovo",
+    "tagline": "Creator-friendly business",
+    "price": 1799.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Performance",
+    "rating": 4.5,
+    "reviewCount": 379,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 7940HS",
+        "color": "#ed1c24",
+        "raw_value": "7940HS"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4060",
+        "color": "#76b900",
+        "raw_value": "4060"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 3.2K IPS",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4060",
+      "cpu": "AMD Ryzen 9 7940HS",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Dual Tone",
+        "hex": "#2e2e2e"
+      }
+    ],
+    "stock": 29,
+    "description": "Powerful for data science and content creation.",
+    "features": [
+      "Magic Bay connector",
+      "Smart noise canceling",
+      "FHD camera"
+    ],
+    "images": [
+      "https://example.com/images/thinkbook_16p.jpg"
+    ]
+  },
+  {
+    "id": "business_016",
+    "name": "Apple MacBook Pro 16 (M3 Max)",
+    "brand": "Apple",
+    "tagline": "Ultimate mobile studio",
+    "price": 3499.99,
+    "originalPrice": 3899.99,
+    "category": "Business",
+    "subCategory": "Workstation",
+    "rating": 4.9,
+    "reviewCount": 1450,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "M3 Max (16-core)",
+        "color": "#626262",
+        "raw_value": "M3Max16"
+      },
+      {
+        "label": "GPU",
+        "value": "40-core GPU",
+        "color": "#626262",
+        "raw_value": "40core"
+      },
+      {
+        "label": "RAM",
+        "value": "48GB Unified",
+        "color": "#f5a623",
+        "raw_value": "48"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB SSD",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16.2\" XDR",
+        "color": "#00aeef",
+        "raw_value": "16.2"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "M3 Max 40-core",
+      "cpu": "M3 Max",
+      "ram_gb": 48,
+      "storage_gb": 1024,
+      "screen_size": 16.2
+    },
+    "colorVariants": [
+      {
+        "name": "Space Black",
+        "hex": "#231f20"
+      }
+    ],
+    "stock": 9,
+    "description": "Beast for 3D rendering, machine learning, and software development.",
+    "features": [
+      "Liquid Retina XDR",
+      "22-hour battery",
+      "HDMI 2.1"
+    ],
+    "images": [
+      "https://example.com/images/mbp16_m3max.jpg"
+    ]
+  },
+  {
+    "id": "business_017",
+    "name": "Microsoft Surface Pro 10 (Intel)",
+    "brand": "Microsoft",
+    "tagline": "Tablet-laptop hybrid",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "Business",
+    "subCategory": "Convertible",
+    "rating": 4.3,
+    "reviewCount": 780,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel Ultra 5 135U",
+        "color": "#0071ce",
+        "raw_value": "135U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13\" PixelSense Flow",
+        "color": "#00aeef",
+        "raw_value": "13"
+      },
+      {
+        "label": "Refresh",
+        "value": "120Hz",
+        "color": "#8bc34a",
+        "raw_value": "120"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Intel Graphics",
+      "cpu": "Intel Ultra 5 135U",
+      "ram_gb": 16,
+      "storage_gb": 256,
+      "screen_size": 13
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      }
+    ],
+    "stock": 55,
+    "description": "Detachable keyboard, great for on-the-go executives.",
+    "features": [
+      "NFC reader",
+      "Surface Slim Pen",
+      "Windows Hello"
+    ],
+    "images": [
+      "https://example.com/images/surface_pro10.jpg"
+    ]
+  },
+  {
+    "id": "business_018",
+    "name": "ASUS ExpertWi7 E16",
+    "brand": "ASUS",
+    "tagline": "Big screen business",
+    "price": 1699.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Essential",
+    "rating": 4.2,
+    "reviewCount": 201,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i5-1340P",
+        "color": "#0071ce",
+        "raw_value": "i5-1340P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 16:10",
+        "color": "#00aeef",
+        "raw_value": "16"
+      },
+      {
+        "label": "Battery",
+        "value": "84Wh",
+        "color": "#8bc34a",
+        "raw_value": "84"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i5-1340P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Star Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 68,
+    "description": "Large 16-inch screen for spreadsheets and multitasking.",
+    "features": [
+      "NumberPad",
+      "Dual SSD",
+      "Military grade"
+    ],
+    "images": [
+      "https://example.com/images/expertbook_e16.jpg"
+    ]
+  },
+  {
+    "id": "business_019",
+    "name": "Dell Precision 5680",
+    "brand": "Dell",
+    "tagline": "Mobile workstation",
+    "price": 3599.99,
+    "originalPrice": 3999.99,
+    "category": "Business",
+    "subCategory": "Workstation",
+    "rating": 4.7,
+    "reviewCount": 98,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i9-13950HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13950HX"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 5000 Ada",
+        "color": "#76b900",
+        "raw_value": "RTX5000"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 4K OLED",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 5000 Ada",
+      "cpu": "Intel i9-13950HX",
+      "ram_gb": 64,
+      "storage_gb": 2048,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Titan Gray",
+        "hex": "#888888"
+      }
+    ],
+    "stock": 7,
+    "description": "Ultimate mobile workstation for simulation and AI.",
+    "features": [
+      "ECC memory",
+      "Dell Optimizer",
+      "ISV certified"
+    ],
+    "images": [
+      "https://example.com/images/precision_5680.jpg"
+    ]
+  },
+  {
+    "id": "business_020",
+    "name": "Lenovo ThinkPad P16 Gen 2",
+    "brand": "Lenovo",
+    "tagline": "Heavy duty workstation",
+    "price": 3199.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Workstation",
+    "rating": 4.8,
+    "reviewCount": 156,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i9-13980HX",
+        "color": "#0071ce",
+        "raw_value": "i9-13980HX"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4000 Ada",
+        "color": "#76b900",
+        "raw_value": "RTX4000"
+      },
+      {
+        "label": "RAM",
+        "value": "64GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "64"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 4K IPS",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4000 Ada",
+      "cpu": "Intel i9-13980HX",
+      "ram_gb": 64,
+      "storage_gb": 2048,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 11,
+    "description": "Beast for scientific computing and rendering.",
+    "features": [
+      "ECC RAM",
+      "Dual cooling fans",
+      "Smart card reader"
+    ],
+    "images": [
+      "https://example.com/images/thinkpad_p16.jpg"
+    ]
+  },
+  {
+    "id": "business_021",
+    "name": "HP EliteBook 860 G10",
+    "brand": "HP",
+    "tagline": "Large screen business",
+    "price": 1799.99,
+    "originalPrice": 1999.99,
+    "category": "Business",
+    "subCategory": "Essential",
+    "rating": 4.4,
+    "reviewCount": 312,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" WUXGA",
+        "color": "#00aeef",
+        "raw_value": "16"
+      },
+      {
+        "label": "Camera",
+        "value": "5MP",
+        "color": "#8bc34a",
+        "raw_value": "5mp"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Natural Silver",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 42,
+    "description": "16-inch business laptop with excellent keyboard.",
+    "features": [
+      "HP Sure Sense",
+      "Auto Lock",
+      "Wi-Fi 6E"
+    ],
+    "images": [
+      "https://example.com/images/elitebook_860.jpg"
+    ]
+  },
+  {
+    "id": "business_022",
+    "name": "Apple MacBook Air 13 (M3)",
+    "brand": "Apple",
+    "tagline": "Incredible thin and light",
+    "price": 1199.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Ultraportable",
+    "rating": 4.9,
+    "reviewCount": 5890,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "M3 (8-core)",
+        "color": "#626262",
+        "raw_value": "M3"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB Unified",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB SSD",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13.6\" Liquid Retina",
+        "color": "#00aeef",
+        "raw_value": "13.6"
+      },
+      {
+        "label": "Battery",
+        "value": "18hrs",
+        "color": "#8bc34a",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "M3 10-core",
+      "cpu": "M3",
+      "ram_gb": 16,
+      "storage_gb": 256,
+      "screen_size": 13.6
+    },
+    "colorVariants": [
+      {
+        "name": "Midnight",
+        "hex": "#1b262c"
+      },
+      {
+        "name": "Silver",
+        "hex": "#e3e4e5"
+      }
+    ],
+    "stock": 310,
+    "description": "Fanless design, astonishing battery life for daily tasks.",
+    "features": [
+      "MagSafe",
+      "1080p webcam",
+      "Touch ID"
+    ],
+    "images": [
+      "https://example.com/images/macbook_air_m3.jpg"
+    ]
+  },
+  {
+    "id": "business_023",
+    "name": "Microsoft Surface Laptop Go 3",
+    "brand": "Microsoft",
+    "tagline": "Affordable business",
+    "price": 799.99,
+    "originalPrice": 949.99,
+    "category": "Business",
+    "subCategory": "Essential",
+    "rating": 4,
+    "reviewCount": 950,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i5-1235U",
+        "color": "#0071ce",
+        "raw_value": "i5-1235U"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB LPDDR4x",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "12.4\" PixelSense",
+        "color": "#00aeef",
+        "raw_value": "12.4"
+      },
+      {
+        "label": "Weight",
+        "value": "2.49 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.13"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i5-1235U",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 12.4
+    },
+    "colorVariants": [
+      {
+        "name": "Ice Blue",
+        "hex": "#b5d6d6"
+      }
+    ],
+    "stock": 145,
+    "description": "Great for road warriors on a budget.",
+    "features": [
+      "Fingerprint reader",
+      "Aluminum top",
+      "Dolby Audio"
+    ],
+    "images": [
+      "https://example.com/images/surface_laptop_go3.jpg"
+    ]
+  },
+  {
+    "id": "business_024",
+    "name": "ASUS ExpertBook B5 Flip",
+    "brand": "ASUS",
+    "tagline": "360-degree business",
+    "price": 1499.99,
+    "originalPrice": null,
+    "category": "Business",
+    "subCategory": "Convertible",
+    "rating": 4.3,
+    "reviewCount": 178,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1355U",
+        "color": "#0071ce",
+        "raw_value": "i7-1355U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 16:10 touch",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Garage",
+        "value": "Stylus included",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1355U",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 33,
+    "description": "Flippable design with garaged stylus for presentations.",
+    "features": [
+      "Webcam shield",
+      "Dual SSD RAID",
+      "ErgoLift hinge"
+    ],
+    "images": [
+      "https://example.com/images/expertbook_b5_flip.jpg"
+    ]
+  },
+  {
+    "id": "business_025",
+    "name": "Dell XPS 13 Plus",
+    "brand": "Dell",
+    "tagline": "Minimalist powerhouse",
+    "price": 1699.99,
+    "originalPrice": 1899.99,
+    "category": "Business",
+    "subCategory": "Premium",
+    "rating": 4.5,
+    "reviewCount": 1130,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "13.4\" OLED 3.5K",
+        "color": "#00aeef",
+        "raw_value": "13.4"
+      },
+      {
+        "label": "Touch",
+        "value": "Capacitive row",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 13.4
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#c0c0c0"
+      },
+      {
+        "name": "Graphite",
+        "hex": "#3a3a3a"
+      }
+    ],
+    "stock": 51,
+    "description": "Bold design with seamless glass touchpad and edge-to-edge keyboard.",
+    "features": [
+      "Fingerprint power button",
+      "Quad speakers",
+      "Windows Hello"
+    ],
+    "images": [
+      "https://example.com/images/xps13_plus.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_001",
+    "name": "Dell XPS 13",
+    "brand": "Dell",
+    "tagline": "The iconic ultrabook",
+    "price": 1299.99,
+    "originalPrice": 1499.99,
+    "category": "Ultrabooks",
+    "subCategory": "Premium",
+    "rating": 4.7,
+    "reviewCount": 3420,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.4\" 3.5K OLED",
+        "color": "#00aeef",
+        "raw_value": "13.4"
+      },
+      {
+        "label": "Weight",
+        "value": "2.8 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.27"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.4
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum Silver",
+        "hex": "#c0c0c0"
+      },
+      {
+        "name": "Sky",
+        "hex": "#8ecae6"
+      }
+    ],
+    "stock": 134,
+    "description": "InfinityEdge display, ultra-portable, premium build.",
+    "features": [
+      "Fingerprint reader",
+      "Thunderbolt 4",
+      "CNC machined"
+    ],
+    "images": [
+      "https://example.com/images/xps13.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_002",
+    "name": "Apple MacBook Air 13 (M2)",
+    "brand": "Apple",
+    "tagline": "Redesigned air",
+    "price": 1099.99,
+    "originalPrice": 1199.99,
+    "category": "Ultrabooks",
+    "subCategory": "Popular",
+    "rating": 4.8,
+    "reviewCount": 9800,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "M2 (8-core)",
+        "color": "#626262",
+        "raw_value": "M2"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB Unified",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB SSD",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13.6\" Liquid Retina",
+        "color": "#00aeef",
+        "raw_value": "13.6"
+      },
+      {
+        "label": "Battery",
+        "value": "18hrs",
+        "color": "#8bc34a",
+        "raw_value": "18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "M2 8-core",
+      "cpu": "M2",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 13.6
+    },
+    "colorVariants": [
+      {
+        "name": "Midnight",
+        "hex": "#1b262c"
+      },
+      {
+        "name": "Starlight",
+        "hex": "#f5e6d3"
+      }
+    ],
+    "stock": 420,
+    "description": "Completely redesigned with MagSafe, 1080p camera, and amazing battery.",
+    "features": [
+      "Fanless",
+      "Four speakers",
+      "Touch ID"
+    ],
+    "images": [
+      "https://example.com/images/macbook_air_m2.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_003",
+    "name": "ASUS Zenbook S 13 OLED",
+    "brand": "ASUS",
+    "tagline": "Eco-friendly ultrabook",
+    "price": 1399.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Sustainable",
+    "rating": 4.6,
+    "reviewCount": 520,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7840U",
+        "color": "#ed1c24",
+        "raw_value": "7840U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Weight",
+        "value": "2.2 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.0"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon 780M",
+      "cpu": "AMD Ryzen 7 7840U",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Basalt Grey",
+        "hex": "#4a4a4a"
+      },
+      {
+        "name": "Mist Blue",
+        "hex": "#9bb7d4"
+      }
+    ],
+    "stock": 63,
+    "description": "Made from post-consumer recycled materials, OLED display.",
+    "features": [
+      "NumberPad",
+      "Harman Kardon",
+      "75Wh battery"
+    ],
+    "images": [
+      "https://example.com/images/zenbook_s13_oled.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_004",
+    "name": "Microsoft Surface Laptop 4",
+    "brand": "Microsoft",
+    "tagline": "Timeless design",
+    "price": 999.99,
+    "originalPrice": 1199.99,
+    "category": "Ultrabooks",
+    "subCategory": "Value",
+    "rating": 4.4,
+    "reviewCount": 2450,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 4680U",
+        "color": "#ed1c24",
+        "raw_value": "4680U"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB LPDDR4x",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" PixelSense",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Touch",
+        "value": "10-point",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon",
+      "cpu": "AMD Ryzen 5 4680U",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Ice Blue",
+        "hex": "#b5d6d6"
+      },
+      {
+        "name": "Sandstone",
+        "hex": "#d4c9b8"
+      }
+    ],
+    "stock": 106,
+    "description": "Classic Surface design, excellent keyboard and trackpad.",
+    "features": [
+      "Alcantara fabric",
+      "Dolby Atmos",
+      "Windows Hello"
+    ],
+    "images": [
+      "https://example.com/images/surface_laptop4.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_005",
+    "name": "Lenovo Yoga 9i",
+    "brand": "Lenovo",
+    "tagline": "Convertible luxury",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "Ultrabooks",
+    "subCategory": "Convertible",
+    "rating": 4.5,
+    "reviewCount": 890,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 4K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Sound",
+        "value": "Rotating soundbar",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Onyx Grey",
+        "hex": "#333333"
+      }
+    ],
+    "stock": 38,
+    "description": "360-degree hinge with Bowers & Wilkins rotating soundbar.",
+    "features": [
+      "Fingerprint reader",
+      "Garaged pen",
+      "TUV certified"
+    ],
+    "images": [
+      "https://example.com/images/yoga_9i.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_006",
+    "name": "HP Spectre x360 13.5",
+    "brand": "HP",
+    "tagline": "Gem-cut design",
+    "price": 1549.99,
+    "originalPrice": 1749.99,
+    "category": "Ultrabooks",
+    "subCategory": "Premium",
+    "rating": 4.7,
+    "reviewCount": 1100,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1355U",
+        "color": "#0071ce",
+        "raw_value": "i7-1355U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" 3:2 OLED",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Security",
+        "value": "Privacy shutter",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1355U",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Nightfall Black",
+        "hex": "#1a1a1a"
+      },
+      {
+        "name": "Nocturne Blue",
+        "hex": "#2c3e50"
+      }
+    ],
+    "stock": 44,
+    "description": "Stunning gem-cut chassis, OLED 3:2 display, and long battery.",
+    "features": [
+      "HP Command Center",
+      "Fingerprint",
+      "IR camera"
+    ],
+    "images": [
+      "https://example.com/images/spectre_x360_13.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_007",
+    "name": "Razer Book 13",
+    "brand": "Razer",
+    "tagline": "Professional minimalism",
+    "price": 1399.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Performance",
+    "rating": 4.3,
+    "reviewCount": 410,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1165G7",
+        "color": "#0071ce",
+        "raw_value": "i7-1165G7"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR4x",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.4\" 4K Touch",
+        "color": "#00aeef",
+        "raw_value": "13.4"
+      },
+      {
+        "label": "GPU",
+        "value": "Iris Xe",
+        "color": "#8bc34a",
+        "raw_value": "irisxe"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1165G7",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.4
+    },
+    "colorVariants": [
+      {
+        "name": "Mercury White",
+        "hex": "#e0e0e0"
+      }
+    ],
+    "stock": 22,
+    "description": "Sleek aluminum chassis, THX Spatial Audio.",
+    "features": [
+      "Vapor chamber",
+      "RGB single-zone",
+      "Wi-Fi 6"
+    ],
+    "images": [
+      "https://example.com/images/razer_book13.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_008",
+    "name": "Samsung Galaxy Book3 Pro",
+    "brand": "Samsung",
+    "tagline": "AMOLED brilliance",
+    "price": 1449.99,
+    "originalPrice": 1599.99,
+    "category": "Ultrabooks",
+    "subCategory": "Display",
+    "rating": 4.6,
+    "reviewCount": 870,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 3K AMOLED",
+        "color": "#00aeef",
+        "raw_value": "16"
+      },
+      {
+        "label": "Weight",
+        "value": "3.3 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.5"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Beige",
+        "hex": "#f5f5dc"
+      },
+      {
+        "name": "Graphite",
+        "hex": "#3a3a3a"
+      }
+    ],
+    "stock": 55,
+    "description": "Super AMOLED display with 120Hz, great for media.",
+    "features": [
+      "Samsung Knox",
+      "Multi control",
+      "AKG speakers"
+    ],
+    "images": [
+      "https://example.com/images/galaxy_book3_pro.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_009",
+    "name": "LG Gram 14",
+    "brand": "LG",
+    "tagline": "Featherlight",
+    "price": 1199.99,
+    "originalPrice": 1349.99,
+    "category": "Ultrabooks",
+    "subCategory": "Lightweight",
+    "rating": 4.5,
+    "reviewCount": 620,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" WUXGA IPS",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Weight",
+        "value": "2.2 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.0"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Charcoal Gray",
+        "hex": "#3e3e3e"
+      }
+    ],
+    "stock": 78,
+    "description": "Incredibly light 14-inch laptop with massive battery.",
+    "features": [
+      "MIL-STD-810G",
+      "DTS:X Ultra",
+      "Full size HDMI"
+    ],
+    "images": [
+      "https://example.com/images/lg_gram_14.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_010",
+    "name": "Acer Swift 5",
+    "brand": "Acer",
+    "tagline": "Light and strong",
+    "price": 1099.99,
+    "originalPrice": 1199.99,
+    "category": "Ultrabooks",
+    "subCategory": "Value",
+    "rating": 4.2,
+    "reviewCount": 1140,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1355U",
+        "color": "#0071ce",
+        "raw_value": "i7-1355U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.2K IPS",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Weight",
+        "value": "2.65 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.2"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1355U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Mist Green",
+        "hex": "#a7c5bd"
+      }
+    ],
+    "stock": 97,
+    "description": "Magnesium-lithium chassis, great value for money.",
+    "features": [
+      "Fingerprint reader",
+      "Wi-Fi 6E",
+      "Thunderbolt 4"
+    ],
+    "images": [
+      "https://example.com/images/swift5.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_011",
+    "name": "ASUS Zenbook 14X OLED",
+    "brand": "ASUS",
+    "tagline": "Brilliant screen",
+    "price": 1299.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Display",
+    "rating": 4.4,
+    "reviewCount": 750,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900H",
+        "color": "#0071ce",
+        "raw_value": "i9-13900H"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14.5\" 2.8K 120Hz",
+        "color": "#00aeef",
+        "raw_value": "14.5"
+      },
+      {
+        "label": "GPU",
+        "value": "Iris Xe",
+        "color": "#8bc34a",
+        "raw_value": "irisxe"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i9-13900H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14.5
+    },
+    "colorVariants": [
+      {
+        "name": "Sandstone",
+        "hex": "#d4c9b8"
+      }
+    ],
+    "stock": 49,
+    "description": "Powerful H-series CPU in a slim chassis with amazing OLED.",
+    "features": [
+      "NumberPad",
+      "Harman Kardon",
+      "FHD IR camera"
+    ],
+    "images": [
+      "https://example.com/images/zenbook_14x_oled.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_012",
+    "name": "Lenovo Slim 7 Pro X",
+    "brand": "Lenovo",
+    "tagline": "Creator ultrabook",
+    "price": 1399.99,
+    "originalPrice": 1599.99,
+    "category": "Ultrabooks",
+    "subCategory": "Performance",
+    "rating": 4.5,
+    "reviewCount": 530,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 9 6900HS",
+        "color": "#ed1c24",
+        "raw_value": "6900HS"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 3050",
+        "color": "#76b900",
+        "raw_value": "3050"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14.5\" 3K 120Hz",
+        "color": "#00aeef",
+        "raw_value": "14.5"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3050",
+      "cpu": "AMD Ryzen 9 6900HS",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14.5
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 27,
+    "description": "Slim laptop with discrete GPU for light creative work.",
+    "features": [
+      "Glass touchpad",
+      "Smart noise canceling",
+      "Rapid Charge"
+    ],
+    "images": [
+      "https://example.com/images/slim7_prox.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_013",
+    "name": "HP Pavilion Aero 13",
+    "brand": "HP",
+    "tagline": "Affordable lightweight",
+    "price": 849.99,
+    "originalPrice": 999.99,
+    "category": "Ultrabooks",
+    "subCategory": "Budget",
+    "rating": 4.3,
+    "reviewCount": 1890,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7735U",
+        "color": "#ed1c24",
+        "raw_value": "7735U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" WQXGA",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Weight",
+        "value": "2.2 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.0"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon 680M",
+      "cpu": "AMD Ryzen 7 7735U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Ceramic White",
+        "hex": "#f8f6f0"
+      }
+    ],
+    "stock": 140,
+    "description": "Lightest laptop in its price range, great for students.",
+    "features": [
+      "TNR camera",
+      "Windows Hello",
+      "Fast Charge"
+    ],
+    "images": [
+      "https://example.com/images/pavilion_aero13.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_014",
+    "name": "MSI Prestige 14",
+    "brand": "MSI",
+    "tagline": "Professional elegance",
+    "price": 1199.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Style",
+    "rating": 4.1,
+    "reviewCount": 305,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1280P",
+        "color": "#0071ce",
+        "raw_value": "i7-1280P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 4K UHD",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "GPU",
+        "value": "Iris Xe",
+        "color": "#8bc34a",
+        "raw_value": "irisxe"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1280P",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Pure White",
+        "hex": "#ffffff"
+      }
+    ],
+    "stock": 31,
+    "description": "Fashion-forward design with good build quality.",
+    "features": [
+      "Fingerprint",
+      "Wi-Fi 6E",
+      "DTS Audio"
+    ],
+    "images": [
+      "https://example.com/images/prestige14.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_015",
+    "name": "Samsung Galaxy Book2 Pro",
+    "brand": "Samsung",
+    "tagline": "Super light and thin",
+    "price": 999.99,
+    "originalPrice": 1199.99,
+    "category": "Ultrabooks",
+    "subCategory": "Lightweight",
+    "rating": 4.4,
+    "reviewCount": 1430,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1260P",
+        "color": "#0071ce",
+        "raw_value": "i7-1260P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" AMOLED",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Weight",
+        "value": "1.92 lbs",
+        "color": "#8bc34a",
+        "raw_value": "0.87"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1260P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Graphite",
+        "hex": "#3a3a3a"
+      }
+    ],
+    "stock": 112,
+    "description": "Extremely light, super AMOLED, long battery life.",
+    "features": [
+      "Fingerprint",
+      "Thunderbolt 4",
+      "AKG speakers"
+    ],
+    "images": [
+      "https://example.com/images/galaxy_book2_pro.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_016",
+    "name": "Microsoft Surface Laptop 5 (15-inch)",
+    "brand": "Microsoft",
+    "tagline": "Big screen ultraportable",
+    "price": 1399.99,
+    "originalPrice": 1599.99,
+    "category": "Ultrabooks",
+    "subCategory": "Large Screen",
+    "rating": 4.5,
+    "reviewCount": 890,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1265U",
+        "color": "#0071ce",
+        "raw_value": "i7-1265U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15\" PixelSense",
+        "color": "#00aeef",
+        "raw_value": "15"
+      },
+      {
+        "label": "Touch",
+        "value": "Yes",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1265U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      }
+    ],
+    "stock": 67,
+    "description": "Larger sibling with same premium build and 3:2 display.",
+    "features": [
+      "Dolby Vision IQ",
+      "Omnisonic speakers",
+      "IR camera"
+    ],
+    "images": [
+      "https://example.com/images/surface_laptop5_15.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_017",
+    "name": "Asus Zenbook 13 OLED",
+    "brand": "ASUS",
+    "tagline": "Ultra portable OLED",
+    "price": 999.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Value",
+    "rating": 4.3,
+    "reviewCount": 2150,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 7530U",
+        "color": "#ed1c24",
+        "raw_value": "7530U"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB LPDDR4x",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13.3\" OLED",
+        "color": "#00aeef",
+        "raw_value": "13.3"
+      },
+      {
+        "label": "Weight",
+        "value": "2.5 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.13"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon Graphics",
+      "cpu": "AMD Ryzen 5 7530U",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 13.3
+    },
+    "colorVariants": [
+      {
+        "name": "Pine Gray",
+        "hex": "#4f5b62"
+      }
+    ],
+    "stock": 158,
+    "description": "Cheapest OLED ultrabook with excellent build.",
+    "features": [
+      "NumberPad",
+      "Wi-Fi 6",
+      "Harman Kardon"
+    ],
+    "images": [
+      "https://example.com/images/zenbook13_oled.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_018",
+    "name": "Huawei MateBook X Pro",
+    "brand": "Huawei",
+    "tagline": "FullView display",
+    "price": 1599.99,
+    "originalPrice": 1799.99,
+    "category": "Ultrabooks",
+    "subCategory": "Premium",
+    "rating": 4.7,
+    "reviewCount": 760,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14.2\" 3.1K Touch",
+        "color": "#00aeef",
+        "raw_value": "14.2"
+      },
+      {
+        "label": "Audio",
+        "value": "Six speakers",
+        "color": "#8bc34a",
+        "raw_value": "6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14.2
+    },
+    "colorVariants": [
+      {
+        "name": "Space Gray",
+        "hex": "#4a4a4a"
+      },
+      {
+        "name": "Frost Silver",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 25,
+    "description": "Invisible webcam, stunning 3:2 touchscreen, and premium finish.",
+    "features": [
+      "Fingerprint power",
+      "Super charger",
+      "Huawei Share"
+    ],
+    "images": [
+      "https://example.com/images/matebook_x_pro.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_019",
+    "name": "LG Gram Style 16",
+    "brand": "LG",
+    "tagline": "Style meets lightness",
+    "price": 1799.99,
+    "originalPrice": null,
+    "category": "Ultrabooks",
+    "subCategory": "Flashy",
+    "rating": 4.2,
+    "reviewCount": 210,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "2TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "2048"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" OLED 120Hz",
+        "color": "#00aeef",
+        "raw_value": "16"
+      },
+      {
+        "label": "Weight",
+        "value": "2.6 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.18"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 32,
+      "storage_gb": 2048,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Charcoal Black",
+        "hex": "#1e1e1e"
+      }
+    ],
+    "stock": 17,
+    "description": "Infinity display, haptic touchpad, and glowing edges.",
+    "features": [
+      "Dolby Atmos",
+      "LG Glance",
+      "MIL-STD-810H"
+    ],
+    "images": [
+      "https://example.com/images/gram_style_16.jpg"
+    ]
+  },
+  {
+    "id": "ultrabook_020",
+    "name": "Acer Swift Go 14",
+    "brand": "Acer",
+    "tagline": "Everyday OLED",
+    "price": 899.99,
+    "originalPrice": 1049.99,
+    "category": "Ultrabooks",
+    "subCategory": "Budget OLED",
+    "rating": 4.4,
+    "reviewCount": 1120,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i5-1335U",
+        "color": "#0071ce",
+        "raw_value": "i5-1335U"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Battery",
+        "value": "65Wh",
+        "color": "#8bc34a",
+        "raw_value": "65"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i5-1335U",
+      "ram_gb": 8,
+      "storage_gb": 512,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Silver",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 189,
+    "description": "Affordable entry to OLED world with decent performance.",
+    "features": [
+      "Fingerprint",
+      "Wi-Fi 6E",
+      "1440p webcam"
+    ],
+    "images": [
+      "https://example.com/images/swift_go_14.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_001",
+    "name": "Lenovo Yoga 7i",
+    "brand": "Lenovo",
+    "tagline": "Versatile 2-in-1",
+    "price": 999.99,
+    "originalPrice": 1199.99,
+    "category": "2-in-1",
+    "subCategory": "Convertible",
+    "rating": 4.5,
+    "reviewCount": 1450,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i5-1335U",
+        "color": "#0071ce",
+        "raw_value": "i5-1335U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.2K Touch",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Pen",
+        "value": "Garaged",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i5-1335U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      },
+      {
+        "name": "Arctic Grey",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 104,
+    "description": "Solid all-rounder with garaged pen and good build quality.",
+    "features": [
+      "Fingerprint",
+      "Dolby Vision",
+      "Smart pen"
+    ],
+    "images": [
+      "https://example.com/images/yoga_7i.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_002",
+    "name": "HP Spectre x360 16",
+    "brand": "HP",
+    "tagline": "Large screen convertible",
+    "price": 1699.99,
+    "originalPrice": 1999.99,
+    "category": "2-in-1",
+    "subCategory": "Premium",
+    "rating": 4.7,
+    "reviewCount": 690,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4050",
+        "color": "#76b900",
+        "raw_value": "4050"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "16\" 3K OLED",
+        "color": "#00aeef",
+        "raw_value": "16"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4050",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 16
+    },
+    "colorVariants": [
+      {
+        "name": "Nightfall Black",
+        "hex": "#1a1a1a"
+      }
+    ],
+    "stock": 33,
+    "description": "Powerful 16-inch convertible with discrete graphics.",
+    "features": [
+      "Privacy shutter",
+      "HP Command Center",
+      "Bang & Olufsen"
+    ],
+    "images": [
+      "https://example.com/images/spectre_x360_16.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_003",
+    "name": "Microsoft Surface Pro 9",
+    "brand": "Microsoft",
+    "tagline": "Detachable powerhouse",
+    "price": 1299.99,
+    "originalPrice": 1499.99,
+    "category": "2-in-1",
+    "subCategory": "Detachable",
+    "rating": 4.6,
+    "reviewCount": 2340,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1255U",
+        "color": "#0071ce",
+        "raw_value": "i7-1255U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13\" PixelSense Flow",
+        "color": "#00aeef",
+        "raw_value": "13"
+      },
+      {
+        "label": "Refresh",
+        "value": "120Hz",
+        "color": "#8bc34a",
+        "raw_value": "120"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1255U",
+      "ram_gb": 16,
+      "storage_gb": 256,
+      "screen_size": 13
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      },
+      {
+        "name": "Forest",
+        "hex": "#2d5a27"
+      }
+    ],
+    "stock": 89,
+    "description": "Ultra-portable tablet with laptop performance, kickstand included.",
+    "features": [
+      "Windows Hello",
+      "Dolby Vision",
+      "Surface Slim Pen 2 slot"
+    ],
+    "images": [
+      "https://example.com/images/surface_pro9.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_004",
+    "name": "Dell XPS 13 2-in-1",
+    "brand": "Dell",
+    "tagline": "Convertible XPS",
+    "price": 1399.99,
+    "originalPrice": 1599.99,
+    "category": "2-in-1",
+    "subCategory": "Premium",
+    "rating": 4.4,
+    "reviewCount": 580,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1250U",
+        "color": "#0071ce",
+        "raw_value": "i7-1250U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13\" 3K OLED",
+        "color": "#00aeef",
+        "raw_value": "13"
+      },
+      {
+        "label": "Weight",
+        "value": "2.8 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.27"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1250U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 41,
+    "description": "InfinityEdge touch display, ultra-thin hinge design.",
+    "features": [
+      "Fingerprint",
+      "Windows Hello",
+      "Dell Active Pen support"
+    ],
+    "images": [
+      "https://example.com/images/xps13_2in1.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_005",
+    "name": "ASUS ROG Flow Z13",
+    "brand": "ASUS",
+    "tagline": "Gaming 2-in-1 tablet",
+    "price": 1899.99,
+    "originalPrice": 2199.99,
+    "category": "2-in-1",
+    "subCategory": "Gaming",
+    "rating": 4.3,
+    "reviewCount": 420,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i9-13900H",
+        "color": "#0071ce",
+        "raw_value": "i9-13900H"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 4070",
+        "color": "#76b900",
+        "raw_value": "4070"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "13.4\" 165Hz",
+        "color": "#00aeef",
+        "raw_value": "13.4"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 4070",
+      "cpu": "Intel i9-13900H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 13.4
+    },
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      }
+    ],
+    "stock": 15,
+    "description": "Detachable gaming tablet with XG Mobile interface.",
+    "features": [
+      "RGB keyboard",
+      "ROG Intelligent Cooling",
+      "Dolby Atmos"
+    ],
+    "images": [
+      "https://example.com/images/flow_z13.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_006",
+    "name": "Lenovo ThinkPad X1 Yoga Gen 8",
+    "brand": "Lenovo",
+    "tagline": "Business convertible",
+    "price": 2099.99,
+    "originalPrice": 2399.99,
+    "category": "2-in-1",
+    "subCategory": "Business",
+    "rating": 4.8,
+    "reviewCount": 530,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1365U",
+        "color": "#0071ce",
+        "raw_value": "i7-1365U"
+      },
+      {
+        "label": "RAM",
+        "value": "32GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "32"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Pen",
+        "value": "Garaged",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1365U",
+      "ram_gb": 32,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Storm Grey",
+        "hex": "#4a4a4a"
+      }
+    ],
+    "stock": 14,
+    "description": "Business-grade convertible with ThinkPad keyboard and durability.",
+    "features": [
+      "Fingerprint",
+      "Dolby Atmos",
+      "PrivacyGuard"
+    ],
+    "images": [
+      "https://example.com/images/x1_yoga_gen8.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_007",
+    "name": "Acer Spin 5",
+    "brand": "Acer",
+    "tagline": "Affordable convertible",
+    "price": 1099.99,
+    "originalPrice": 1299.99,
+    "category": "2-in-1",
+    "subCategory": "Value",
+    "rating": 4.2,
+    "reviewCount": 980,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1255U",
+        "color": "#0071ce",
+        "raw_value": "i7-1255U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR4x",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" 2K",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Pen",
+        "value": "Garaged",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1255U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Mist Green",
+        "hex": "#a7c5bd"
+      }
+    ],
+    "stock": 73,
+    "description": "Great value convertible with a stylus included.",
+    "features": [
+      "Fingerprint",
+      "Thunderbolt 4",
+      "Corning Gorilla Glass"
+    ],
+    "images": [
+      "https://example.com/images/spin5.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_008",
+    "name": "Samsung Galaxy Book3 360",
+    "brand": "Samsung",
+    "tagline": "AMOLED convertible",
+    "price": 1249.99,
+    "originalPrice": 1449.99,
+    "category": "2-in-1",
+    "subCategory": "Display",
+    "rating": 4.5,
+    "reviewCount": 760,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" AMOLED",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      },
+      {
+        "label": "S Pen",
+        "value": "Included",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Graphite",
+        "hex": "#3a3a3a"
+      },
+      {
+        "name": "Beige",
+        "hex": "#f5f5dc"
+      }
+    ],
+    "stock": 48,
+    "description": "Big AMOLED screen with S Pen, great for note-taking.",
+    "features": [
+      "Samsung Knox",
+      "Multi control",
+      "AKG speakers"
+    ],
+    "images": [
+      "https://example.com/images/galaxy_book3_360.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_009",
+    "name": "HP Envy x360 15",
+    "brand": "HP",
+    "tagline": "Convertible all-rounder",
+    "price": 899.99,
+    "originalPrice": 1099.99,
+    "category": "2-in-1",
+    "subCategory": "Budget",
+    "rating": 4.3,
+    "reviewCount": 2110,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 7 7730U",
+        "color": "#ed1c24",
+        "raw_value": "7730U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR4",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "512GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "512"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" FHD Touch",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      },
+      {
+        "label": "Pen",
+        "value": "Optional",
+        "color": "#8bc34a",
+        "raw_value": "no"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon Graphics",
+      "cpu": "AMD Ryzen 7 7730U",
+      "ram_gb": 16,
+      "storage_gb": 512,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Natural Silver",
+        "hex": "#b0b0b0"
+      }
+    ],
+    "stock": 174,
+    "description": "Popular budget convertible with good performance.",
+    "features": [
+      "Fingerprint",
+      "Privacy shutter",
+      "B&O audio"
+    ],
+    "images": [
+      "https://example.com/images/envy_x360_15.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_010",
+    "name": "Microsoft Surface Pro 10 (ARM)",
+    "brand": "Microsoft",
+    "tagline": "5G SQ3 edition",
+    "price": 1499.99,
+    "originalPrice": 1699.99,
+    "category": "2-in-1",
+    "subCategory": "ARM",
+    "rating": 4,
+    "reviewCount": 210,
+    "badge": "NEW",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "SQ3 (Snapdragon)",
+        "color": "#626262",
+        "raw_value": "SQ3"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13\" 120Hz",
+        "color": "#00aeef",
+        "raw_value": "13"
+      },
+      {
+        "label": "5G",
+        "value": "Integrated",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Adreno",
+      "cpu": "SQ3",
+      "ram_gb": 16,
+      "storage_gb": 256,
+      "screen_size": 13
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum",
+        "hex": "#d9d9d9"
+      }
+    ],
+    "stock": 28,
+    "description": "Always-connected ARM-based Surface with 5G.",
+    "features": [
+      "Windows Hello",
+      "NPU for AI",
+      "Long battery life"
+    ],
+    "images": [
+      "https://example.com/images/surface_pro10_arm.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_011",
+    "name": "Lenovo Yoga 9i 14",
+    "brand": "Lenovo",
+    "tagline": "Leather lid",
+    "price": 1699.99,
+    "originalPrice": 1899.99,
+    "category": "2-in-1",
+    "subCategory": "Premium Design",
+    "rating": 4.7,
+    "reviewCount": 420,
+    "badge": "HOT",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1360P",
+        "color": "#0071ce",
+        "raw_value": "i7-1360P"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" 4K OLED",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Sound",
+        "value": "Rotating soundbar",
+        "color": "#8bc34a",
+        "raw_value": "yes"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1360P",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Onyx Grey",
+        "hex": "#333333"
+      }
+    ],
+    "stock": 22,
+    "description": "Premium leather lid, rotating B&W soundbar, gorgeous OLED.",
+    "features": [
+      "Fingerprint",
+      "Garaged pen",
+      "Dolby Vision"
+    ],
+    "images": [
+      "https://example.com/images/yoga_9i_14.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_012",
+    "name": "ASUS Zenbook 17 Fold OLED",
+    "brand": "ASUS",
+    "tagline": "Folding PC",
+    "price": 3499.99,
+    "originalPrice": 3999.99,
+    "category": "2-in-1",
+    "subCategory": "Folding",
+    "rating": 4.2,
+    "reviewCount": 95,
+    "badge": "LIMITED",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1250U",
+        "color": "#0071ce",
+        "raw_value": "i7-1250U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "17.3\" Foldable OLED",
+        "color": "#00aeef",
+        "raw_value": "17.3"
+      },
+      {
+        "label": "Form",
+        "value": "Foldable",
+        "color": "#8bc34a",
+        "raw_value": "fold"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1250U",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 17.3
+    },
+    "colorVariants": [
+      {
+        "name": "Tech Black",
+        "hex": "#111111"
+      }
+    ],
+    "stock": 4,
+    "description": "World's first 17.3-inch folding OLED laptop.",
+    "features": [
+      "Bluetooth keyboard",
+      "ErgoSense",
+      "Harman Kardon"
+    ],
+    "images": [
+      "https://example.com/images/zenbook_17_fold.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_013",
+    "name": "Dell Inspiron 14 2-in-1",
+    "brand": "Dell",
+    "tagline": "Family convertible",
+    "price": 799.99,
+    "originalPrice": 999.99,
+    "category": "2-in-1",
+    "subCategory": "Budget",
+    "rating": 4.1,
+    "reviewCount": 2150,
+    "badge": "SALE",
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "AMD Ryzen 5 7530U",
+        "color": "#ed1c24",
+        "raw_value": "7530U"
+      },
+      {
+        "label": "RAM",
+        "value": "8GB DDR4",
+        "color": "#f5a623",
+        "raw_value": "8"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "14\" FHD Touch",
+        "color": "#00aeef",
+        "raw_value": "14"
+      },
+      {
+        "label": "Weight",
+        "value": "3.5 lbs",
+        "color": "#8bc34a",
+        "raw_value": "1.59"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Radeon Graphics",
+      "cpu": "AMD Ryzen 5 7530U",
+      "ram_gb": 8,
+      "storage_gb": 256,
+      "screen_size": 14
+    },
+    "colorVariants": [
+      {
+        "name": "Platinum Silver",
+        "hex": "#c0c0c0"
+      }
+    ],
+    "stock": 201,
+    "description": "Budget-friendly 2-in-1 for everyday tasks and media.",
+    "features": [
+      "Fingerprint",
+      "ExpressCharge",
+      "Lid-open sensor"
+    ],
+    "images": [
+      "https://example.com/images/inspiron_14_2in1.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_014",
+    "name": "HP Elite Dragonfly Chromebook",
+    "brand": "HP",
+    "tagline": "ChromeOS convertible",
+    "price": 1399.99,
+    "originalPrice": null,
+    "category": "2-in-1",
+    "subCategory": "ChromeOS",
+    "rating": 4.4,
+    "reviewCount": 180,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-1260U",
+        "color": "#0071ce",
+        "raw_value": "i7-1260U"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB LPDDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "256GB NVMe",
+        "color": "#e6007e",
+        "raw_value": "256"
+      },
+      {
+        "label": "Screen",
+        "value": "13.5\" 3:2",
+        "color": "#00aeef",
+        "raw_value": "13.5"
+      },
+      {
+        "label": "Battery",
+        "value": "12hrs",
+        "color": "#8bc34a",
+        "raw_value": "12"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "Iris Xe",
+      "cpu": "Intel i7-1260U",
+      "ram_gb": 16,
+      "storage_gb": 256,
+      "screen_size": 13.5
+    },
+    "colorVariants": [
+      {
+        "name": "Blue",
+        "hex": "#4a5d70"
+      }
+    ],
+    "stock": 17,
+    "description": "Premium Chromebook with great build and 3:2 screen.",
+    "features": [
+      "HP Sure View",
+      "Garaged stylus",
+      "Wi-Fi 6E"
+    ],
+    "images": [
+      "https://example.com/images/elite_dragonfly_chromebook.jpg"
+    ]
+  },
+  {
+    "id": "twoninone_015",
+    "name": "ASUS Zenbook Flip 15",
+    "brand": "ASUS",
+    "tagline": "Creator convertible",
+    "price": 1299.99,
+    "originalPrice": 1499.99,
+    "category": "2-in-1",
+    "subCategory": "Creator",
+    "rating": 4.5,
+    "reviewCount": 315,
+    "badge": null,
+    "specs": [
+      {
+        "label": "CPU",
+        "value": "Intel i7-13700H",
+        "color": "#0071ce",
+        "raw_value": "i7-13700H"
+      },
+      {
+        "label": "GPU",
+        "value": "RTX 3050",
+        "color": "#76b900",
+        "raw_value": "3050"
+      },
+      {
+        "label": "RAM",
+        "value": "16GB DDR5",
+        "color": "#f5a623",
+        "raw_value": "16"
+      },
+      {
+        "label": "Storage",
+        "value": "1TB NVMe",
+        "color": "#e6007e",
+        "raw_value": "1024"
+      },
+      {
+        "label": "Screen",
+        "value": "15.6\" 2.8K OLED",
+        "color": "#00aeef",
+        "raw_value": "15.6"
+      }
+    ],
+    "technical_metadata": {
+      "gpu": "RTX 3050",
+      "cpu": "Intel i7-13700H",
+      "ram_gb": 16,
+      "storage_gb": 1024,
+      "screen_size": 15.6
+    },
+    "colorVariants": [
+      {
+        "name": "Jade Black",
+        "hex": "#2b3b2c"
+      }
+    ],
+    "stock": 26,
+    "description": "Convertible with powerful CPU and GPU for creators on the go.",
+    "features": [
+      "NumberPad",
+      "Harman Kardon",
+      "Garaged stylus"
+    ],
+    "images": [
+      "https://example.com/images/zenbook_flip_15.jpg"
+    ]
+  }
+]
