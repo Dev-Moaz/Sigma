@@ -28,7 +28,7 @@ export function Logo({ variant = "responsive" }: LogoProps) {
       whileHover={{ scale: 1.02 }}
     >
       <div className={`relative flex items-center justify-center ${iconBox}`}>
-        <Image
+        <img
           src="/sigma-logo.png" 
           alt="Sigma Computer" 
           className="h-full w-auto object-contain transition-all duration-300"

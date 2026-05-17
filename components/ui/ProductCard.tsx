@@ -2,8 +2,7 @@
 // Laptop Product Card - MAX PERFORMANCE EDITION (Clean Sharp UI, Zero Scroll Lag, Z-Index Fixed, Buy Now + Cart, Scaled Image)
 "use client";
 
-import React, { useRef, useState, useCallback, useEffect, useMemo } from "react";
-import Image from "next/image";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import {
   motion,
   useMotionValue,
@@ -134,7 +133,6 @@ function SpecRing({
               viewBox="0 0 52 52"
               className="absolute inset-0 gpu-accel"
               style={{ transform: "rotate(-90deg)" }}
-              aria-hidden="true"
             >
               <circle cx="26" cy="26" r={R} fill="none" stroke={orb.bg} strokeWidth="2.5" />
               <circle
@@ -232,7 +230,7 @@ function HudBadge({
           >
             {/* Subtle tinted fill */}
             <div
-              aria-hidden="true"
+              aria-hidden
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: `linear-gradient(135deg, ${spec.color}10, transparent 65%)`,
@@ -318,16 +316,12 @@ const ProductCard = React.memo(
 
     const { wishIds, toggleWish } = useWishlist();
     const { addToCart } = useCart();
-    
-    // Memoized Derivations
-    const isWished = useMemo(() => isWishedProp !== undefined ? isWishedProp : wishIds.includes(product.id), [isWishedProp, wishIds, product.id]);
-    
+    const isWished = isWishedProp !== undefined ? isWishedProp : wishIds.includes(product.id);
+
     const [isHovered,     setIsHovered]     = useState(false);
     const [isCartAdded,   setIsCartAdded]   = useState(false);
-    const [imgError,      setImgError]      = useState(false);
-    
     const { compareIds, toggleCompare: storeToggleCompare } = useCompare();
-    const isCompared = useMemo(() => compareIds.includes(product.id), [compareIds, product.id]);
+    const isCompared = compareIds.includes(product.id);
     const [selectedColor, setSelectedColor] = useState<ColorVariant | undefined>(
       product.colorVariants?.[0]
     );
@@ -368,42 +362,39 @@ const ProductCard = React.memo(
       return () => clearTimeout(timer);
     }, [isCartAdded]);
 
-    // Optimized Performance: Memoizing derived calculations
-    const discount = useMemo(() => product.originalPrice
+    const discount = product.originalPrice
       ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-      : 0, [product.originalPrice, product.price]);
-      
-    const formattedPrice = useMemo(() => product.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }), [product.price]);
-    const formattedOriginal = useMemo(() => product.originalPrice?.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 }), [product.originalPrice]);
+      : 0;
+    const formattedPrice    = product.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
+    const formattedOriginal = product.originalPrice?.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
 
-    // HUD badges logic optimized
-    const leftSpecs  = useMemo(() => product.specs.filter((_, i) => i % 2 === 0).slice(0, 2), [product.specs]);
-    const rightSpecs = useMemo(() => product.specs.filter((_, i) => i % 2 !== 0).slice(0, 2), [product.specs]);
-    const ringSpecs = useMemo(() => product.specs.slice(0, 3), [product.specs]);
+    // HUD badges logic
+    const leftSpecs  = product.specs.filter((_, i) => i % 2 === 0).slice(0, 2);
+    const rightSpecs = product.specs.filter((_, i) => i % 2 !== 0).slice(0, 2);
+    const ringSpecs = product.specs.slice(0, 3);
     const RING_PCTS = [84, 92, 76, 68, 88];
 
-    // Actions - useCallback to prevent unneeded rerenders
-    const handleCartClick = useCallback((e: React.MouseEvent) => {
+    // Actions
+    const handleCartClick = (e: React.MouseEvent) => {
       e.stopPropagation();
       setIsCartAdded(true);
       if (onAddToCart) onAddToCart(product, selectedColor);
       else addToCart({ id: product.id, name: product.name, price: product.price, image: product.images[0] }, 1);
-    }, [onAddToCart, product, selectedColor, addToCart]);
+    };
 
-    const handleBuyNowClick = useCallback((e: React.MouseEvent) => {
+    const handleBuyNowClick = (e: React.MouseEvent) => {
       e.stopPropagation();
       if (onBuyNow) onBuyNow(product, selectedColor);
       else {
         addToCart({ id: product.id, name: product.name, price: product.price, image: product.images[0] }, 1);
         router.push('/checkout');
       }
-    }, [onBuyNow, product, selectedColor, addToCart, router]);
+    };
 
     // ─── إعدادات شريط المخزون المدمج (Built-in Stock Bar) ───
     const stockCount = product.stock ?? 15;
     const stockMax = 30; 
-    const stockPct = useMemo(() => Math.min(100, Math.max(0, (stockCount / stockMax) * 100)), [stockCount, stockMax]);
-    
+    const stockPct = Math.min(100, Math.max(0, (stockCount / stockMax) * 100));
     let stockColor = "#10b981"; 
     let stockLabel = "In Stock";
     if (stockCount === 0) {
@@ -418,6 +409,7 @@ const ProductCard = React.memo(
     }
 
     return (
+      // تم نقل أحداث الماوس والـ z-index إلى العنصر الخارجي بالكامل لمنع أي تداخل مع البطاقات الأخرى في الـ Grid
       <div 
         className="relative h-full flex flex-col"
         style={{ zIndex: isHovered ? 50 : 1 }}
@@ -428,13 +420,12 @@ const ProductCard = React.memo(
         {index === 0 && <CardKeyframes />}
 
         <CinematicScrollReveal delay={0.05 * (index % 4)} className="h-full">
-          <motion.article
+          <motion.div
             ref={cardRef}
             onClick={handleCardClick}
             whileHover={{ y: -8 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="relative h-full cursor-pointer gpu-accel flex flex-col"
-            aria-label={`Product card for ${product.name}`}
           >
             {/* ── Card shell ── */}
             <motion.div
@@ -449,7 +440,7 @@ const ProductCard = React.memo(
             >
               {/* Animated prismatic top accent */}
               <motion.div
-                aria-hidden="true"
+                aria-hidden
                 className="absolute top-0 left-0 right-0 h-px z-20 gpu-accel"
                 animate={{ opacity: isHovered ? 1 : 0.38 }}
                 transition={{ duration: 0.35 }}
@@ -462,9 +453,10 @@ const ProductCard = React.memo(
 
               {/* ══════════════ IMAGE SECTION ══════════════ */}
               <div className="relative overflow-hidden shrink-0" style={{ height: 264 }}>
+
                 {/* SVG dot grid (Sharp and Clean) */}
                 <svg
-                  aria-hidden="true"
+                  aria-hidden
                   className="absolute inset-0 w-[110%] h-[110%] left-[-5%] top-[-5%] opacity-[0.055] pointer-events-none z-0"
                 >
                   <defs>
@@ -485,52 +477,60 @@ const ProductCard = React.memo(
                   <rect width="100%" height="100%" fill={`url(#grid-card-${product.id})`} />
                 </svg>
 
+                {/* 🌟 🌟 الحيلة هنا: استخدام inset بالسالب والScale لتكبير الصورة بدون تمدد البطاقة */}
                 <motion.div 
                   className="absolute inset-[-30px] flex items-center justify-center z-10 gpu-accel pointer-events-none" 
                   style={{ x: imgSX, y: imgSY }}
                 >
-                  <motion.div
-                    className="relative pointer-events-auto select-none gpu-accel w-full h-full max-w-[270px] max-h-[270px] min-w-[270px] min-h-[270px]"
+                  <motion.img
+                    src={product.images[0]}
+                    alt={product.name}
+                    className="object-contain pointer-events-auto select-none gpu-accel"
+                    style={{ 
+                      width: "100%", 
+                      height: "100%", 
+                      maxWidth: "270px", 
+                      maxHeight: "270px", 
+                      minWidth: "270px",
+                      minHeight: "270px",
+                    }}
                     animate={isHovered ? { scale: 1.025, y: -5 } : { scale: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    draggable={false}
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const fallback = e.currentTarget
+                        .nextElementSibling as HTMLElement | null;
+                      if (fallback) fallback.style.display = "flex";
+                    }}
+                  />
+                  {/* Fallback placeholder */}
+                  <div
+                    className="absolute inset-0 items-center justify-center flex-col gap-2 p-6"
+                    style={{ display: "none" }}
                   >
-                    {!imgError ? (
-                      <Image
-                        src={product.images[0]}
-                        alt={`Image of ${product.name}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 270px"
-                        className="object-contain drop-shadow-xl"
-                        draggable={false}
-                        priority={index < 4}
-                        onError={() => setImgError(true)}
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center flex-col gap-2 p-6">
-                        <div
-                          className="w-16 h-16 rounded-2xl flex items-center justify-center opacity-30"
-                          style={{ background: t.borderLight }}
-                        >
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            className="w-8 h-8"
-                            style={{ color: t.textSecondary }}
-                          >
-                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                            <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-                            <path d="M3 15l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </div>
-                        <span
-                          className="text-[10px] font-medium text-center opacity-40"
-                          style={{ color: t.textSecondary }}
-                        >
-                          {product.name}
-                        </span>
-                      </div>
-                    )}
-                  </motion.div>
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center opacity-30"
+                      style={{ background: t.borderLight }}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="w-8 h-8"
+                        style={{ color: t.textSecondary }}
+                      >
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                        <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                        <path d="M3 15l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span
+                      className="text-[10px] font-medium text-center opacity-40"
+                      style={{ color: t.textSecondary }}
+                    >
+                      {product.name}
+                    </span>
+                  </div>
                 </motion.div>
 
                 {/* Badges */}
@@ -570,14 +570,15 @@ const ProductCard = React.memo(
                 >
                   {/* Wishlist */}
                   <motion.button
-                    type="button"
-                    aria-label={isWished ? "Remove from wishlist" : "Add to wishlist"}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.85 }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (onWishlist) onWishlist(product);
-                      else toggleWish(product.id);
+                      if (onWishlist) {
+                        onWishlist(product);
+                      } else {
+                        toggleWish(product.id);
+                      }
                     }}
                     className="w-9 h-9 rounded-xl flex items-center justify-center border transition-colors duration-300 gpu-accel"
                     style={{
@@ -599,8 +600,6 @@ const ProductCard = React.memo(
 
                   {/* Quick view */}
                   <motion.button
-                    type="button"
-                    aria-label="Quick View"
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.85 }}
                     onClick={(e) => {
@@ -619,14 +618,15 @@ const ProductCard = React.memo(
 
                   {/* Compare */}
                   <motion.button
-                    type="button"
-                    aria-label={isCompared ? "Remove from compare" : "Add to compare"}
                     whileHover={{ scale: 1.15 }}
                     whileTap={{ scale: 0.85 }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (onCompare) onCompare(product);
-                      else storeToggleCompare(product.id);
+                      if (onCompare) {
+                        onCompare(product);
+                      } else {
+                        storeToggleCompare(product.id);
+                      }
                     }}
                     className="w-9 h-9 rounded-xl flex items-center justify-center border transition-all duration-300 gpu-accel"
                     style={{
@@ -673,6 +673,7 @@ const ProductCard = React.memo(
 
               {/* ══════════════ INFO SECTION ══════════════ */}
               <div className="flex flex-col flex-1 gap-3 p-4 pt-3.5 relative z-30">
+
                 {/* Brand + Category */}
                 <div className="flex items-center justify-between">
                   <motion.div
@@ -734,7 +735,6 @@ const ProductCard = React.memo(
                       icon={faChartBar}
                       className="text-[9px]"
                       style={{ color: t.accentText }}
-                      aria-hidden="true"
                     />
                     <span
                       className="pc-space text-[9px] font-bold uppercase tracking-wide"
@@ -760,20 +760,17 @@ const ProductCard = React.memo(
                     >
                       {selectedColor?.name}
                     </span>
-                    <div className="flex items-center gap-1.5 ml-1" role="group" aria-label="Product colors">
+                    <div className="flex items-center gap-1.5 ml-1">
                       {product.colorVariants.map((cv) => (
                         <motion.button
                           key={cv.name}
-                          type="button"
-                          aria-label={`Select color ${cv.name}`}
-                          aria-pressed={selectedColor?.name === cv.name}
                           onClick={(e) => {
                             e.stopPropagation();
                             setSelectedColor(cv);
                           }}
                           whileHover={{ scale: 1.28 }}
                           whileTap={{ scale: 0.88 }}
-                          className="relative w-4 h-4 rounded-full border-2 transition-all duration-200 gpu-accel focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-blue-500"
+                          className="relative w-4 h-4 rounded-full border-2 transition-all duration-200 gpu-accel"
                           style={{
                             background:  cv.hex,
                             borderColor:
@@ -807,7 +804,7 @@ const ProductCard = React.memo(
                     <span style={{ color: t.textSecondary }}>Availability</span>
                     <span style={{ color: stockColor }}>{stockLabel}</span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: t.borderLight }} role="progressbar" aria-valuenow={stockPct} aria-valuemin={0} aria-valuemax={100}>
+                  <div className="w-full h-1.5 rounded-full overflow-hidden" style={{ background: t.borderLight }}>
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: `${stockPct}%` }}
@@ -842,8 +839,6 @@ const ProductCard = React.memo(
                   {/* ══════════════ ACTIONS (BUY NOW + CART ICON) ══════════════ */}
                   <div className="flex items-center gap-2 w-full">
                     <motion.button
-                      type="button"
-                      aria-label="Buy Now"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.96 }}
                       onClick={handleBuyNowClick}
@@ -853,14 +848,12 @@ const ProductCard = React.memo(
                         color: "#fff"
                       }}
                     >
-                      <div aria-hidden="true" className="absolute inset-0 opacity-20 pointer-events-none gpu-accel" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)", transform: "skewX(-20deg) translateX(-150%)", animation: isHovered ? "pc-shimmer-sweep 3s infinite" : "none" }} />
-                      <FontAwesomeIcon icon={faBolt} className="text-[13px]" aria-hidden="true" />
+                      <div aria-hidden className="absolute inset-0 opacity-20 pointer-events-none gpu-accel" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)", transform: "skewX(-20deg) translateX(-150%)", animation: isHovered ? "pc-shimmer-sweep 3s infinite" : "none" }} />
+                      <FontAwesomeIcon icon={faBolt} className="text-[13px]" />
                       <span className="pc-space font-bold text-[14px] uppercase tracking-wider mt-0.5">Buy Now</span>
                     </motion.button>
 
                     <motion.button
-                      type="button"
-                      aria-label={isCartAdded ? "Added to Cart" : "Add to Cart"}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={handleCartClick}
@@ -876,11 +869,11 @@ const ProductCard = React.memo(
                       <AnimatePresence mode="wait">
                         {isCartAdded ? (
                           <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={{ duration: 0.2 }}>
-                            <FontAwesomeIcon icon={faCheck} className="text-[15px]" aria-hidden="true" />
+                            <FontAwesomeIcon icon={faCheck} className="text-[15px]" />
                           </motion.div>
                         ) : (
                           <motion.div key="cart" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} transition={{ duration: 0.2 }}>
-                            <FontAwesomeIcon icon={faCartShopping} className="text-[15px]" aria-hidden="true" />
+                            <FontAwesomeIcon icon={faCartShopping} className="text-[15px]" />
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -890,8 +883,6 @@ const ProductCard = React.memo(
 
                 {/* View details */}
                 <motion.button
-                  type="button"
-                  aria-label={`View full details for ${product.name}`}
                   className="group relative inline-flex items-center gap-2 py-1 text-[11px] font-bold self-start transition-colors duration-300 pc-space gpu-accel mt-1"
                   style={{ color: t.textSubtle }}
                   whileHover={{ x: 6 }}
@@ -911,7 +902,6 @@ const ProductCard = React.memo(
                   <FontAwesomeIcon
                     icon={faArrowRight}
                     className="text-[9px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
-                    aria-hidden="true"
                   />
                   View Full Details
                 </motion.button>
@@ -939,7 +929,7 @@ const ProductCard = React.memo(
                 delay={0.1 + i * 0.07}
               />
             ))}
-          </motion.article>
+          </motion.div>
         </CinematicScrollReveal>
       </div>
     );
