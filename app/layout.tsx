@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: "Authorized reseller of 20+ leading brands. Gaming laptops, ultrabooks, CPUs, GPUs and more.",
 };
 
+import AuthSync from "@/components/AuthSync";
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -51,6 +53,7 @@ export default function RootLayout({
         الـ body الآن يعرض الـ children مباشرة.
       */}
       <body className="min-h-full">
+        <AuthSync />
         {children}
       </body>
     </html>

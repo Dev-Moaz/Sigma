@@ -12,8 +12,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getCurrentUserAction, getUserProfileAction } from "@/app/actions/auth";
+import { supabase } from "@/lib/supabase";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -73,9 +74,20 @@ function GridBg() {
 export default function ProfileLayout({ children }: { children: React.ReactNode }) {
   const { theme, t } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
 
   const [profile, setProfile] = React.useState<any>(null);
   const [isAdmin, setIsAdmin] = React.useState(false);
+
+  const handleSignOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      router.push("/login");
+    } catch (err) {
+      console.error("Failed to sign out:", err);
+      router.push("/login");
+    }
+  };
 
   React.useEffect(() => {
     async function loadProfile() {
@@ -222,14 +234,13 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
               </div>
 
               <div className="mt-4 pt-4 border-t" style={{ borderColor: t.borderLight }}>
-                <Link href="/login">
-                  <div 
-                    className="flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 font-medium text-sm text-red-500 hover:bg-red-500/10 cursor-pointer"
-                  >
-                    <FontAwesomeIcon icon={faSignOutAlt} className="opacity-70" />
-                    Sign Out
-                  </div>
-                </Link>
+                <button 
+                  onClick={handleSignOut}
+                  className="w-full flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 font-medium text-sm text-red-500 hover:bg-red-500/10 cursor-pointer bg-transparent border-none text-left"
+                >
+                  <FontAwesomeIcon icon={faSignOutAlt} className="opacity-70" />
+                  Sign Out
+                </button>
               </div>
             </motion.div>
 

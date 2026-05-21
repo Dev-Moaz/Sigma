@@ -9,16 +9,27 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOi
 
 async function getServerSupabase() {
   const cookieStore = await cookies();
-  return createClient(supabaseUrl, supabaseAnonKey, {
+  const accessToken = cookieStore.get("sb-access-token")?.value;
+  const refreshToken = cookieStore.get("sb-refresh-token")?.value;
+
+  const client = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
-      persistSession: true,
-    },
-    global: {
-      headers: {
-        Cookie: cookieStore.toString(),
-      },
+      persistSession: false,
     },
   });
+
+  if (accessToken && refreshToken) {
+    try {
+      await client.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+    } catch (e) {
+      console.error("Failed to set server auth session from cookies in admin:", e);
+    }
+  }
+
+  return client;
 }
 
 // 1. التحقق من صلاحية المدير (Check Admin Role)

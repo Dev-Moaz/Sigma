@@ -16,7 +16,7 @@ import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signInAction } from "@/app/actions/auth";
+import { supabase } from "@/lib/supabase";
 
 type LoginStep = "idle" | "loading" | "success";
 
@@ -242,10 +242,13 @@ export default function LoginPage() {
 
     setLoginStep("loading");
     
-    // تسجيل الدخول حياً من الـ Server Action
-    const result = await signInAction(emailValue, passwordValue);
+    // تسجيل الدخول حياً من الـ Client Side
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: emailValue,
+      password: passwordValue,
+    });
     
-    if (result.success) {
+    if (!error && data.user) {
       setLoginStep("success");
       // توجيه للملف الشخصي بعد نجاح تسجيل الدخول
       setTimeout(() => {
@@ -253,7 +256,7 @@ export default function LoginPage() {
       }, 1000);
     } else {
       setLoginStep("idle");
-      setErrorMessage(result.error || "Invalid login credentials.");
+      setErrorMessage(error?.message || "Invalid login credentials.");
     }
   };
 

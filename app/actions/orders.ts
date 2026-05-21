@@ -10,17 +10,27 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholde
 // دالة مساعدة لإنشاء Supabase client مخصص للـ Server Actions يدعم الـ Cookies لحفظ الجلسة
 async function getServerSupabase() {
   const cookieStore = await cookies();
-  
-  return createClient(supabaseUrl, supabaseAnonKey, {
+  const accessToken = cookieStore.get("sb-access-token")?.value;
+  const refreshToken = cookieStore.get("sb-refresh-token")?.value;
+
+  const client = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
-      persistSession: true,
-    },
-    global: {
-      headers: {
-        Cookie: cookieStore.toString(),
-      },
+      persistSession: false,
     },
   });
+
+  if (accessToken && refreshToken) {
+    try {
+      await client.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+    } catch (e) {
+      console.error("Failed to set server auth session from cookies in orders:", e);
+    }
+  }
+
+  return client;
 }
 
 // دالة توليد رقم تتبع عشوائي فريد للطلب (مثال: SG-123456-XY)
