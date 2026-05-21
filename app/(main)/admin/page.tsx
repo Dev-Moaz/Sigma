@@ -410,7 +410,7 @@ export default function AdminDashboard() {
                         <th className="py-4 px-6 text-right">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y text-xs font-medium" style={{ divideColor: t.borderLight }}>
+                    <tbody className="divide-y text-xs font-medium" style={{ borderColor: t.borderLight }}>
                       {orders
                         .filter(o => 
                           o.customer_name.toLowerCase().includes(orderSearchQuery.toLowerCase()) ||
@@ -546,7 +546,7 @@ export default function AdminDashboard() {
                         <th className="py-4 px-6 text-right">Fulfillment Stock</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y text-xs font-medium" style={{ divideColor: t.borderLight }}>
+                    <tbody className="divide-y text-xs font-medium" style={{ borderColor: t.borderLight }}>
                       {(inventoryType === "laptop" ? laptops : hardware)
                         .filter(item => 
                           item.name.toLowerCase().includes(inventorySearchQuery.toLowerCase()) ||

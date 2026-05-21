@@ -130,7 +130,7 @@ export default function OrdersPage() {
 
               {/* Order Items */}
               <div className="flex flex-col gap-4">
-                {order.items.map((item, i) => (
+                {order.items.map((item: any, i: number) => (
                   <div key={i} className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-lg overflow-hidden border bg-white/5 flex shrink-0" style={{ borderColor: t.borderLight }}>
                       <img src={item.image} alt={item.name} className="w-full h-full object-contain p-2" />
