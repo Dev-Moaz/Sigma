@@ -16,6 +16,8 @@ import {
 import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signUpAction } from "@/app/actions/auth";
 
 type RegisterStep = "idle" | "loading" | "success";
 
@@ -219,6 +221,7 @@ function SubmitButton({ className = "", step, onClick }: { className?: string, s
 // ==========================================
 export default function RegisterPage() {
   const { theme, t } = useTheme();
+  const router = useRouter();
 
   // Form state
   const [showPassword, setShowPassword] = useState(false);
@@ -227,17 +230,36 @@ export default function RegisterPage() {
   const [passFocused, setPassFocused] = useState(false);
   
   const [nameValue, setNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   
   const [registerStep, setRegisterStep] = useState<RegisterStep>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleRegister = async () => {
     if (registerStep !== "idle") return;
+    setErrorMessage("");
+
+    if (!nameValue || !emailValue || !passwordValue) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
     setRegisterStep("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1800));
-    setRegisterStep("success");
-    // Redirect logic would go here
+    
+    // تسجيل الحساب حياً عبر السيرفر أكشن
+    const result = await signUpAction(emailValue, passwordValue, nameValue);
+    
+    if (result.success) {
+      setRegisterStep("success");
+      // التوجيه لصفحة الدخول بعد التسجيل بنجاح
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
+    } else {
+      setRegisterStep("idle");
+      setErrorMessage(result.error || "Failed to create account.");
+    }
   };
 
   const gradientTextClass = `bg-clip-text text-transparent bg-linear-to-r ${
@@ -299,8 +321,19 @@ export default function RegisterPage() {
           </div>
 
           {/* Form */}
-          <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
             
+            {/* Error Message */}
+            {errorMessage && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 text-xs font-bold rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center"
+              >
+                {errorMessage}
+              </motion.div>
+            )}
+
             {/* Full Name Input */}
             <div className="flex flex-col gap-1.5">
               <label
@@ -350,6 +383,8 @@ export default function RegisterPage() {
                 <input
                   type="email"
                   placeholder="commander@sigma.com"
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
                   onFocus={() => setEmailFocused(true)}
                   onBlur={() => setEmailFocused(false)}
                   className="w-full h-14 pl-11 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-300"

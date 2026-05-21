@@ -1,10 +1,7 @@
 // app/(main)/hardware/[id]/page.tsx
 import { notFound } from "next/navigation";
 import HardwareProductDetailPage from "@/components/HardwareDetailPage";
-import type { HardwareProduct } from "@/lib/hardware-schema";
-
-// 💡 تنويه: تأكد من مسار ملف الـ JSON الخاص بالهاردوير في مشروعك
-import hardwareData from "@/data/hardware.json"; 
+import { fetchHardwareByIdAction } from "@/app/actions/products";
 
 interface HardwarePageProps {
   params: Promise<{ id: string }>;
@@ -17,10 +14,8 @@ export default async function HardwarePage({ params }: HardwarePageProps) {
   // 2. فك تشفير الـ ID في حال كان يحتوي على مسافات أو رموز في الرابط
   const decodedId = decodeURIComponent(id);
 
-  // 3. البحث عن قطعة الهاردوير في قاعدة البيانات (ملف JSON)
-  const product = (hardwareData as HardwareProduct[]).find(
-    (item) => item.id === decodedId
-  );
+  // 3. البحث عن قطعة الهاردوير في قاعدة البيانات (باستخدام قاعدة البيانات أو local JSON fallback)
+  const product = await fetchHardwareByIdAction(decodedId);
 
   // 4. إذا لم يتم العثور على القطعة، نعرض صفحة 404
   if (!product) {

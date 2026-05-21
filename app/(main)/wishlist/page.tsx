@@ -139,12 +139,12 @@ function EmptyState() {
           </motion.div>
         </div>
 
-        <div className="text-center">
+        <div className="text-center flex flex-col gap-3 items-center">
           <h3 className="hf text-3xl font-extrabold mb-3" style={{ color: t.text }}>
             Your Wishlist is Empty
           </h3>
           <p className="text-[15px] font-medium leading-relaxed max-w-sm" style={{ color: t.textSecondary }}>
-            Start exploring and save the items you love — they'll show up right here.
+            Start exploring and save the items you love they&apos;ll show up right here.
           </p>
         </div>
 

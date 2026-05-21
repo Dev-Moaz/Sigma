@@ -1,10 +1,9 @@
 // components/wishlist.tsx
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import {
   motion,
-  useInView,
   AnimatePresence,
 } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -84,7 +83,7 @@ function EmptyState() {
             className="text-[15px] font-medium leading-relaxed max-w-sm"
             style={{ color: t.textSecondary }}
           >
-            Start exploring and save the laptops you love — they'll show up right here.
+            Start exploring and save the laptops you love they&apos;l show up right here.
           </p>
         </div>
 
@@ -296,7 +295,7 @@ export default function Wishlist() {
                     key={product.id}
                     product={product}
                     index={index}
-                    onAddToCart={(p, color) =>
+                    onAddToCart={(p) =>
                       addToCart(
                         { id: p.id, name: p.name, price: p.price, image: p.image },
                         1

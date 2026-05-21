@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,10 +11,9 @@ import { useTheme } from "@/store/useAppStore";
 import FilterNavbar from "@/components/layout/FilterNavbar";
 import ProductCard from "@/components/ui/ProductCard";
 
-// Types & Data
+// Server Actions & Types
+import { fetchLaptopsAction } from "@/app/actions/products";
 import { Product } from "@/lib/laptop-schema";
-import productsData from "@/data/laptops.json"; // تأكد من مسار البيانات الخاص بك
-
 const ITEMS_PER_PAGE = 12;
 
 // ==========================================
@@ -32,12 +31,27 @@ export default function ShopPage() {
   const { theme, t } = useTheme();
   const router = useRouter();
 
-  // Load static data via useMemo
-  const allProducts = useMemo(() => productsData as Product[], []);
-
   // State
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(allProducts);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  // Load live data from DB (with local JSON fallback automatically)
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await fetchLaptopsAction();
+        setAllProducts(data);
+        setFilteredProducts(data);
+      } catch (err) {
+        console.error("Failed to load shop products:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   // Filter Handler
   const handleFilterChange = useCallback((newFiltered: Product[]) => {
@@ -105,36 +119,41 @@ export default function ShopPage() {
 
         {/* Filter Navbar */}
         <div className="mb-10 relative z-30">
-          <FilterNavbar products={allProducts} onFilterChange={handleFilterChange} />
+          {!loading && <FilterNavbar products={allProducts} onFilterChange={handleFilterChange} />}
         </div>
 
         {/* Product Grid Area */}
-        {currentProducts.length > 0 ? (
+        {loading ? (
+          /* Loading State */
+          <div className="flex-1 flex items-center justify-center py-32">
+            <div className="w-10 h-10 border-4 border-t-blue-500 border-r-transparent border-b-cyan-500 border-l-transparent rounded-full animate-spin" />
+          </div>
+        ) : currentProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 mb-16 relative z-20">
             {currentProducts.map((product) => (
-              <motion.div
+          <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 // إضافة فئة hover:z-[60] تضمن أن البطاقة سترتفع فوق المكونات المجاورة في الشبكة
-                className="relative z-10 hover:z-60" 
-              >
+                className="relative z-10 hover:z-60"
+          >
                 <ProductCard
                   product={product}
                   index={0}
                   onQuickView={(p) => router.push(`/product/${p.id}`)}
                 />
-              </motion.div>
+          </motion.div>
             ))}
-          </div>
+            </div>
         ) : (
           /* Empty State */
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="flex flex-col items-center justify-center py-32 text-center flex-1 relative z-20"
-          >
+            >
             <div
               className="w-24 h-24 rounded-full flex items-center justify-center mb-6"
               style={{ background: t.cardBg, border: `1px solid ${t.borderLight}` }}
@@ -180,7 +199,7 @@ export default function ShopPage() {
                   >
                     {pageNum}
                   </button>
-                );
+  );
               })}
             </div>
 

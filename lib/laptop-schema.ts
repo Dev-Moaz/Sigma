@@ -18,7 +18,7 @@ export interface ColorVariant {
 }
 
 export interface Product {
-  image: any;
+  image: string;
   id: string;
   name: string;
   brand: string;

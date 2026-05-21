@@ -1,8 +1,7 @@
 // app/product/[id]/page.tsx
 
 import { notFound } from "next/navigation";
-import laptopsData from "@/data/laptops.json";
-import type { Product } from "@/lib/laptop-schema";
+import { fetchLaptopByIdAction } from "@/app/actions/products";
 import ProductDetailPage from "@/components/ProductDetailPage"; 
 
 // 1. جعلنا الـ Component من نوع async والـ params من نوع Promise
@@ -14,9 +13,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   // 3. فك التشفير في حال كان المتصفح أضاف رموز (مثال: مسافات %20)
   const productId = decodeURIComponent(resolvedParams.id);
 
-  // 4. البحث عن المنتج بناءً على الـ ID الدقيق
-  const product = (laptopsData as Product[]).find((p) => p.id === productId);
-
+  // 4. البحث عن المنتج بناءً على الـ ID الدقيق (باستخدام قاعدة البيانات أو local JSON fallback)
+  const product = await fetchLaptopByIdAction(productId);
   // 5. إذا لم يتم العثور عليه، نعرض 404
   if (!product) {
     notFound();

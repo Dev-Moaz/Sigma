@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme, useWishlist } from "@/store/useAppStore";
 import Link from "next/link";
+import { getCurrentUserAction, getUserProfileAction } from "@/app/actions/auth";
+import { fetchUserOrdersAction } from "@/app/actions/orders";
 
 function CinematicReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
@@ -32,30 +34,57 @@ export default function ProfileOverview() {
   const { t, theme } = useTheme();
   const { wishIds } = useWishlist();
 
+  const [loading, setLoading] = React.useState(true);
+  const [profile, setProfile] = React.useState<any>(null);
+  const [orders, setOrders] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    async function loadData() {
+      try {
+        const user = await getCurrentUserAction();
+        if (user) {
+          const [profData, ordersRes] = await Promise.all([
+            getUserProfileAction(user.id),
+            fetchUserOrdersAction()
+          ]);
+          if (profData) {
+            setProfile(profData);
+          }
+          if (ordersRes.success && ordersRes.orders) {
+            setOrders(ordersRes.orders);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load profile data", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
+
   const stats = [
-    { label: "Total Orders", value: "3", icon: faBox, color: "#3b82f6" },
+    { label: "Total Orders", value: orders.length.toString(), icon: faBox, color: "#3b82f6" },
     { label: "Saved Items", value: wishIds.length.toString(), icon: faHeart, color: "#ef4444" },
-    { label: "Volt Points", value: "1,250", icon: faStar, color: "#eab308" },
+    { label: "Volt Points", value: profile?.volt_points?.toLocaleString() || "0", icon: faStar, color: "#eab308" },
   ];
 
-  const recentOrders = [
-    {
-      id: "ORD-98234-A",
-      date: "Oct 24, 2026",
-      status: "Delivered",
-      total: "$2,499.00",
-      items: "ASUS ROG Strix SCAR 18",
-      statusColor: "#10b981"
-    },
-    {
-      id: "ORD-91730-B",
-      date: "Sep 12, 2026",
-      status: "Processing",
-      total: "$149.99",
-      items: "Razer DeathAdder V3 Pro",
-      statusColor: "#f59e0b"
-    }
-  ];
+  const recentOrders = orders.slice(0, 2).map((o: any) => {
+    let statusColor = "#f59e0b"; // default processing
+    if (o.status === "Delivered" || o.status === "delivered") statusColor = "#10b981";
+    if (o.status === "Cancelled" || o.status === "cancelled") statusColor = "#ef4444";
+    
+    const itemsSummary = (o.order_items || []).map((item: any) => item.product_name).join(", ");
+    
+    return {
+      id: o.tracking_number || o.id.slice(0, 8),
+      date: new Date(o.created_at).toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' }),
+      status: o.status.charAt(0).toUpperCase() + o.status.slice(1),
+      total: `$${o.total_amount.toLocaleString()}`,
+      items: itemsSummary || "No items",
+      statusColor
+    };
+  });
 
   return (
     <div className="flex flex-col gap-8">
@@ -116,34 +145,44 @@ export default function ProfileOverview() {
           </div>
 
           <div className="flex flex-col gap-4">
-            {recentOrders.map((order, i) => (
-              <motion.div 
-                key={order.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 + i * 0.1 }}
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border transition-colors hover:bg-black/20"
-                style={{ borderColor: t.borderSubtle, background: t.bgSecondary }}
-              >
-                <div className="mb-4 sm:mb-0">
-                  <div className="flex items-center gap-3 mb-1">
-                    <p className="hf font-bold text-sm" style={{ color: t.text }}>{order.id}</p>
-                    <span 
-                      className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
-                      style={{ background: `${order.statusColor}20`, color: order.statusColor }}
-                    >
-                      {order.status}
-                    </span>
+            {loading ? (
+              <div className="flex items-center justify-center p-8">
+                <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: t.accentText, borderTopColor: "transparent" }} />
+              </div>
+            ) : recentOrders.length === 0 ? (
+              <div className="p-8 text-center rounded-2xl border" style={{ borderColor: t.borderSubtle, background: t.bgSecondary }}>
+                <p className="text-sm font-medium" style={{ color: t.textSecondary }}>No recent activity found.</p>
+              </div>
+            ) : (
+              recentOrders.map((order, i) => (
+                <motion.div 
+                  key={order.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1 }}
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border transition-colors hover:bg-black/20"
+                  style={{ borderColor: t.borderSubtle, background: t.bgSecondary }}
+                >
+                  <div className="mb-4 sm:mb-0 max-w-md">
+                    <div className="flex items-center gap-3 mb-1">
+                      <p className="hf font-bold text-sm" style={{ color: t.text }}>{order.id}</p>
+                      <span 
+                        className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+                        style={{ background: `${order.statusColor}20`, color: order.statusColor }}
+                      >
+                        {order.status}
+                      </span>
+                    </div>
+                    <p className="text-xs font-medium truncate" style={{ color: t.textSecondary }}>
+                      {order.date} • {order.items}
+                    </p>
                   </div>
-                  <p className="text-xs font-medium" style={{ color: t.textSecondary }}>
-                    {order.date} • {order.items}
-                  </p>
-                </div>
-                <div className="text-left sm:text-right">
-                  <p className="hf font-bold text-lg" style={{ color: t.text }}>{order.total}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="text-left sm:text-right">
+                    <p className="hf font-bold text-lg" style={{ color: t.text }}>{order.total}</p>
+                  </div>
+                </motion.div>
+              ))
+            )}
           </div>
         </div>
       </CinematicReveal>

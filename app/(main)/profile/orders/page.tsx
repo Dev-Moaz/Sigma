@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBoxOpen, faDownload, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
+import { fetchUserOrdersAction } from "@/app/actions/orders";
 
 function CinematicReveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef(null);
@@ -25,40 +26,43 @@ function CinematicReveal({ children, delay = 0 }: { children: React.ReactNode; d
 
 export default function OrdersPage() {
   const { t, theme } = useTheme();
+  const [orders, setOrders] = React.useState<any[]>([]);
+  const [loading, setLoading] = React.useState(true);
 
-  const orders = [
-    {
-      id: "ORD-98234-A",
-      date: "Oct 24, 2026",
-      status: "Delivered",
-      total: "$2,499.00",
-      items: [
-        { name: "ASUS ROG Strix SCAR 18", qty: 1, price: "$2,499.00", image: "https://dlcdnwebimgs.asus.com/gain/49DA6C45-9CA2-4C1E-8B57-B9C06D606E8A/w250" }
-      ],
-      statusColor: "#10b981",
-    },
-    {
-      id: "ORD-91730-B",
-      date: "Sep 12, 2026",
-      status: "Processing",
-      total: "$149.99",
-      items: [
-        { name: "Razer DeathAdder V3 Pro", qty: 1, price: "$149.99", image: "https://assets2.razerzone.com/images/pnx.assets/95a32b2713f9f9b5df4db1704e9c7081/razer-deathadder-v3-pro-white-500x500.png" }
-      ],
-      statusColor: "#f59e0b",
-    },
-    {
-      id: "ORD-80012-C",
-      date: "Aug 05, 2026",
-      status: "Cancelled",
-      total: "$899.00",
-      items: [
-        { name: "Intel Core i9-14900K", qty: 1, price: "$599.00", image: "/placeholder.png" },
-        { name: "Corsair Vengeance 64GB", qty: 1, price: "$300.00", image: "/placeholder.png" }
-      ],
-      statusColor: "#ef4444",
+  React.useEffect(() => {
+    async function loadOrders() {
+      try {
+        const res = await fetchUserOrdersAction();
+        if (res.success && res.orders) {
+          const mappedOrders = res.orders.map((o: any) => {
+            let statusColor = "#f59e0b"; // default processing
+            if (o.status === "Delivered" || o.status === "delivered") statusColor = "#10b981";
+            if (o.status === "Cancelled" || o.status === "cancelled") statusColor = "#ef4444";
+            
+            return {
+              id: o.tracking_number || o.id.slice(0, 8),
+              date: new Date(o.created_at).toLocaleDateString("en-US", { year: 'numeric', month: 'short', day: 'numeric' }),
+              status: o.status.charAt(0).toUpperCase() + o.status.slice(1),
+              total: `$${o.total_amount.toLocaleString()}`,
+              items: (o.order_items || []).map((item: any) => ({
+                name: item.product_name,
+                qty: item.quantity,
+                price: `$${item.price.toLocaleString()}`,
+                image: "/placeholder.png" // Can be updated if image is stored in DB
+              })),
+              statusColor
+            };
+          });
+          setOrders(mappedOrders);
+        }
+      } catch (err) {
+        console.error("Failed to load orders", err);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+    loadOrders();
+  }, []);
 
   return (
     <div className="flex flex-col gap-8">
@@ -78,8 +82,18 @@ export default function OrdersPage() {
       </CinematicReveal>
 
       <div className="flex flex-col gap-6">
-        {orders.map((order, index) => (
-          <CinematicReveal key={order.id} delay={0.2 + index * 0.1}>
+        {loading ? (
+          <div className="flex items-center justify-center p-12">
+             <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: t.accentText, borderTopColor: "transparent" }} />
+          </div>
+        ) : orders.length === 0 ? (
+          <div className="p-12 text-center rounded-3xl border backdrop-blur-md" style={{ background: t.cardBg, borderColor: t.borderLight }}>
+             <p className="hf text-xl font-bold mb-2" style={{ color: t.text }}>No Orders Found</p>
+             <p className="text-sm font-medium" style={{ color: t.textSecondary }}>You haven't placed any orders yet.</p>
+          </div>
+        ) : (
+          orders.map((order, index) => (
+            <CinematicReveal key={order.id} delay={0.2 + index * 0.1}>
             <div 
               className="rounded-3xl border p-5 sm:p-6 lg:p-8 backdrop-blur-md relative overflow-hidden"
               style={{ background: t.cardBg, borderColor: t.borderLight }}
@@ -157,7 +171,8 @@ export default function OrdersPage() {
               </div>
             </div>
           </CinematicReveal>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

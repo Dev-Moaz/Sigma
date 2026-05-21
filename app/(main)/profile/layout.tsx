@@ -8,10 +8,12 @@ import {
   faBoxOpen,
   faSliders,
   faSignOutAlt,
+  faShieldHalved,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getCurrentUserAction, getUserProfileAction } from "@/app/actions/auth";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -72,10 +74,32 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
   const { theme, t } = useTheme();
   const pathname = usePathname();
 
+  const [profile, setProfile] = React.useState<any>(null);
+  const [isAdmin, setIsAdmin] = React.useState(false);
+
+  React.useEffect(() => {
+    async function loadProfile() {
+      try {
+        const user = await getCurrentUserAction();
+        if (user) {
+          const profData = await getUserProfileAction(user.id);
+          if (profData) {
+            setProfile(profData);
+            setIsAdmin(profData.role === "admin");
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load profile layout details", err);
+      }
+    }
+    loadProfile();
+  }, []);
+
   const navLinks = [
     { label: "Overview", href: "/profile", icon: faUser, exact: true },
     { label: "Order History", href: "/profile/orders", icon: faBoxOpen, exact: false },
     { label: "Settings", href: "/profile/settings", icon: faSliders, exact: false },
+    ...(isAdmin ? [{ label: "Admin Dashboard", href: "/admin", icon: faShieldHalved, exact: false }] : [])
   ];
 
   return (
@@ -169,8 +193,8 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
                   <FontAwesomeIcon icon={faUser} />
                 </div>
                 <div>
-                  <p className="hf font-bold text-lg leading-tight" style={{ color: t.text }}>John Doe</p>
-                  <p className="text-xs font-medium" style={{ color: t.textSecondary }}>Premium Member</p>
+                  <p className="hf font-bold text-lg leading-tight" style={{ color: t.text }}>{profile?.full_name || "Loading..."}</p>
+                  <p className="text-xs font-medium" style={{ color: t.textSecondary }}>{profile?.role === "admin" ? "System Admin" : "Premium Member"}</p>
                 </div>
               </div>
 

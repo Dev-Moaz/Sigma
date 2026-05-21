@@ -777,9 +777,15 @@ export default function Header() {
                 </AnimatePresence>
               </ActionBtn>
 
-              <div className="hidden lg:block">
-                <ActionBtn aria="Account" hoverColor="white" onClick={() => router.push("/profile")}>
+                            <div className="hidden lg:block">
+                <ActionBtn aria="Login" hoverColor="white" onClick={() => router.push("/login")}>
                   <FontAwesomeIcon icon={faUser} className="text-[15px]" />
+                </ActionBtn>
+              </div>
+
+              <div className="hidden lg:block">
+                <ActionBtn aria="Profile" hoverColor="white" onClick={() => router.push("/profile")}>
+                  <span className="w-5 h-5 rounded-full border border-current flex items-center justify-center text-[10px] font-bold">P</span>
                 </ActionBtn>
               </div>
 

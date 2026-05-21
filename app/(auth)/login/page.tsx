@@ -15,6 +15,8 @@ import {
 import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { signInAction } from "@/app/actions/auth";
 
 type LoginStep = "idle" | "loading" | "success";
 
@@ -218,21 +220,41 @@ function SubmitButton({ className = "", step, onClick }: { className?: string, s
 // ==========================================
 export default function LoginPage() {
   const { theme, t } = useTheme();
+  const router = useRouter();
 
   // Form state
+  const [emailValue, setEmailValue] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
   const [passFocused, setPassFocused] = useState(false);
   const [passwordValue, setPasswordValue] = useState("");
   const [loginStep, setLoginStep] = useState<LoginStep>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => {
     if (loginStep !== "idle") return;
+    setErrorMessage("");
+
+    if (!emailValue || !passwordValue) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
     setLoginStep("loading");
-    // Simulate API call
-    await new Promise((r) => setTimeout(r, 1800));
-    setLoginStep("success");
-    // Redirect logic would go here
+    
+    // تسجيل الدخول حياً من الـ Server Action
+    const result = await signInAction(emailValue, passwordValue);
+    
+    if (result.success) {
+      setLoginStep("success");
+      // توجيه للملف الشخصي بعد نجاح تسجيل الدخول
+      setTimeout(() => {
+        router.push("/profile");
+      }, 1000);
+    } else {
+      setLoginStep("idle");
+      setErrorMessage(result.error || "Invalid login credentials.");
+    }
   };
 
   const gradientTextClass = `bg-clip-text text-transparent bg-linear-to-r ${
@@ -294,8 +316,19 @@ export default function LoginPage() {
           </div>
 
           {/* Form */}
-          <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
+          <form className="flex flex-col gap-5" onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
             
+            {/* Error Message */}
+            {errorMessage && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-3 text-xs font-bold rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-center"
+              >
+                {errorMessage}
+              </motion.div>
+            )}
+
             {/* Email Input */}
             <div className="flex flex-col gap-1.5">
               <label
@@ -313,6 +346,8 @@ export default function LoginPage() {
                 <input
                   type="email"
                   placeholder="commander@sigma.com"
+                  value={emailValue}
+                  onChange={(e) => setEmailValue(e.target.value)}
                   onFocus={() => setEmailFocused(true)}
                   onBlur={() => setEmailFocused(false)}
                   className="w-full h-14 pl-11 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-300"
@@ -424,7 +459,7 @@ export default function LoginPage() {
 
           {/* Sign Up Link */}
           <p className="text-center text-[13px] font-medium mt-8" style={{ color: t.textSecondary }}>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/create_account" className="font-bold ml-1 transition-colors hover:underline" style={{ color: t.accentText }}>
               Create Account
             </Link>

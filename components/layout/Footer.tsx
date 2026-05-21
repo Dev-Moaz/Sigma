@@ -1,7 +1,6 @@
 // components/layout/Footer.tsx
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -96,43 +95,56 @@ function FooterGridBg() {
 /* ── Main Footer ── */
 export default function Footer() {
   const { theme, t } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <footer aria-label="Site footer" className="bf relative overflow-hidden" style={{ backgroundColor: t.bg }}>
+    <footer 
+      aria-label="Site footer" 
+      className="bf relative overflow-hidden transition-colors duration-500" 
+      style={{ 
+        // استبدلنا اللون هنا ليطابق الـ Header تماماً في الوضعين الفاتح والداكن
+        backgroundColor: isDark ? "rgba(3, 7, 18, 1)" : "#ffffff",
+        borderTop: isDark ? "1px solid rgba(255,255,255,0.05)" : "1px solid rgba(0,0,0,0.06)"
+      }}
+    >
       
-      {/* Subtle Cyan Tint to match Hero Section's lighting */}
-      <div 
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none z-10 opacity-[0.08]" 
-        style={{ 
-          background: `radial-gradient(circle at 50% 50%, ${t.glowCyan} 0%, transparent 80%)`,
-          mixBlendMode: theme === 'dark' ? "screen" : "multiply"
-        }} 
-      />
+      {/* نجعل التأثيرات تظهر فقط في الوضع الداكن للحفاظ على بياض ناصع في الوضع الفاتح */}
+      {isDark && (
+        <>
+          {/* Subtle Cyan Tint */}
+          <div 
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none z-10 opacity-[0.08]" 
+            style={{ 
+              background: `radial-gradient(circle at 50% 50%, ${t.glowCyan} 0%, transparent 80%)`,
+              mixBlendMode: "screen"
+            }} 
+          />
 
-      {/* Vignette Overlay matching Hero Section */}
-      <div 
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none z-40" 
-        style={{ 
-          background: `radial-gradient(circle at center, transparent 30%, ${theme === 'dark' ? '#000000e6' : '#00000040'} 110%)`, 
-          mixBlendMode: theme === 'dark' ? 'normal' : 'multiply' 
-        }} 
-      />
+          {/* Vignette Overlay matching Hero Section */}
+          <div 
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none z-40" 
+            style={{ 
+              background: `radial-gradient(circle at center, transparent 30%, #000000e6 110%)`, 
+              mixBlendMode: "normal"
+            }} 
+          />
+        </>
+      )}
 
       <div aria-hidden="true" className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <FooterGridBg />
-        <Particles count={20} />
+        {/* يمكنك تفعيل تأثير الـ Particles فقط للوضع الداكن إذا كان يزعج المظهر الفاتح */}
+        <Particles count={isDark ? 20 : 10} />
       </div>
 
       <AccentLine duration={5} opacity={0.6} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-6">
         
-        {/* التعديل هنا: استخدام md:grid-cols-2 وتخصيص مساحة كل عمود حسب حجم الشاشة */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] gap-10 lg:gap-8 pb-10 border-b" style={{ borderBottomColor: t.borderLight }}>
           
-          {/* التعديل هنا: هذا القسم سيأخذ عمودين (عرض كامل) في التابلت، وعمود واحد في اللابتوب */}
           <motion.div 
             initial={{ opacity: 0 }} 
             whileInView={{ opacity: 1 }} 
@@ -198,7 +210,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* التعديل هنا: شريط الروابط السفلي أصبح مرناً (flex-wrap) ليتناسب مع كل الشاشات بدون تكدس */}
         <motion.div 
           initial={{ opacity: 0 }} 
           whileInView={{ opacity: 1 }} 
