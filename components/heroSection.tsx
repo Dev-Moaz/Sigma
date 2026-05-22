@@ -1,7 +1,6 @@
-// components/heroSection.tsx
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import {
   motion,
@@ -9,6 +8,7 @@ import {
   useMotionValue,
   useSpring,
   useInView,
+  AnimatePresence
 } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,7 +26,7 @@ import { Particles } from "@/components/ui/Particles";
 import { CinematicReveal as CinematicScrollReveal } from "@/components/ui/CinematicReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-/* ─── Data ─────────────────────────────────────────── */
+/* ─── البيانات الأساسية ─────────────────────────────────────────── */
 const STATS = [
   { value: "50K+", label: "Happy Customers" },
   { value: "2K+", label: "Products" },
@@ -34,7 +34,7 @@ const STATS = [
   { value: "24/7", label: "Support" },
 ];
 
-const TRUST_BADGES =[
+const TRUST_BADGES = [
   { icon: faTruck, label: "Free Shipping", sub: "Orders over $999", color: "#0ea5e9" },
   { icon: faShieldHalved, label: "2-Year Warranty", sub: "All products", color: "#10b981" },
   { icon: faPhone, label: "24/7 Support", sub: "Always here", color: "#8b5cf6" },
@@ -50,15 +50,14 @@ const BRANDS = [
 
 const MARQUEE_SET = [...BRANDS, ...BRANDS];
 
-/* ─── Cards Data ─────────────────────────────────────── */
-const SPEC_CARDS_DARK =[
+const SPEC_CARDS_DARK = [
   { id: 1, label: "GPU", value: "RTX 5090", color: "#76b900", delay: 0, position: { bottom: "28%", left: "4%" }, align: "left" },
   { id: 2, label: "CPU", value: "Ultra 9 285HX", color: "#0071c5", delay: 0.3, position: { bottom: "28%", right: "4%" }, align: "right" },
   { id: 3, label: "RAM", value: "64GB DDR5", color: "#8b5cf6", delay: 0.6, position: { top: "12%", left: "4%" }, align: "left" },
   { id: 4, label: "Storage", value: "4TB NVMe", color: "#06b6d4", delay: 0.9, position: { top: "12%", right: "4%" }, align: "right" },
 ];
 
-const SPEC_CARDS_LIGHT =[
+const SPEC_CARDS_LIGHT = [
   { id: 1, label: "GPU", value: "RTX™ 5080", color: "#76b900", delay: 0, position: { bottom: "28%", left: "4%" }, align: "left" },
   { id: 2, label: "CPU", value: "Ryzen™ 9 HX", color: "#ef4444", delay: 0.3, position: { bottom: "28%", right: "4%" }, align: "right" },
   { id: 3, label: "Display", value: "3K OLED", color: "#8b5cf6", delay: 0.6, position: { top: "12%", left: "4%" }, align: "left" },
@@ -72,12 +71,9 @@ const REVIEW_AVATARS = [
   { letter: "K", color: "#3b82f6" },
 ];
 
-/* ─── Typewriter ────────────────────────────────────── */
-function TypewriterText({
-  text, delay = 0, speed = 60, accentText,
-}: {
-  text: string; delay?: number; speed?: number; accentText?: string;
-}) {
+/* ─── المكونات الفرعية التفاعلية ────────────────────────────────────── */
+
+function TypewriterText({ text, delay = 0, speed = 60, accentText }: { text: string; delay?: number; speed?: number; accentText?: string }) {
   const [displayed, setDisplayed] = useState("");
   const [started, setStarted] = useState(false);
   const [done, setDone] = useState(false);
@@ -116,9 +112,6 @@ function TypewriterText({
   );
 }
 
-/* ─── CountUp ───────────────────────────────────────── */
-const COUNT_UP_DURATION = 1800;
-
 function CountUp({ target }: { target: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true });
@@ -133,7 +126,7 @@ function CountUp({ target }: { target: string }) {
     let start: number | null = null;
     const step = (ts: number) => {
       if (!start) start = ts;
-      const progress = Math.min((ts - start) / COUNT_UP_DURATION, 1);
+      const progress = Math.min((ts - start) / 1800, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setVal(Math.floor(eased * numeric));
       if (progress < 1) requestAnimationFrame(step);
@@ -143,20 +136,21 @@ function CountUp({ target }: { target: string }) {
   }, [inView, numeric]);
 
   if (isNaN(numeric)) return <span ref={ref}>{target}</span>;
-
-  return (
-    <span ref={ref}>
-      {Number.isInteger(numeric) ? val : val.toFixed(0)}
-      {rest}
-    </span>
-  );
+  return <span ref={ref}>{val}{rest}</span>;
 }
 
-/* ─── Animated Grid Background with Parallax ────────── */
-function GridBg({ parallaxX, parallaxY }: { parallaxX: any; parallaxY: any }) {
+/* ─── شبكة الخلفية التفاعلية ────────────────────────────────── */
+function GridBg({ parallaxX, parallaxY, isBlurred }: { parallaxX: any; parallaxY: any; isBlurred: boolean }) {
   const { t } = useTheme();
   return (
-    <motion.div className="absolute inset-0 overflow-hidden z-0 will-change-transform max-md:!transform-none" style={{ x: parallaxX, y: parallaxY }}>
+    <motion.div
+      className="absolute inset-0 overflow-hidden z-0 will-change-[transform,filter] transition-all duration-700 ease-out max-md:!transform-none"
+      style={{
+        x: parallaxX,
+        y: parallaxY,
+        filter: isBlurred ? "blur(8px) scale(1.02)" : "blur(0px) scale(1)"
+      }}
+    >
       <svg aria-hidden="true" className="absolute inset-0 w-[110%] h-[110%] left-[5%] top-[5%] opacity-[0.07]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -170,34 +164,85 @@ function GridBg({ parallaxX, parallaxY }: { parallaxX: any; parallaxY: any }) {
   );
 }
 
-/* ─── Floating Spec Card (Tech HUD Design - Optimized) ───────────── */
+/* ─── بطاقة المواصفات الذكية HUD مع محاكاة عمق المجال ───────────────── */
+interface SpecCardProps {
+  id: number;
+  label: string;
+  value: string;
+  color: string;
+  delay: number;
+  style: React.CSSProperties;
+  align: string;
+  isAnyHovered: boolean;
+  isSelfHovered: boolean;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
+}
+
 function SpecCard({
-  label, value, color, delay, style, align
-}: {
-  label: string; value: string; color: string; delay: number; style: React.CSSProperties; align: string;
-}) {
+  id, label, value, color, delay, style, align,
+  isAnyHovered, isSelfHovered, onHoverStart, onHoverEnd
+}: SpecCardProps) {
   const { t } = useTheme();
-  const baseRevealDelay = 0.2; 
+  const baseRevealDelay = 0.2;
+
+  // الحالات البصرية المستوحاة من السينما للتضبيب والتركيز
+  const cardScale = isSelfHovered ? 1.12 : (isAnyHovered ? 0.92 : 1);
+  const cardBlur = isSelfHovered ? "blur(0px)" : (isAnyHovered ? "blur(4px)" : "blur(0px)");
+  const cardOpacity = isSelfHovered ? 1 : (isAnyHovered ? 0.35 : 1);
+  const cardDepthZ = isSelfHovered ? "60px" : "0px";
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, y: 15 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      whileHover={{ scale: 1.05, zIndex: 50 }}
-      transition={{ delay: baseRevealDelay + delay * 0.2, duration: 0.8, ease: "easeOut" }}
-      style={style}
-      className="absolute z-20 cursor-pointer group hidden md:block" // تم الإخفاء في الجوال لتخفيف المعالجة
+      animate={{
+        opacity: cardOpacity,
+        scale: cardScale,
+        y: 0,
+        filter: cardBlur,
+        z: cardDepthZ
+      }}
+      transition={{
+        opacity: { duration: 0.4, ease: "easeOut" },
+        scale: { type: "spring", stiffness: 180, damping: 15 },
+        filter: { duration: 0.4 },
+        z: { duration: 0.3 }
+      }}
+      style={{
+        ...style,
+        zIndex: isSelfHovered ? 50 : 20,
+        transformStyle: "preserve-3d"
+      }}
+      className="absolute cursor-pointer group hidden md:block will-change-[transform,filter,opacity]"
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
     >
       <motion.div
-        animate={{ y: [0, -4, 0] }}
+        animate={{ y: isSelfHovered ? 0 : [0, -4, 0] }}
         transition={{ duration: 4 + delay, repeat: Infinity, ease: "easeInOut", delay: delay * 0.5 }}
-        className="relative flex items-center gap-3 px-4 py-3 rounded-xl border transition-colors duration-300"
+        className="relative flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-500 overflow-hidden"
         style={{
           background: t.bgSecondary,
-          borderColor: `${color}40`,
-          boxShadow: `0 0 20px ${color}10, inset 0 0 10px ${color}05`,
+          borderColor: isSelfHovered ? color : `${color}40`,
+          boxShadow: isSelfHovered 
+            ? `0 0 30px ${color}40, inset 0 0 15px ${color}15`
+            : `0 0 20px ${color}10, inset 0 0 10px ${color}05`,
         }}
       >
+        {/* تأثير التوهج الخلفي الطيفي للبطاقة المحددة */}
+        <AnimatePresence>
+          {isSelfHovered && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.15, scale: 1.2 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 pointer-events-none -z-10"
+              style={{ background: `radial-gradient(circle, ${color}, transparent 70%)` }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* خط التوصيل والنقطة الذكية */}
         <div 
           className="absolute top-1/2 -translate-y-1/2 flex items-center pointer-events-none"
           style={{
@@ -208,24 +253,23 @@ function SpecCard({
         >
           <motion.div 
             initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ delay: baseRevealDelay + 0.3 + delay * 0.2, duration: 0.6, ease: "circOut" }}
+            animate={{ scaleX: isSelfHovered ? 1.2 : 1 }}
             className="h-px w-full" 
             style={{ 
-              background: `linear-gradient(to ${align === "left" ? "right" : "left"}, ${color}80, transparent)`,
+              background: `linear-gradient(to ${align === "left" ? "right" : "left"}, ${color}${isSelfHovered ? 'FF' : '80'}, transparent)`,
               originX: align === "left" ? 0 : 1,
             }} 
           />
           <motion.div 
              initial={{ scale: 0, opacity: 0 }}
-             animate={{ scale: 1, opacity: 1 }}
-             transition={{ delay: baseRevealDelay + 0.8 + delay * 0.2, duration: 0.4 }}
+             animate={{ scale: isSelfHovered ? 1.5 : 1, opacity: 1 }}
              className="w-1 h-1 rounded-full shadow-[0_0_8px] shrink-0" 
              style={{ background: color, color: color, boxShadow: `0 0 8px ${color}` }} 
           />
         </div>
 
-        <div className="relative w-2 h-2 rounded-full shrink-0 group-hover:scale-150 transition-transform duration-300" style={{ background: color, boxShadow: `0 0 10px ${color}` }}>
+        {/* النقطة النابضة بمحيط بؤرة التركيز */}
+        <div className="relative w-2 h-2 rounded-full shrink-0 transition-transform duration-300" style={{ background: color, boxShadow: `0 0 10px ${color}` }}>
           <div className="absolute inset-0 rounded-full animate-ping opacity-50" style={{ background: color }} />
         </div>
         
@@ -233,15 +277,41 @@ function SpecCard({
           <p className="text-[9px] uppercase tracking-widest font-bold mb-0.5 opacity-70 transition-colors duration-300" style={{ color: t.textSecondary }}>{label}</p>
           <p className="hf text-sm font-bold tracking-wide transition-colors duration-300" style={{ color: t.text }}>{value}</p>
         </div>
+
+        {/* تأثير لمعان سينمائي أفقي (Anamorphic Flare Style Line) يمر عبر البطاقة المفعلة */}
+        {isSelfHovered && (
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "200%" }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 bottom-0 w-[50%] skew-x-12 opacity-30 pointer-events-none"
+            style={{
+              background: `linear-gradient(90deg, transparent, ${color}, transparent)`
+            }}
+          />
+        )}
       </motion.div>
     </motion.div>
   );
 }
 
-/* ─── Laptop Image with Glowing Circle & Fake Shadow ─────────────────────── */
-function LaptopImage({ parallaxX, parallaxY, rotateX, rotateY }: { parallaxX: any; parallaxY: any, rotateX: any, rotateY: any }) {
+/* ─── اللابتوب مع تأثير سحب التركيز البصري السينمائي ─────────────────────── */
+interface LaptopImageProps {
+  parallaxX: any;
+  parallaxY: any;
+  rotateX: any;
+  rotateY: any;
+  isBlurred: boolean; // استلام إشارة التركيز لسحب البؤرة خلف البطاقات
+}
+
+function LaptopImage({ parallaxX, parallaxY, rotateX, rotateY, isBlurred }: LaptopImageProps) {
   const { theme, t } = useTheme();
   
+  // تضبيب وتظليم المنتج ومحاكاة تشتيت العدسة السينمائية
+  const laptopFilter = isBlurred 
+    ? "blur(6px) saturate(70%) brightness(75%)" 
+    : "blur(0px) saturate(100%) brightness(100%)";
+
   return (
     <motion.div
       style={{ 
@@ -252,29 +322,42 @@ function LaptopImage({ parallaxX, parallaxY, rotateX, rotateY }: { parallaxX: an
       }}
       className="relative w-full max-w-xl mx-auto z-10 flex justify-center items-center max-md:!transform-none"
     >
+      {/* هالة التوهج المحيطية تتضخم لتعطي طابع بؤرة مشتتة (Bokeh) عند تشتيت التركيز */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square rounded-full -z-10 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square rounded-full -z-10 pointer-events-none transition-all duration-700"
         style={{
           background: theme === "dark" 
-            ? `radial-gradient(circle closest-side, ${t.glowCyan}30 0%, ${t.glowPurple}15 50%, transparent 100%)` 
+            ? `radial-gradient(circle closest-side, ${t.glowCyan}35 0%, ${t.glowPurple}18 50%, transparent 100%)` 
             : `radial-gradient(circle closest-side, #0ea5e91A 0%, #8b5cf60A 50%, transparent 100%)`
         }}
-        animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ 
+          scale: isBlurred ? 1.15 : 1, 
+          opacity: isBlurred ? 0.9 : 0.7 
+        }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       />
 
       <motion.div
         initial={{ opacity: 0.3, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        animate={{ 
+          opacity: 1, 
+          scale: isBlurred ? 0.97 : 1, 
+          y: 0,
+          filter: laptopFilter
+        }}
+        transition={{ 
+          scale: { duration: 0.6, ease: "easeOut" },
+          filter: { duration: 0.6, ease: "easeOut" },
+          opacity: { delay: 0.1, duration: 0.8 }
+        }}
         style={{ 
           rotateX, 
           rotateY, 
           transformStyle: "preserve-3d", 
         }}
-        // إلغاء تأثيرات التأخير والحركة في الهاتف لتظهر الصورة فوراً
-        className="relative w-full max-md:!opacity-100 max-md:!transform-none"
+        className="relative w-full max-md:!opacity-100 max-md:!transform-none will-change-[transform,filter]"
       >
+        {/* الظل الفيزيائي */}
         <div 
           aria-hidden="true"
           className="absolute -bottom-6 left-[10%] right-[10%] h-16 -z-10"
@@ -315,56 +398,71 @@ function LaptopImage({ parallaxX, parallaxY, rotateX, rotateY }: { parallaxX: an
   );
 }
 
-/* ─── Scroll Indicator ──────────────────────────────── */
+/* ─── مؤشر التمرير ─────────────────────────────────────────────── */
 function ScrollIndicator() {
   const { t } = useTheme();
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.8, duration: 1 }}
-      className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 hidden md:flex"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.2, duration: 0.8 }}
+      className="flex flex-col items-center gap-2 py-6"
     >
-      <p className="text-[10px] tracking-widest uppercase font-bold" style={{ color: t.textSubtle }}>Scroll</p>
-      <motion.div className="w-5 h-8 rounded-full border flex items-start justify-center pt-1.5" style={{ borderColor: t.border }}>
+      <span className="text-xs font-medium uppercase tracking-widest" style={{ color: t.textMuted }}>Scroll to explore</span>
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        className="w-6 h-10 rounded-full flex items-start justify-center pt-2"
+        style={{ border: `2px solid ${t.borderLight}` }}
+      >
         <motion.div
-          className="w-1 h-2 rounded-full"
-          style={{ backgroundColor: t.accentText }}
-          animate={{ y: [0, 10, 0], opacity: [1, 0, 1] }}
+          animate={{ opacity: [1, 0.3, 1], scaleY: [1, 0.6, 1] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          className="w-1 h-2 rounded-full"
+          style={{ background: t.accentText }}
         />
       </motion.div>
     </motion.div>
   );
 }
 
-/* ─── Featured Brands Marquee ────────────────────────── */
+/* ─── شريط العلامات التجارية المتحرك ──────────────────────────── */
 function FeaturedBrands() {
   const { t } = useTheme();
   return (
-    <div className="relative z-10 border-t overflow-hidden py-6" style={{ borderTopColor: t.borderLight }}>
-      <p className="text-center text-[10px] font-semibold uppercase tracking-widest mb-5" style={{ color: t.textSubtle }}>Authorized Reseller — 20+ Leading Brands</p>
-      <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 z-10" style={{ background: `linear-gradient(90deg, ${t.bg}, transparent)` }} />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 z-10" style={{ background: `linear-gradient(270deg, ${t.bg}, transparent)` }} />
-        <motion.div className="flex w-max" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 45, ease: "linear", repeat: Infinity }}>
-          {[0, 1].map((groupIdx) => (
-            <div key={groupIdx} className="flex gap-4 pr-4">
-              {MARQUEE_SET.map((brand, i) => (
-                <motion.div key={`${brand}-${i}`} whileHover={{ scale: 1.06, borderColor: t.accentBadgeBorder }} className="shrink-0 px-6 py-2.5 rounded-xl cursor-pointer transition-colors duration-200 text-sm font-semibold" style={{ background: t.brandBg, border: `1px solid ${t.brandBorder}`, color: t.brandText }}>{brand}</motion.div>
-              ))}
-            </div>
-          ))}
-        </motion.div>
+    <div className="border-t overflow-hidden" style={{ borderTopColor: t.borderLight, background: t.bgSecondary }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] mb-5" style={{ color: t.textMuted }}>Trusted by leading brands</p>
+        <div className="relative overflow-hidden" style={{ maskImage: "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)" }}>
+          <motion.div
+            className="flex gap-10 whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          >
+            {MARQUEE_SET.map((brand, i) => (
+              <span
+                key={`${brand}-${i}`}
+                className="text-sm font-bold tracking-wide shrink-0 opacity-50 hover:opacity-100 transition-opacity duration-300 cursor-default select-none"
+                style={{ color: t.textSecondary }}
+              >
+                {brand}
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );
 }
 
+/* ─── المكون الرئيسي لصفحة الـ Hero ────────────────────────────────── */
 export default function HeroSection() {
   const router = useRouter();
   const ref = useRef<HTMLElement>(null);
   
+  // حالة التحكم بالـ Depth of Field
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -381,11 +479,13 @@ export default function HeroSection() {
   const laptopRotateY = useTransform(springX, [-500, 500], [-6, 6]);
 
   const { theme, t } = useTheme();
-  const currentSpecCards = theme === "light" ? SPEC_CARDS_LIGHT : SPEC_CARDS_DARK;
+  
+  const currentSpecCards = useMemo(() => {
+    return theme === "light" ? SPEC_CARDS_LIGHT : SPEC_CARDS_DARK;
+  }, [theme]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (typeof window !== "undefined" && window.innerWidth < 768) return;
-
     const r = ref.current?.getBoundingClientRect();
     if (!r) return;
     mouseX.set(e.clientX - r.left - r.width / 2);
@@ -400,8 +500,19 @@ export default function HeroSection() {
       style={{ backgroundColor: t.bg }}
       className="bf relative flex flex-col overflow-hidden"
     >
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-40" style={{ background: `radial-gradient(circle at center, transparent 30%, ${theme === 'dark' ? '#000000e6' : '#00000040'} 110%)`, mixBlendMode: theme === 'dark' ? 'normal' : 'multiply' }} />
+      {/* خلفية تشتيتية عامة (Vignette) تزداد كثافة وتعتيم لتنقل المشاهد إلى تجربة بصرية مغلقة */}
+      <div 
+        aria-hidden="true" 
+        className="absolute inset-0 pointer-events-none z-40 transition-all duration-700" 
+        style={{ 
+          background: hoveredCardId !== null
+            ? `radial-gradient(circle at center, transparent 20%, ${theme === 'dark' ? '#000000FA' : '#00000060'} 120%)`
+            : `radial-gradient(circle at center, transparent 30%, ${theme === 'dark' ? '#000000e6' : '#00000040'} 110%)`,
+          mixBlendMode: theme === 'dark' ? 'normal' : 'multiply' 
+        }} 
+      />
 
+      {/* الهالة التوهجية الكبيرة في الخلفية */}
       <motion.div
         aria-hidden="true"
         className="absolute top-1/2 left-1/2 rounded-full pointer-events-none z-10 -translate-x-1/2 -translate-y-1/2"
@@ -411,17 +522,18 @@ export default function HeroSection() {
           background: `radial-gradient(circle closest-side, ${t.glowCyan}15 0%, transparent 100%)`,
           mixBlendMode: theme === 'dark' ? "screen" : "multiply",
         }}
-        animate={{ opacity: [0.6, 1, 0.6] }}
+        animate={{ opacity: hoveredCardId !== null ? [0.3, 0.4, 0.3] : [0.6, 1, 0.6] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
+      {/* عناصر المحاكاة في الخلفية والجسيمات الطائرة (التي يتم تضبيبها أيضاً أثناء التركيز) */}
       <div aria-hidden="true" className="absolute inset-0 w-full h-full">
-        <GridBg parallaxX={bgX} parallaxY={bgY} />
-        <div className="hidden md:block absolute inset-0 w-full h-full">
+        <GridBg parallaxX={bgX} parallaxY={bgY} isBlurred={hoveredCardId !== null} />
+        <div 
+          className="absolute inset-0 w-full h-full transition-all duration-700"
+          style={{ filter: hoveredCardId !== null ? "blur(4px)" : "blur(0px)", opacity: hoveredCardId !== null ? 0.3 : 1 }}
+        >
           <Particles count={30} />
-        </div>
-        <div className="md:hidden absolute inset-0 w-full h-full">
-          <Particles count={10} />
         </div>
       </div>
 
@@ -429,12 +541,18 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        // السر هنا: إجبار الهاتف على إظهار المحتوى كاملاً فوراً
         className="relative w-full flex flex-col z-20 pt-20 sm:pt-24 lg:pt-28 max-md:!opacity-100 max-md:!transform-none"
       >
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,55%)] max-w-7xl mx-auto w-full px-4 sm:px-6 pb-16 sm:pb-20 gap-6 sm:gap-8 lg:gap-0 items-center">
           
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left z-20">
+          {/* الكتلة النصية لليسار - تقل شفافيتها بنسبة خفيفة جداً للتركيز على محتوى اللابتوب والبطاقات */}
+          <div 
+            className="flex flex-col items-center lg:items-start text-center lg:text-left z-20 transition-all duration-700"
+            style={{
+              filter: hoveredCardId !== null ? "blur(1.5px)" : "blur(0px)",
+              opacity: hoveredCardId !== null ? 0.45 : 1
+            }}
+          >
             <motion.a href="/pc/gpu" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }} whileHover={{ scale: 1.04, backgroundColor: t.accentTextHover }} whileTap={{ scale: 0.97 }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-semibold cursor-pointer transition-colors max-md:!opacity-100 max-md:!transform-none" style={{ background: t.accentBadge, border: `1px solid ${t.accentBadgeBorder}`, color: t.accentText }}>
               <motion.span aria-hidden="true" animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }} transition={{ duration: 2, repeat: Infinity }} className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: t.accentText }} />
               New Arrivals — RTX 5090 Series
@@ -446,7 +564,6 @@ export default function HeroSection() {
                 initial={{ opacity: 0.3, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                // السر الثاني: إجبار النص الرئيسي على الظهور بدون أي حركة أو شفافية في الهاتف
                 className="hf text-[clamp(2.8rem,7vw,5.5rem)] font-extrabold leading-[0.95] tracking-tighter max-md:!opacity-100 max-md:!scale-100 max-md:!translate-y-0 max-md:!transform-none"
                 style={{ color: t.text }}
               >
@@ -504,21 +621,35 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
+          {/* مساحة العرض التفاعلية ثلاثية الأبعاد اليمين - بؤرة التركيز */}
           <div className="relative flex items-center justify-center w-full overflow-visible z-10">
             <div className="hidden md:block">
               {currentSpecCards.map((card) => (
                 <SpecCard
                   key={card.id}
+                  id={card.id}
                   label={card.label}
                   value={card.value}
                   color={card.color}
                   delay={card.delay}
                   style={card.position}
                   align={card.align}
+                  isAnyHovered={hoveredCardId !== null}
+                  isSelfHovered={hoveredCardId === card.id}
+                  onHoverStart={() => setHoveredCardId(card.id)}
+                  onHoverEnd={() => setHoveredCardId(null)}
                 />
               ))}
             </div>
-            <LaptopImage parallaxX={laptopX} parallaxY={laptopY} rotateX={laptopRotateX} rotateY={laptopRotateY} />
+            
+            {/* اللابتوب يستقبل إشارة التضبيب البصري */}
+            <LaptopImage 
+              parallaxX={laptopX} 
+              parallaxY={laptopY} 
+              rotateX={laptopRotateX} 
+              rotateY={laptopRotateY} 
+              isBlurred={hoveredCardId !== null}
+            />
           </div>
         </div>
 

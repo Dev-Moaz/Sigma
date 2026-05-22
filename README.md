@@ -217,6 +217,7 @@ Originally built as a frontend showcase, the platform has been fully upgraded to
   - **`auth.ts`:** Manages user authentication (Login, Signup, Signout) and profile creation, integrating directly with Supabase Auth and the `profiles` table.
   - **`products.ts`:** Handles live product updates and metadata synchronization.
   - **`orders.ts`:** Processes checkout transactions, creates order records, maps order items, and updates inventory stock levels atomically.
+  - **`admin.ts`:** Full admin CRUD pipeline — `checkAdminRoleAction`, `fetchAdminOrdersAction`, `updateOrderStatusAction`, `fetchAdminInventoryAction`, `updateProductStockAction`, `addNewProductAction`, `updateProductAction`, and `deleteProductAction`. All actions are guarded by a role check requiring `role = 'admin'` in the `profiles` table.
 
 ### 27. `app/(main)/checkout/page.tsx` (Cinematic Checkout - COMPLETED)
 - **Role:** A premium, secure interface for completing Cash on Delivery (COD) orders with real-time feedback.
@@ -230,7 +231,13 @@ Originally built as a frontend showcase, the platform has been fully upgraded to
 - **Role:** A premium, secure command center dashboard for site administrators to manage live inventory and process customer orders.
 - **Key Features:**
   - **Role-Based Protection:** Strictly guarded at the layout/server-action level, requiring users to have `role = 'admin'` in their `profiles` table to access or modify data.
-  - **Live Inventory Manager (CRUD):** Fully functional dashboard to insert, update, or soft-delete product catalog items and hardware components in real-time. Supports robust client-side validation of specs JSON formats before execution.
+  - **Full CRUD Lifecycle:** Each product row in the inventory table features **Edit Details** and **Delete** action buttons. Editing opens the unified product modal pre-populated with all existing data (including parsed JSON specs). Deleting triggers a confirmation dialog and permanently removes the product from the database with instant UI synchronization.
+  - **Visual Spec Builders:** Instead of raw JSON textareas, administrators interact with interactive, schema-aware Key-Value editors:
+    - **Laptop Display Specs:** Visual badge builder with `label`, `value`, and `color` selectors mapped to the `ProductSpec` schema.
+    - **Laptop Technical Metadata:** Dynamic form with typed inputs (numbers, text, arrays) mapped to `METADATA_FIELDS_INFO` from `laptop-schema.ts`.
+    - **Hardware Specifications:** Category-aware builder (CPU, GPU, RAM, etc.) that auto-populates default fields from `HARDWARE_SCHEMAS` matching `hardware-schema.ts`, with support for custom key-value injection.
+    - **Dual-Mode Toggle:** Each spec section supports switching between Visual Builder and Raw JSON modes. Invalid JSON in raw mode safely locks the visual tab with error feedback.
+  - **Unified Add/Edit Modal:** A single adaptive modal serves both creation and editing. During edit, the Product Type switch is locked to prevent schema mismatches, and header/button text adapts contextually.
   - **Order Pipeline Manager:** A real-time interface for administrators to view customer orders, inspect item details, and transition order statuses (Pending ➔ Processing ➔ Shipped ➔ Completed) with direct DB updates.
   - **Analytics Panel:** Displays dynamic counters for Total Revenue, Total Orders, Average Order Value, and active accounts.
 
