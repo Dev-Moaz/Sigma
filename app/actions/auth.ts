@@ -79,7 +79,7 @@ export async function signUpAction(email: string, password: string, fullName: st
     if (data.user) {
       const { error: profileError } = await supabase
         .from("profiles")
-        .upsert({
+        .insert({
           id: data.user.id,
           full_name: fullName,
           email: email,
