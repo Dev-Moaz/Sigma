@@ -139,7 +139,6 @@ const VisualDataLanes = ({ color }: { color: string }) => (
    4. DATA PARSERS & UI LOGIC
    ========================================================================================= */
 
-// دالة لمعالجة البيانات المعقدة (Objects / Arrays) بشكل آمن
 const formatSpecValue = (val: any): string => {
   if (typeof val === 'boolean') return val ? "Yes" : "No";
   if (Array.isArray(val)) return val.join(" | ");
@@ -151,11 +150,10 @@ const formatSpecValue = (val: any): string => {
   return String(val);
 };
 
-// دالة لبناء فصول العرض بناءً على نوع القطعة
 function buildChapters(product: HardwareProduct, color: string) {
   const chapters = [];
   const cat = product.category;
-  const s = product.specs as any;
+  const s = (product.specs || {}) as any;
 
   if (cat === "GPU") {
     const vramStat = s.vram ? String(s.vram).replace(/[^0-9]/g, '') : "16";
@@ -184,7 +182,6 @@ function buildChapters(product: HardwareProduct, color: string) {
     chapters.push({ title: "Bandwidth", headline: "Blink and you miss it.", desc: "PCIe bandwidth unleashes the true potential of your system, eliminating loading screens.", stat: readSpeed, suffix: " MB/s", statLabel: "Read Speed", icon: faBolt, visual: <VisualDataLanes color={color} /> });
   
   } else {
-    // Default fallback (Motherboard, Case, Monitor)
     chapters.push({ title: "Performance", headline: "Uncompromised Quality.", desc: "Engineered to push the boundaries of what's possible in modern computing.", stat: "99", suffix: "%", statLabel: "Efficiency", icon: faTachometerAlt, visual: <VisualDataLanes color={color} /> });
     chapters.push({ title: "Design", headline: "Industrial Art.", desc: "Premium materials and meticulous craftsmanship define every inch of this component.", stat: "100", suffix: "%", statLabel: "Premium Build", icon: faBoxOpen, visual: <VisualRayTracing color={color} /> });
   }
@@ -232,7 +229,7 @@ const LiquidButton = ({ children, onClick, active, color }: any) => {
    ========================================================================================= */
 
 export default function HardwareProductDetailPage({ product }: { product: HardwareProduct }) {
-  const { t } = useTheme();
+  const { t, isDark } = useTheme();
   const { addToCart } = useCart();
   const { wishIds, toggleWish } = useWishlist();
   
@@ -252,7 +249,7 @@ export default function HardwareProductDetailPage({ product }: { product: Hardwa
     return t.accentText || '#00e5ff';
   }, [product, t]);
 
-  const visualSpecs = useMemo(() => Object.entries(product.specs as Record<string, any>).map(([k, v]) => ({
+  const visualSpecs = useMemo(() => Object.entries((product.specs || {}) as Record<string, any>).map(([k, v]) => ({
     label: k.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase()),
     value: formatSpecValue(v)
   })), [product]);
