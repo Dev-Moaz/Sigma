@@ -6,7 +6,6 @@ import React, { useRef, useState, useCallback, useEffect } from "react";
 import {
   motion,
   useMotionValue,
-  useInView,
   AnimatePresence,
   useSpring,
 } from "framer-motion";
@@ -33,7 +32,7 @@ import { useTheme, useWishlist, useCompare, useCart } from "@/store/useAppStore"
 // استيراد واجهة الهاردوير
 import type { HardwareProduct } from "@/lib/hardware-schema";
 
-// ─── Props ─────────────────────────────────────────────────────────────────────
+// ─── Props ───
 
 interface HardwareProductCardProps {
   product: HardwareProduct;
@@ -46,7 +45,7 @@ interface HardwareProductCardProps {
   isWished?: boolean;
 }
 
-// ─── Theme-Decoupled Accent Orbs ───────────────────────────────────────────────
+// ─── Theme-Decoupled Accent Orbs ───
 
 const ORBS = {
   cyan:   { color: "#06b6d4", bg: "rgba(6,182,212,0.09)"   },
@@ -57,7 +56,7 @@ const ORBS = {
 type OrbKey = keyof typeof ORBS;
 const ORB_KEYS: OrbKey[] = ["cyan", "purple", "amber", "rose"];
 
-// ─── CSS Keyframes + GPU Classes ───────────────────────────────────────────────
+// ─── CSS Keyframes + GPU Classes ───
 
 const CardKeyframes = () => (
   <style
@@ -117,7 +116,7 @@ const CardKeyframes = () => (
   />
 );
 
-// ─── Helpers ───────────────────────────────────────────────────────────────────
+// ─── Helpers ───
 
 function extractHardwareSpecs(product: HardwareProduct) {
   const colors = ["#06b6d4", "#8b5cf6", "#f59e0b", "#10b981", "#f43f5e"];
@@ -143,7 +142,7 @@ function extractHardwareSpecs(product: HardwareProduct) {
   return specs;
 }
 
-// ─── Reusable Components (GPU Optimized) ───────────────────────────────────────
+// ─── Reusable Components (GPU Optimized) ───
 
 function GrainOverlay({ opacity = 0.035, active }: { opacity?: number; active: boolean }) {
   return (
@@ -236,7 +235,7 @@ function HudBadge({ spec, visible, side, offsetY, delay }: { spec: {label: strin
   );
 }
 
-// ─── Main Hardware ProductCard (React.memo Optimized) ─────────────────────────
+// ─── Main Hardware ProductCard (React.memo Optimized) ───
 
 const HardwareProductCard = React.memo(
   function HardwareProductCardComponent({
@@ -249,7 +248,7 @@ const HardwareProductCard = React.memo(
     onCompare,
     isWished: isWishedProp,
   }: HardwareProductCardProps) {
-    const { theme, t } = useTheme();
+    const { isDark, t } = useTheme();
     const router = useRouter();
     const { wishIds, toggleWish } = useWishlist();
     const { addToCart } = useCart();
@@ -265,7 +264,7 @@ const HardwareProductCard = React.memo(
     const imgX = useMotionValue(0);
     const imgY = useMotionValue(0);
     const imgSX = useSpring(imgX, { stiffness: 80, damping: 25, mass: 0.5 });
-    const imgSY = useSpring(imgY, { stiffness: 80, damping: 25, mass: 0.5 });
+    const imgYz = useSpring(imgY, { stiffness: 80, damping: 25, mass: 0.5 });
     
     const handleMouseLeave = useCallback(() => { setIsHovered(false); imgX.set(0); imgY.set(0); }, [imgX, imgY]);
     
@@ -315,7 +314,7 @@ const HardwareProductCard = React.memo(
       }
     };
 
-    // ─── إعدادات شريط المخزون المدمج (Built-in Stock Bar) ───
+    // ─── إعدادات شريط المخزون المدمج ───
     const stockCount = (product as any).stock ?? 15;
     const stockMax = 30; 
     const stockPct = Math.min(100, Math.max(0, (stockCount / stockMax) * 100));
@@ -386,14 +385,13 @@ const HardwareProductCard = React.memo(
                   <rect width="100%" height="100%" fill={`url(#grid-card-${product.id})`} />
                 </svg>
 
-                <GrainOverlay opacity={theme === "dark" ? 0.038 : 0.022} active={isHovered} />
+                <GrainOverlay opacity={isDark ? 0.038 : 0.022} active={isHovered} />
                 <ScanLine active={isHovered} />
                 {isHovered && <Particles count={5} />}
 
-                {/* 🌟 🌟 الحيلة هنا: استخدام inset بالسالب والScale لتكبير الصورة بدون تمدد البطاقة */}
                 <motion.div 
                   className="absolute inset-[-30px] flex items-center justify-center z-10 gpu-accel pointer-events-none" 
-                  style={{ x: imgSX, y: imgSY }}
+                  style={{ x: imgSX, y: imgYz }}
                 >
                   <motion.img
                     src={hardwareImage}
@@ -421,7 +419,7 @@ const HardwareProductCard = React.memo(
                   </div>
                 )}
 
-                {/* Quick Actions (Heart, View, Compare) */}
+                {/* Quick Actions */}
                 <motion.div className="absolute bottom-3 right-3 z-30 flex flex-col gap-2 gpu-accel" initial={{ opacity: 0, x: 20 }} animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
                   <motion.button whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.85 }} onClick={(e) => { 
                     e.stopPropagation(); 
@@ -442,7 +440,7 @@ const HardwareProductCard = React.memo(
                 {/* SpecRings */}
                 <AnimatePresence>
                   {isHovered && ringSpecs.length > 0 && (
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="absolute bottom-0 left-0 right-0 z-25 flex items-end justify-center gap-5 pb-2.5 px-3 gpu-accel" style={{ background: `linear-gradient(to top, ${theme === "dark" ? "rgba(0,0,0,0.72)" : "rgba(240,240,240,0.78)"} 0%, transparent 100%)` }}>
+                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 20 }} transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="absolute bottom-0 left-0 right-0 z-25 flex items-end justify-center gap-5 pb-2.5 px-3 gpu-accel" style={{ background: `linear-gradient(to top, ${isDark ? "rgba(0,0,0,0.72)" : "rgba(240,240,240,0.78)"} 0%, transparent 100%)` }}>
                       {ringSpecs.map((spec, i) => (
                         <SpecRing key={spec.label} spec={spec} pct={RING_PCTS[i] ?? 80} orbKey={ORB_KEYS[i % ORB_KEYS.length]} delay={i * 0.06} visible={isHovered} />
                       ))}
@@ -476,7 +474,7 @@ const HardwareProductCard = React.memo(
                   </div>
                 </div>
 
-                {/* ── شريط المخزون المدمج المخصص (Built-in Premium Stock Bar) ── */}
+                {/* شريط المخزون المدمج المخصص */}
                 <div className="flex flex-col gap-1.5 w-full mt-1">
                   <div className="flex justify-between items-center text-[10px] pc-space font-bold uppercase tracking-wider">
                     <span style={{ color: t.textSecondary }}>Availability</span>
@@ -495,7 +493,7 @@ const HardwareProductCard = React.memo(
 
                 {/* ══════════════ PRICE BLOCK ══════════════ */}
                 <div className="mt-auto flex flex-col gap-3 pt-2">
-                  <div className="flex flex-col rounded-xl p-3 border gpu-accel" style={{ background: theme === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", borderColor: t.borderLight }}>
+                  <div className="flex flex-col rounded-xl p-3 border gpu-accel" style={{ background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", borderColor: t.borderLight }}>
                     <div className="flex justify-between items-start mb-0.5">
                       <span className="pc-space text-[10px] font-bold uppercase tracking-[0.2em] opacity-60" style={{ color: t.text }}>Total Price</span>
                       {discount > 0 && (
@@ -520,7 +518,7 @@ const HardwareProductCard = React.memo(
                       onClick={handleBuyNowClick}
                       className="flex-1 h-11 rounded-xl flex items-center justify-center gap-2 border-0 gpu-accel overflow-hidden relative group"
                       style={{ 
-                        background: theme === "dark" ? "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)" : "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
+                        background: isDark ? "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)" : "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
                         color: "#fff"
                       }}
                     >

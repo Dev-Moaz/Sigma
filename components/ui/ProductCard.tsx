@@ -25,11 +25,12 @@ import {
 import { faHeart as faHeartOutline } from "@fortawesome/free-regular-svg-icons";
 import { useTheme, useWishlist, useCompare, useCart } from "@/store/useAppStore";
 
+import { CinematicReveal as CinematicScrollReveal } from "@/components/ui/CinematicReveal";
 import type { Product, ProductSpec, ColorVariant } from "@/lib/laptop-schema";
 
 export type { Product };
 
-// ─── Props ─────────────────────────────────────────────────────────────────────
+// ─── Props ───
 
 interface ProductCardProps {
   product: Product;
@@ -42,7 +43,7 @@ interface ProductCardProps {
   isWished?: boolean;
 }
 
-// ─── Theme-Decoupled Accent Orbs ───────────────────────────────────────────────
+// ─── Theme-Decoupled Accent Orbs ───
 
 const ORBS = {
   cyan:   { color: "#06b6d4", bg: "rgba(6,182,212,0.09)"   },
@@ -53,7 +54,7 @@ const ORBS = {
 type OrbKey = keyof typeof ORBS;
 const ORB_KEYS: OrbKey[] = ["cyan", "purple", "amber", "rose"];
 
-// ─── CSS Keyframes + Font Loader + GPU Classes (Cleaned) ───────────────────────
+// ─── CSS Keyframes + Font Loader + GPU Classes (Cleaned) ───
 
 const CardKeyframes = () => (
   <style
@@ -94,7 +95,7 @@ const CardKeyframes = () => (
   />
 );
 
-// ─── SpecRing (animated SVG progress ring + value label) ──────────────────────
+// ─── SpecRing (animated SVG progress ring + value label) ───
 
 function SpecRing({
   spec,
@@ -183,11 +184,7 @@ function SpecRing({
   );
 }
 
-// ─── CinematicScrollReveal ─────────────────────────────────────────────────────
-
-import { CinematicReveal as CinematicScrollReveal } from "@/components/ui/CinematicReveal";
-
-// ─── HUD Spec Badge (GPU Transform Scale) ──────────────────────────────────────
+// ─── HUD Spec Badge (GPU Transform Scale) ───
 
 function HudBadge({
   spec,
@@ -294,11 +291,11 @@ function HudBadge({
   );
 }
 
-// ─── Badge Pill ────────────────────────────────────────────────────────────────
+// ─── Badge Pill ───
 
 import { StarRating, BadgePill } from "@/components/ui/ProductUI";
 
-// ─── Main ProductCard Component (React.memo Optimized) ─────────────────────────
+// ─── Main ProductCard Component (React.memo Optimized) ───
 
 const ProductCard = React.memo(
   function ProductCardComponent({
@@ -311,7 +308,7 @@ const ProductCard = React.memo(
     onCompare,
     isWished: isWishedProp,
   }: ProductCardProps) {
-    const { theme, t } = useTheme();
+    const { isDark, t } = useTheme();
     const router = useRouter();
 
     const { wishIds, toggleWish } = useWishlist();
@@ -368,10 +365,11 @@ const ProductCard = React.memo(
     const formattedPrice    = product.price.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
     const formattedOriginal = product.originalPrice?.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 0 });
 
-    // HUD badges logic
-    const leftSpecs  = product.specs.filter((_, i) => i % 2 === 0).slice(0, 2);
-    const rightSpecs = product.specs.filter((_, i) => i % 2 !== 0).slice(0, 2);
-    const ringSpecs = product.specs.slice(0, 3);
+    // تأمين الـ specs بقيم افتراضية مرنة لمنع حدوث انهيارات برمجية
+    const specs = product.specs || [];
+    const leftSpecs  = specs.filter((_, i) => i % 2 === 0).slice(0, 2);
+    const rightSpecs = specs.filter((_, i) => i % 2 !== 0).slice(0, 2);
+    const ringSpecs = specs.slice(0, 3);
     const RING_PCTS = [84, 92, 76, 68, 88];
 
     // Actions
@@ -391,7 +389,7 @@ const ProductCard = React.memo(
       }
     };
 
-    // ─── إعدادات شريط المخزون المدمج (Built-in Stock Bar) ───
+    // إعدادات شريط المخزون المدمج
     const stockCount = product.stock ?? 15;
     const stockMax = 30; 
     const stockPct = Math.min(100, Math.max(0, (stockCount / stockMax) * 100));
@@ -409,7 +407,6 @@ const ProductCard = React.memo(
     }
 
     return (
-      // تم نقل أحداث الماوس والـ z-index إلى العنصر الخارجي بالكامل لمنع أي تداخل مع البطاقات الأخرى في الـ Grid
       <div 
         className="relative h-full flex flex-col"
         style={{ zIndex: isHovered ? 50 : 1 }}
@@ -477,7 +474,6 @@ const ProductCard = React.memo(
                   <rect width="100%" height="100%" fill={`url(#grid-card-${product.id})`} />
                 </svg>
 
-                {/* 🌟 🌟 الحيلة هنا: استخدام inset بالسالب والScale لتكبير الصورة بدون تمدد البطاقة */}
                 <motion.div 
                   className="absolute inset-[-30px] flex items-center justify-center z-10 gpu-accel pointer-events-none" 
                   style={{ x: imgSX, y: imgSY }}
@@ -650,7 +646,7 @@ const ProductCard = React.memo(
                       className="absolute bottom-0 left-0 right-0 z-25 flex items-end justify-center gap-5 pb-2.5 px-3 gpu-accel"
                       style={{
                         background: `linear-gradient(to top, ${
-                          theme === "dark"
+                          isDark
                             ? "rgba(0,0,0,0.72)"
                             : "rgba(240,240,240,0.78)"
                         } 0%, transparent 100%)`,
@@ -798,7 +794,7 @@ const ProductCard = React.memo(
                   </div>
                 )}
 
-                {/* ── شريط المخزون المدمج المخصص (Built-in Premium Stock Bar) ── */}
+                {/* شريط المخزون المدمج المخصص */}
                 <div className="flex flex-col gap-1.5 w-full mt-1">
                   <div className="flex justify-between items-center text-[10px] pc-space font-bold uppercase tracking-wider">
                     <span style={{ color: t.textSecondary }}>Availability</span>
@@ -819,7 +815,7 @@ const ProductCard = React.memo(
 
                 {/* ══════════════ PRICE BLOCK ══════════════ */}
                 <div className="mt-auto flex flex-col gap-3 pt-2">
-                  <div className="flex flex-col rounded-xl p-3 border gpu-accel" style={{ background: theme === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", borderColor: t.borderLight }}>
+                  <div className="flex flex-col rounded-xl p-3 border gpu-accel" style={{ background: isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.02)", borderColor: t.borderLight }}>
                     <div className="flex justify-between items-start mb-0.5">
                       <span className="pc-space text-[10px] font-bold uppercase tracking-[0.2em] opacity-60" style={{ color: t.text }}>Total Price</span>
                       {discount > 0 && (
@@ -844,7 +840,7 @@ const ProductCard = React.memo(
                       onClick={handleBuyNowClick}
                       className="flex-1 h-11 rounded-xl flex items-center justify-center gap-2 border-0 gpu-accel overflow-hidden relative group"
                       style={{ 
-                        background: theme === "dark" ? "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)" : "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
+                        background: isDark ? "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)" : "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
                         color: "#fff"
                       }}
                     >

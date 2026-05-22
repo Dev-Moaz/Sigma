@@ -23,12 +23,16 @@ import {
   faArrowRight,
   faSun,
   faMoon,
+  faSpinner
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme, useCart, useWishlist } from "@/store/useAppStore";
 import { Logo } from "@/components/ui/Logo";
 import { AccentLine } from "@/components/ui/AccentLine";
-import LAPTOPS from "@/data/laptops.json";
-import HARDWARE from "@/data/hardware.json";
+
+// استدعاء الأكشنز لقراءة البيانات حياً من السيرفر
+import { fetchLaptopsAction, fetchHardwareAction } from "@/app/actions/products";
+import LAPTOPS_FALLBACK from "@/data/laptops.json";
+import HARDWARE_FALLBACK from "@/data/hardware.json";
 
 /* ─── Constants ─────────────────────────────────────────────────── */
 const CART_PULSE_DELAY_MS = 1800;
@@ -147,12 +151,41 @@ function NavDropdown({ items }: { items: NavSubItem[] }) {
 
 /* ─── Cinematic Search Showcase (No Blur) ──────────────────────────────────── */
 function SearchOverlay({ onClose }: { onClose: () => void }) {
-  const { isDark } = useTheme();
+  const { isDark, t } = useTheme();
   const router = useRouter();
   const [query, setQuery] = useState<string>("");
   const [results, setResults] = useState<any[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // حوامل بيانات البحث الحية (Live Databases)
+  const [liveLaptops, setLiveLaptops] = useState<any[]>([]);
+  const [liveHardware, setLiveHardware] = useState<any[]>([]);
+  const [fetching, setFetching] = useState(false);
+
+  // جلب البيانات الحية بمجرد تشغيل نافذة البحث
+  useEffect(() => {
+    async function loadSearchDatabase() {
+      setFetching(true);
+      try {
+        const [laptops, hardware] = await Promise.all([
+          fetchLaptopsAction(),
+          fetchHardwareAction()
+        ]);
+        setLiveLaptops(laptops);
+        setLiveHardware(hardware);
+      } catch (err) {
+        console.error("Search failed live DB, falling back to local files:", err);
+        // Fallback الآمن لملفات الـ JSON المحلية في حال حدوث أي خطأ في الاتصال
+        setLiveLaptops(LAPTOPS_FALLBACK);
+        setLiveHardware(HARDWARE_FALLBACK);
+      } finally {
+        setFetching(false);
+      }
+    }
+    loadSearchDatabase();
+  }, []);
+
+  // إجراء تصفية وبحث حي متجاوب ومباشر
   useEffect(() => {
     if (query.trim().length < 2) {
       setResults([]);
@@ -161,7 +194,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
 
     const terms = query.toLowerCase().split(' ').filter(Boolean);
     
-    const resLaptops = (LAPTOPS as any[]).filter(l => 
+    const resLaptops = liveLaptops.filter(l => 
       terms.every(term => 
         l.name?.toLowerCase().includes(term) || 
         l.brand?.toLowerCase().includes(term) ||
@@ -170,7 +203,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
       )
     ).map(l => ({ ...l, type: 'laptop' }));
 
-    const resHardware = (HARDWARE as any[]).filter(h => 
+    const resHardware = liveHardware.filter(h => 
       terms.every(term =>
         h.name?.toLowerCase().includes(term) || 
         h.brand?.toLowerCase().includes(term) ||
@@ -180,7 +213,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
     ).map(h => ({ ...h, type: 'hardware' }));
 
     setResults([...resLaptops, ...resHardware].slice(0, 6));
-  }, [query]);
+  }, [query, liveLaptops, liveHardware]);
 
   useEffect(() => {
     const timer = setTimeout(() => inputRef.current?.focus(), 150);
@@ -204,7 +237,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
         role="button"
         tabIndex={0}
         aria-label="Close search"
-        className="absolute top-0 left-0 w-screen h-dvh z-10 cursor-default"
+        className="absolute top-0 left-0 w-screen h-dvh z-[999] cursor-default"
         style={{
           background: isDark ? "rgba(2, 6, 15, 0.85)" : "rgba(245, 245, 245, 0.85)", 
         }}
@@ -216,7 +249,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -20, scale: 0.98 }}
         transition={{ duration: 0.4, ease: CINEMATIC_EASE }}
-        className="absolute top-full left-0 right-0 z-20 mx-auto w-full max-w-5xl px-3 sm:px-4 lg:px-6"
+        className="absolute top-full left-0 right-0 z-[1000] mx-auto w-full max-w-5xl px-3 sm:px-4 lg:px-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div 
@@ -249,14 +282,14 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
               />
               
               <AnimatePresence>
-                {query && (
+                {(query || fetching) && (
                   <motion.button
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => setQuery("")}
+                    onClick={() => { if (!fetching) setQuery(""); }}
                     aria-label="Clear search"
                     className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-colors"
                     style={{
@@ -264,7 +297,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                       color: isDark ? "#fff" : "#000"
                     }}
                   >
-                    <FontAwesomeIcon icon={faXmark} className="text-lg" />
+                    <FontAwesomeIcon icon={fetching ? faSpinner : faXmark} className={fetching ? "animate-spin text-sm" : "text-lg"} />
                   </motion.button>
                 )}
               </AnimatePresence>
@@ -331,8 +364,8 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                                 {item.brand}
                               </span>
                             </div>
-                            <h4 className="font-bold text-sm truncate">{item.name}</h4>
-                            <p className="text-[11px] opacity-40 truncate">{item.tagline || item.description}</p>
+                            <h4 className="font-bold text-sm truncate" style={{ color: t.text }}>{item.name}</h4>
+                            <p className="text-[11px] opacity-40 truncate" style={{ color: t.textSecondary }}>{item.tagline || item.description}</p>
                           </div>
                           <div className="text-right shrink-0 pr-2">
                             <div className="font-bold text-sm text-cyan-500">${item.price}</div>
@@ -346,6 +379,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           className="py-12 text-center opacity-30 italic text-sm"
+                          style={{ color: t.textSecondary }}
                         >
                           No matches for "{query}"
                         </motion.div>
@@ -364,7 +398,7 @@ function SearchOverlay({ onClose }: { onClose: () => void }) {
                                 border: isDark ? "1px solid rgba(255,255,255,0.03)" : "1px solid rgba(0,0,0,0.02)"
                               }}
                             >
-                              <span className="text-xs opacity-60 group-hover:opacity-100 group-hover:text-cyan-500 transition-all">{term}</span>
+                              <span className="text-xs opacity-60 group-hover:opacity-100 group-hover:text-cyan-500 transition-all" style={{ color: t.text }}>{term}</span>
                               <FontAwesomeIcon icon={faMagnifyingGlass} className="text-[9px] opacity-20" />
                             </motion.button>
                           ))}
@@ -637,7 +671,7 @@ export default function Header() {
   return (
     <>
       <div 
-        className="fixed top-0 left-0 right-0 z-40"
+        className="fixed top-0 left-0 right-0 z-[99]"
         style={{
           transform: hidden ? "translateY(-100%)" : "translateY(0)",
           transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
