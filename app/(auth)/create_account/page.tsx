@@ -17,7 +17,7 @@ import { faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signUpAction } from "@/app/actions/auth";
+import { supabase } from "@/lib/supabase";
 
 type RegisterStep = "idle" | "loading" | "success";
 
@@ -247,18 +247,50 @@ export default function RegisterPage() {
 
     setRegisterStep("loading");
     
-    // تسجيل الحساب حياً عبر السيرفر أكشن
-    const result = await signUpAction(emailValue, passwordValue, nameValue);
-    
-    if (result.success) {
+    try {
+      // 1. تسجيل الحساب مباشرة من المتصفح (Client-side)
+      const { data, error } = await supabase.auth.signUp({
+        email: emailValue,
+        password: passwordValue,
+        options: {
+          data: {
+            full_name: nameValue,
+            volt_points: 100,
+          },
+        },
+      });
+
+      if (error) {
+        setRegisterStep("idle");
+        setErrorMessage(error.message);
+        return;
+      }
+
+      // 2. إدراج الملف الشخصي في جدول profiles
+      if (data.user) {
+        const { error: profileError } = await supabase
+          .from("profiles")
+          .insert({
+            id: data.user.id,
+            full_name: nameValue,
+            email: emailValue,
+            volt_points: 100,
+          });
+
+        if (profileError) {
+          console.error("Profile insert error:", profileError.message);
+          // لا نوقف العملية — الحساب تم إنشاؤه بنجاح
+        }
+      }
+
       setRegisterStep("success");
       // التوجيه لصفحة الدخول بعد التسجيل بنجاح
       setTimeout(() => {
         router.push("/login");
       }, 1500);
-    } else {
+    } catch (err: any) {
       setRegisterStep("idle");
-      setErrorMessage(result.error || "Failed to create account.");
+      setErrorMessage(err.message || "Failed to create account.");
     }
   };
 
