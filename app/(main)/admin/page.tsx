@@ -31,7 +31,9 @@ import {
   updateOrderStatusAction,
   fetchAdminInventoryAction,
   updateProductStockAction,
-  addNewProductAction
+  addNewProductAction,
+  updateProductAction,
+  deleteProductAction
 } from "@/app/actions/admin";
 
 // Cinematic Reveal Wrapper
@@ -190,6 +192,9 @@ export default function AdminDashboard() {
   // Builder mode states
   const [specsEditorMode, setSpecsEditorMode] = useState<"visual" | "json">("visual");
   const [metadataEditorMode, setMetadataEditorMode] = useState<"visual" | "json">("visual");
+
+  // Track product editing state
+  const [editingProductId, setEditingProductId] = useState<string | null>(null);
 
   // Validate JSON blocks in real-time
   useEffect(() => {
@@ -428,6 +433,58 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleDeleteProduct = async (id: string, type: "laptop" | "hardware") => {
+    if (!confirm("Are you sure you want to permanently delete this product? This action cannot be undone.")) return;
+    try {
+      const res = await deleteProductAction(id, type);
+      if (res.success) {
+        alert("Product deleted successfully!");
+        if (type === "laptop") {
+          setLaptops(prev => prev.filter(p => p.id !== id));
+        } else {
+          setHardware(prev => prev.filter(p => p.id !== id));
+        }
+      } else {
+        alert(res.error || "Failed to delete product.");
+      }
+    } catch (err) {
+      alert("Failed to delete product due to network error.");
+    }
+  };
+
+  const handleStartEditProduct = (item: any, type: "laptop" | "hardware") => {
+    setAddType(type);
+    setEditingProductId(item.id);
+    
+    // Normalize fields
+    const imagesStr = Array.isArray(item.images) ? item.images.join(", ") : (item.images || "");
+    const specsStr = typeof item.specs === "object" ? JSON.stringify(item.specs, null, 2) : (item.specs || "");
+    const metadataStr = typeof item.technical_metadata === "object" ? JSON.stringify(item.technical_metadata, null, 2) : (item.technical_metadata || "");
+    const colorsStr = typeof item.color_variants === "object" ? JSON.stringify(item.color_variants, null, 2) : (item.color_variants || "[]");
+    
+    setFormData({
+      name: item.name || "",
+      brand: item.brand || "",
+      tagline: item.tagline || "",
+      price: item.price || 0,
+      original_price: item.original_price || 0,
+      discount_price: item.discount_price || 0,
+      category: item.category || "",
+      sub_category: item.sub_category || "",
+      stock: item.stock || 0,
+      images: imagesStr,
+      description: item.description || "",
+      badge: item.badge || "none",
+      is_deal: !!item.is_deal,
+      is_new: !!item.is_new,
+      specs: specsStr,
+      technical_metadata: metadataStr,
+      color_variants: colorsStr
+    });
+    
+    setIsAddModalOpen(true);
+  };
+
   const handleAddProductSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormJsonValid) {
@@ -461,17 +518,35 @@ export default function AdminDashboard() {
         payload.is_new = formData.is_new;
       }
 
-      const res = await addNewProductAction(addType, payload);
-      if (res.success && res.data) {
-        alert("Product added successfully!");
-        if (addType === "laptop") {
-          setLaptops(prev => [res.data, ...prev]);
+      if (editingProductId) {
+        // Update Flow
+        const res = await updateProductAction(editingProductId, addType, payload);
+        if (res.success && res.data) {
+          alert("Product updated successfully!");
+          if (addType === "laptop") {
+            setLaptops(prev => prev.map(p => p.id === editingProductId ? res.data : p));
+          } else {
+            setHardware(prev => prev.map(p => p.id === editingProductId ? res.data : p));
+          }
+          setIsAddModalOpen(false);
+          setEditingProductId(null);
         } else {
-          setHardware(prev => [res.data, ...prev]);
+          alert(res.error || "Failed to update product.");
         }
-        setIsAddModalOpen(false);
       } else {
-        alert(res.error || "Failed to add product.");
+        // Add Flow
+        const res = await addNewProductAction(addType, payload);
+        if (res.success && res.data) {
+          alert("Product added successfully!");
+          if (addType === "laptop") {
+            setLaptops(prev => [res.data, ...prev]);
+          } else {
+            setHardware(prev => [res.data, ...prev]);
+          }
+          setIsAddModalOpen(false);
+        } else {
+          alert(res.error || "Failed to add product.");
+        }
       }
     } catch (err) {
       alert("Submission error.");
@@ -847,7 +922,63 @@ export default function AdminDashboard() {
                 </div>
 
                 <button
-                  onClick={() => setIsAddModalOpen(true)}
+                  onClick={() => {
+                    setEditingProductId(null);
+                    setFormData(inventoryType === "laptop" ? {
+                      name: "",
+                      brand: "",
+                      tagline: "Experience peak gaming performance.",
+                      price: 1500,
+                      original_price: 1800,
+                      discount_price: 0,
+                      category: "Gaming",
+                      sub_category: "rtx-40-series",
+                      stock: 10,
+                      images: "",
+                      description: "",
+                      badge: "none",
+                      is_deal: false,
+                      is_new: false,
+                      specs: JSON.stringify([
+                        { "label": "CPU", "value": "Intel Core i7-13700H", "color": "cyan" },
+                        { "label": "GPU", "value": "NVIDIA RTX 4060", "color": "green" },
+                        { "label": "RAM", "value": "16GB DDR5", "color": "blue" }
+                      ], null, 2),
+                      technical_metadata: JSON.stringify({
+                        "cpu_brand": "intel",
+                        "gpu_brand": "nvidia",
+                        "ram_gb": 16,
+                        "storage_gb": 512
+                      }, null, 2),
+                      color_variants: JSON.stringify([
+                        { "name": "Midnight Black", "hex": "#0a0a0a" }
+                      ], null, 2)
+                    } : {
+                      name: "",
+                      brand: "",
+                      tagline: "",
+                      price: 350,
+                      original_price: 0,
+                      discount_price: 300,
+                      category: "CPU",
+                      sub_category: "",
+                      stock: 15,
+                      images: "",
+                      description: "",
+                      badge: "none",
+                      is_deal: false,
+                      is_new: true,
+                      specs: JSON.stringify({
+                        "socket": "AM5",
+                        "cores": "8 Cores",
+                        "threads": "16 Threads",
+                        "baseClock": "3.8 GHz"
+                      }, null, 2),
+                      technical_metadata: "",
+                      color_variants: "[]"
+                    });
+                    setIsAddModalOpen(true);
+                  }}
                   className="px-5 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 self-start sm:self-auto shadow-lg"
                   style={{ background: t.accentText, color: "#fff", boxShadow: `0 4px 20px ${t.accentText}40` }}
                 >
@@ -879,7 +1010,8 @@ export default function AdminDashboard() {
                         <th className="py-4 px-6">Brand</th>
                         <th className="py-4 px-6">Price</th>
                         <th className="py-4 px-6">Stock Status</th>
-                        <th className="py-4 px-6 text-right">Fulfillment Stock</th>
+                        <th className="py-4 px-6 text-center">Fulfillment Stock</th>
+                        <th className="py-4 px-6 text-right">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y text-xs font-medium" style={{ borderColor: t.borderLight }}>
@@ -909,9 +1041,9 @@ export default function AdminDashboard() {
                                   {isOut ? "Out of Stock" : isLow ? "Low Stock" : "In Stock"}
                                 </span>
                               </td>
-                              <td className="py-4 px-6 text-right">
+                              <td className="py-4 px-6 text-center">
                                 {editingStockId === item.id ? (
-                                  <div className="flex items-center justify-end gap-2">
+                                  <div className="flex items-center justify-center gap-2">
                                     <input 
                                       type="number"
                                       value={tempStockValue}
@@ -939,12 +1071,28 @@ export default function AdminDashboard() {
                                       setEditingStockId(item.id);
                                       setTempStockValue(item.stock);
                                     }}
-                                    className="px-3 py-1.5 rounded-lg border font-bold flex items-center justify-center gap-1.5 transition-all text-[10px] ml-auto hover:bg-white/5"
+                                    className="px-3 py-1.5 rounded-lg border font-bold flex items-center justify-center gap-1.5 transition-all text-[10px] mx-auto hover:bg-white/5"
                                     style={{ borderColor: t.borderLight, color: t.textSecondary }}
                                   >
                                     <FontAwesomeIcon icon={faEdit} className="text-[10px]" /> {item.stock} Units
                                   </button>
                                 )}
+                              </td>
+                              <td className="py-4 px-6 text-right">
+                                <div className="flex justify-end gap-2">
+                                  <button
+                                    onClick={() => handleStartEditProduct(item, inventoryType)}
+                                    className="px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-400 font-bold text-[10px] uppercase tracking-wider transition-all flex items-center gap-1 active:scale-95"
+                                  >
+                                    <FontAwesomeIcon icon={faEdit} /> Edit Details
+                                  </button>
+                                  <button
+                                    onClick={() => handleDeleteProduct(item.id, inventoryType)}
+                                    className="px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/25 text-red-400 font-bold text-[10px] uppercase tracking-wider transition-all flex items-center gap-1 active:scale-95"
+                                  >
+                                    <FontAwesomeIcon icon={faTimes} /> Delete
+                                  </button>
+                                </div>
                               </td>
                             </tr>
                           );
@@ -1077,10 +1225,10 @@ export default function AdminDashboard() {
               <div className="flex justify-between items-center pb-4 border-b" style={{ borderColor: t.borderLight }}>
                 <div>
                   <h3 className="hf text-xl font-black uppercase tracking-wider" style={{ color: t.text }}>
-                    Catalog New Hardware
+                    {editingProductId ? "Update Product Specifications" : "Catalog New Product"}
                   </h3>
                   <p className="text-[11px] font-semibold mt-1" style={{ color: t.textSecondary }}>
-                    Insert structural metadata directly into live cloud matrices.
+                    {editingProductId ? "Update structural metadata inside live cloud matrices." : "Insert structural metadata directly into live cloud matrices."}
                   </p>
                 </div>
                 <button 
@@ -1098,13 +1246,14 @@ export default function AdminDashboard() {
                 {/* Product Type Segmented Switch */}
                 <div className="flex flex-col gap-2">
                   <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                    Product Type
+                    Product Type {editingProductId && <span className="text-[9px] lowercase font-normal opacity-60">(Locked during edit)</span>}
                   </label>
                   <div className="grid grid-cols-2 gap-2 p-1.5 rounded-xl border" style={{ backgroundColor: isDark ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.05)", borderColor: t.borderLight }}>
                     <button 
                       type="button"
+                      disabled={!!editingProductId}
                       onClick={() => setAddType("laptop")}
-                      className="py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300"
+                      className={`py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300 ${editingProductId ? "opacity-60 cursor-not-allowed" : ""}`}
                       style={{
                         background: addType === "laptop" ? t.accentText : "transparent",
                         color: addType === "laptop" ? "#fff" : (isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 0, 0, 0.4)"),
@@ -1115,8 +1264,9 @@ export default function AdminDashboard() {
                     </button>
                     <button 
                       type="button"
+                      disabled={!!editingProductId}
                       onClick={() => setAddType("hardware")}
-                      className="py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300"
+                      className={`py-2.5 rounded-lg text-xs font-black uppercase tracking-widest transition-all duration-300 ${editingProductId ? "opacity-60 cursor-not-allowed" : ""}`}
                       style={{
                         background: addType === "hardware" ? t.accentText : "transparent",
                         color: addType === "hardware" ? "#fff" : (isDark ? "rgba(255, 255, 255, 0.4)" : "rgba(0, 0, 0, 0.4)"),
@@ -1893,10 +2043,10 @@ export default function AdminDashboard() {
                   >
                     {submittingProduct ? (
                       <>
-                        <FontAwesomeIcon icon={faSpinner} className="animate-spin text-xs" /> Saving To Matrix...
+                        <FontAwesomeIcon icon={faSpinner} className="animate-spin text-xs" /> {editingProductId ? "Updating Specifications..." : "Saving To Matrix..."}
                       </>
                     ) : (
-                      "Save & Deploy Product"
+                      editingProductId ? "Update Product Details" : "Save & Deploy Product"
                     )}
                   </button>
                 </div>
