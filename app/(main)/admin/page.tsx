@@ -19,7 +19,8 @@ import {
   faBoxes,
   faUsers,
   faEye,
-  faChevronDown
+  faChevronDown,
+  faPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@/store/useAppStore";
 import Link from "next/link";
@@ -29,7 +30,8 @@ import {
   fetchAdminOrdersAction,
   updateOrderStatusAction,
   fetchAdminInventoryAction,
-  updateProductStockAction
+  updateProductStockAction,
+  addNewProductAction
 } from "@/app/actions/admin";
 
 // Cinematic Reveal Wrapper
@@ -78,6 +80,30 @@ export default function AdminDashboard() {
   const [orderSearchQuery, setOrderSearchQuery] = useState("");
   const [inventorySearchQuery, setInventorySearchQuery] = useState("");
 
+  // Add Product Form States
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [addType, setAddType] = useState<"laptop" | "hardware">("laptop");
+  const [submittingProduct, setSubmittingProduct] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    brand: "",
+    tagline: "",
+    price: 0,
+    original_price: 0,
+    discount_price: 0,
+    category: "",
+    sub_category: "",
+    stock: 10,
+    images: "",
+    description: "",
+    badge: "none",
+    is_deal: false,
+    is_new: false,
+    specs: "",
+    technical_metadata: "",
+    color_variants: "[]"
+  });
+
   // 1. Check permissions on mount
   useEffect(() => {
     async function checkAccess() {
@@ -122,6 +148,67 @@ export default function AdminDashboard() {
     loadAdminData();
   }, [isAdmin]);
 
+  // 3. Auto-populate Form Defaults on Switch Type
+  useEffect(() => {
+    if (addType === "laptop") {
+      setFormData({
+        name: "",
+        brand: "",
+        tagline: "Experience peak gaming performance.",
+        price: 1500,
+        original_price: 1800,
+        discount_price: 0,
+        category: "Gaming",
+        sub_category: "rtx-40-series",
+        stock: 10,
+        images: "",
+        description: "",
+        badge: "none",
+        is_deal: false,
+        is_new: false,
+        specs: JSON.stringify([
+          { "label": "CPU", "value": "Intel Core i7-13700H", "color": "cyan" },
+          { "label": "GPU", "value": "NVIDIA RTX 4060", "color": "green" },
+          { "label": "RAM", "value": "16GB DDR5", "color": "blue" }
+        ], null, 2),
+        technical_metadata: JSON.stringify({
+          "cpu_brand": "intel",
+          "gpu_brand": "nvidia",
+          "ram_gb": 16,
+          "storage_gb": 512
+        }, null, 2),
+        color_variants: JSON.stringify([
+          { "name": "Midnight Black", "hex": "#0a0a0a" }
+        ], null, 2)
+      });
+    } else {
+      setFormData({
+        name: "",
+        brand: "",
+        tagline: "",
+        price: 350,
+        original_price: 0,
+        discount_price: 300,
+        category: "CPU",
+        sub_category: "",
+        stock: 15,
+        images: "",
+        description: "",
+        badge: "none",
+        is_deal: false,
+        is_new: true,
+        specs: JSON.stringify({
+          "socket": "AM5",
+          "cores": "8 Cores",
+          "threads": "16 Threads",
+          "baseClock": "3.8 GHz"
+        }, null, 2),
+        technical_metadata: "",
+        color_variants: "[]"
+      });
+    }
+  }, [addType]);
+
   // Actions
   const handleUpdateOrderStatus = async (orderId: string, nextStatus: string) => {
     setUpdatingOrderStatusId(orderId);
@@ -160,6 +247,54 @@ export default function AdminDashboard() {
       alert("Network error.");
     } finally {
       setSavingStock(false);
+    }
+  };
+
+  const handleAddProductSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmittingProduct(true);
+    try {
+      const payload: any = {
+        name: formData.name,
+        brand: formData.brand,
+        price: Number(formData.price),
+        stock: Number(formData.stock),
+        images: formData.images,
+        description: formData.description,
+        is_deal: formData.is_deal,
+        category: formData.category,
+        specs: formData.specs
+      };
+
+      if (addType === "laptop") {
+        payload.tagline = formData.tagline;
+        payload.original_price = Number(formData.original_price || formData.price);
+        payload.sub_category = formData.sub_category;
+        payload.badge = formData.badge;
+        payload.technical_metadata = formData.technical_metadata;
+        payload.color_variants = formData.color_variants;
+        payload.features = []; // توفير قيمة افتراضية متوافقة مع الـ Array لجدول المنتجات
+      } else {
+        payload.discount_price = Number(formData.discount_price || 0);
+        payload.is_new = formData.is_new;
+      }
+
+      const res = await addNewProductAction(addType, payload);
+      if (res.success && res.data) {
+        alert("Product added successfully!");
+        if (addType === "laptop") {
+          setLaptops(prev => [res.data, ...prev]);
+        } else {
+          setHardware(prev => [res.data, ...prev]);
+        }
+        setIsAddModalOpen(false);
+      } else {
+        alert(res.error || "Failed to add product.");
+      }
+    } catch (err) {
+      alert("Submission error.");
+    } finally {
+      setSubmittingProduct(false);
     }
   };
 
@@ -518,6 +653,14 @@ export default function AdminDashboard() {
                   </button>
                 </div>
 
+                <button
+                  onClick={() => setIsAddModalOpen(true)}
+                  className="px-5 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 self-start sm:self-auto"
+                  style={{ background: t.accentText, color: "#fff" }}
+                >
+                  <FontAwesomeIcon icon={faPlus} /> Add New Product
+                </button>
+
                 <input
                   type="text"
                   placeholder="Search products by name or brand..."
@@ -708,6 +851,282 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ADD NEW PRODUCT MODAL */}
+      <AnimatePresence>
+        {isAddModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 z-50"
+          >
+            <motion.div 
+              initial={{ scale: 0.95, y: 30 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 30 }}
+              className="max-w-3xl w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-xl max-h-[92vh] overflow-y-auto flex flex-col gap-6"
+              style={{ background: t.cardBg, borderColor: t.borderLight }}
+            >
+              {/* Header */}
+              <div className="flex justify-between items-center pb-4 border-b" style={{ borderColor: t.borderLight }}>
+                <div>
+                  <h3 className="hf text-xl font-extrabold" style={{ color: t.text }}>Catalog New Hardware Piece</h3>
+                  <p className="text-[10px] font-bold" style={{ color: t.textSecondary }}>Insert metadata directly into live Supabase tables.</p>
+                </div>
+                <button 
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="w-8 h-8 rounded-full flex items-center justify-center border transition-all hover:bg-white/5"
+                  style={{ borderColor: t.borderLight, color: t.text }}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              </div>
+
+              {/* Form Container */}
+              <form onSubmit={handleAddProductSubmit} className="flex flex-col gap-5 text-xs font-bold">
+                {/* Product Type Selector */}
+                <div className="flex flex-col gap-1.5">
+                  <label style={{ color: t.textSecondary }}>Database Target Table</label>
+                  <div className="grid grid-cols-2 gap-3 p-1 rounded-xl border bg-black/20" style={{ borderColor: t.borderLight }}>
+                    <button 
+                      type="button"
+                      onClick={() => setAddType("laptop")}
+                      className="py-2.5 rounded-lg text-xs font-bold transition-all"
+                      style={{
+                        background: addType === "laptop" ? t.accentText : "transparent",
+                        color: addType === "laptop" ? "#fff" : t.textSecondary
+                      }}
+                    >
+                      Products (Laptops) Table
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => setAddType("hardware")}
+                      className="py-2.5 rounded-lg text-xs font-bold transition-all"
+                      style={{
+                        background: addType === "hardware" ? t.accentText : "transparent",
+                        color: addType === "hardware" ? "#fff" : t.textSecondary
+                      }}
+                    >
+                      Hardware Components Table
+                    </button>
+                  </div>
+                </div>
+
+                {/* Standard Fields Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Product Name</label>
+                    <input 
+                      type="text" required
+                      value={formData.name}
+                      onChange={e => setFormData({...formData, name: e.target.value})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                      placeholder="e.g. ROG Strix SCAR 16"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Brand</label>
+                    <input 
+                      type="text" required
+                      value={formData.brand}
+                      onChange={e => setFormData({...formData, brand: e.target.value})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                      placeholder="e.g. Asus, Intel, AMD"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Retail Price ($)</label>
+                    <input 
+                      type="number" required min="1"
+                      value={formData.price || ""}
+                      onChange={e => setFormData({...formData, price: Number(e.target.value)})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                      placeholder="2499"
+                    />
+                  </div>
+                  
+                  {addType === "laptop" ? (
+                    <div className="flex flex-col gap-1.5">
+                      <label style={{ color: t.textSecondary }}>Original Price ($) <span className="text-[9px]" style={{ color: t.textSubtle }}>(For discount calculation)</span></label>
+                      <input 
+                        type="number"
+                        value={formData.original_price || ""}
+                        onChange={e => setFormData({...formData, original_price: Number(e.target.value)})}
+                        className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                        placeholder="2799"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex flex-col gap-1.5">
+                      <label style={{ color: t.textSecondary }}>Discount Price ($) <span className="text-[9px]" style={{ color: t.textSubtle }}>(Deal price if applicable)</span></label>
+                      <input 
+                        type="number"
+                        value={formData.discount_price || ""}
+                        onChange={e => setFormData({...formData, discount_price: Number(e.target.value)})}
+                        className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                        placeholder="2199"
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Initial Stock Level</label>
+                    <input 
+                      type="number" required min="0"
+                      value={formData.stock}
+                      onChange={e => setFormData({...formData, stock: Number(e.target.value)})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                    />
+                  </div>
+                </div>
+
+                {addType === "laptop" && (
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Tagline / Catchphrase</label>
+                    <input 
+                      type="text"
+                      value={formData.tagline}
+                      onChange={e => setFormData({...formData, tagline: e.target.value})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                      placeholder="Uncompromising speed for competitive gamers."
+                    />
+                  </div>
+                )}
+
+                {/* Categories Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>Category Name</label>
+                    <input 
+                      type="text" required
+                      value={formData.category}
+                      onChange={e => setFormData({...formData, category: e.target.value})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                      placeholder={addType === "laptop" ? "gaming, business, ultrabooks" : "CPU, GPU, RAM, Storage"}
+                    />
+                  </div>
+                  {addType === "laptop" && (
+                    <div className="flex flex-col gap-1.5">
+                      <label style={{ color: t.textSecondary }}>Subcategory ID</label>
+                      <input 
+                        type="text"
+                        value={formData.sub_category}
+                        onChange={e => setFormData({...formData, sub_category: e.target.value})}
+                        className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none" style={{ borderColor: t.borderLight }}
+                        placeholder="rtx-40-series, amd-ryzen"
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Media Links */}
+                <div className="flex flex-col gap-1.5">
+                  <label style={{ color: t.textSecondary }}>Product Images (URLs separated by comma)</label>
+                  <textarea 
+                    rows={2} required
+                    value={formData.images}
+                    onChange={e => setFormData({...formData, images: e.target.value})}
+                    className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none font-mono" style={{ borderColor: t.borderLight }}
+                    placeholder="https://example.com/img1.png, https://example.com/img2.png"
+                  />
+                </div>
+
+                {/* Description */}
+                <div className="flex flex-col gap-1.5">
+                  <label style={{ color: t.textSecondary }}>Detailed Product Description</label>
+                  <textarea 
+                    rows={3} required
+                    value={formData.description}
+                    onChange={e => setFormData({...formData, description: e.target.value})}
+                    className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none leading-relaxed" style={{ borderColor: t.borderLight }}
+                    placeholder="Describe the cinematic layout and benefits of this component..."
+                  />
+                </div>
+
+                {/* Advanced JSON Spec Editors */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label style={{ color: t.textSecondary }}>HUD Visual Specifications (JSON Array/Object)</label>
+                    <textarea 
+                      rows={5} required
+                      value={formData.specs}
+                      onChange={e => setFormData({...formData, specs: e.target.value})}
+                      className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none font-mono text-[10px] leading-relaxed" style={{ borderColor: t.borderLight }}
+                    />
+                  </div>
+                  {addType === "laptop" && (
+                    <div className="flex flex-col gap-1.5">
+                      <label style={{ color: t.textSecondary }}>Technical Metadata (JSON Object)</label>
+                      <textarea 
+                        rows={5} required
+                        value={formData.technical_metadata}
+                        onChange={e => setFormData({...formData, technical_metadata: e.target.value})}
+                        className="px-4 py-3 rounded-xl border bg-black/40 text-white outline-none font-mono text-[10px] leading-relaxed" style={{ borderColor: t.borderLight }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Switchable toggles */}
+                <div className="flex gap-6 py-2 border-t border-b" style={{ borderColor: t.borderLight }}>
+                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold" style={{ color: t.text }}>
+                    <input 
+                      type="checkbox"
+                      checked={formData.is_deal}
+                      onChange={e => setFormData({...formData, is_deal: e.target.checked})}
+                      className="rounded text-blue-600 focus:ring-0"
+                    />
+                    <span style={{ color: t.textSecondary }}>Mark as Hot Deal</span>
+                  </label>
+
+                  {addType === "hardware" && (
+                    <label className="flex items-center gap-2 cursor-pointer text-xs font-bold" style={{ color: t.text }}>
+                      <input 
+                        type="checkbox"
+                        checked={formData.is_new}
+                        onChange={e => setFormData({...formData, is_new: e.target.checked})}
+                        className="rounded text-blue-600 focus:ring-0"
+                      />
+                      <span style={{ color: t.textSecondary }}>Mark as Brand New</span>
+                    </label>
+                  )}
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex justify-end gap-4 mt-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsAddModalOpen(false)}
+                    className="px-6 py-3.5 rounded-xl border transition-all hover:bg-white/5"
+                    style={{ borderColor: t.borderLight, color: t.text }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={submittingProduct}
+                    className="px-8 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+                    style={{ background: t.accentText, color: "#fff" }}
+                  >
+                    {submittingProduct ? (
+                      <>
+                        <FontAwesomeIcon icon={faSpinner} className="animate-spin" /> Saving To Database...
+                      </>
+                    ) : (
+                      "Save & Deploy Product"
+                    )}
+                  </button>
+                </div>
+              </form>
             </motion.div>
           </motion.div>
         )}
