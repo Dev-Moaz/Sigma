@@ -114,12 +114,7 @@ const C = {
 
 function GrainOverlay({ strength = 0.035 }: { strength?: number }) {
   return (
-    <div aria-hidden className="pointer-events-none select-none" style={{ position: "fixed", inset: 0, zIndex: 9998, opacity: strength, animation: "pdp-grain 0.15s steps(1) infinite" }}>
-      <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-        <filter id="pdp-g"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" /><feColorMatrix type="saturate" values="0" /></filter>
-        <rect width="100%" height="100%" filter="url(#pdp-g)" />
-      </svg>
-    </div>
+    <div aria-hidden className="pointer-events-none select-none" style={{ position: "fixed", inset: 0, zIndex: 9998, opacity: strength, animation: "pdp-grain 0.15s steps(1) infinite" }} />
   );
 }
 
@@ -237,7 +232,7 @@ function Marquee({ items }: { items: string[] }) {
   const { t } = useTheme();
   const all = [...items, ...items];
   return (
-    <div className="overflow-hidden w-full" style={{ borderTop: `1px solid ${t.borderLight}`, borderBottom: `1px solid ${t.borderLight}` }}>
+    <div className="overflow-hidden w-full relative z-20" style={{ borderTop: `1px solid ${t.borderLight}`, borderBottom: `1px solid ${t.borderLight}` }}>
       <div className="flex whitespace-nowrap" style={{ animation: "pdp-marquee 30s linear infinite" }}>
         {all.map((item, i) => (
           <span key={i} className="pdp-mono text-[11px] uppercase tracking-[0.22em] px-8 py-4 inline-flex items-center gap-6 shrink-0" style={{ color: t.textSecondary }}>
@@ -1136,7 +1131,7 @@ function getBatteryContent(hours: number): ChapterContent {
 // MAIN COMPONENT
 // ─────────────────────────────────────────────────────────────────────────────
 export default function ProductDetailPage({ product }: { product: Product }) {
-  const { theme, t } = useTheme();
+  const { isDark, t } = useTheme();
   const { addToCart } = useCart();
   const { wishIds, toggleWish } = useWishlist();
 
@@ -1224,10 +1219,10 @@ export default function ProductDetailPage({ product }: { product: Product }) {
   const gpuVramNum = parseInt(String(md.vram_gb)) || 16;
 
   return (
-    <main className="pdp-body relative min-h-screen -mt-20 sm:-mt-24" style={{ backgroundColor: t.bg, color: t.text }}>
+    <main className="pdp-body relative min-h-screen -mt-20 sm:-mt-24 overflow-hidden" style={{ backgroundColor: t.bg, color: t.text }}>
 
       <GlobalStyles />
-      <GrainOverlay strength={theme === "dark" ? 0.038 : 0.02} />
+      <GrainOverlay strength={isDark ? 0.038 : 0.02} />
 
       {/* ════════════════════ HERO ════════════════════ */}
       <section
@@ -1246,7 +1241,7 @@ export default function ProductDetailPage({ product }: { product: Product }) {
           </svg>
         </motion.div>
 
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 78% 68% at 50% 50%, transparent 18%, ${theme === "dark" ? "#000000ec" : "transparent"} 100%)` }} />
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: `radial-gradient(ellipse 78% 68% at 50% 50%, transparent 18%, ${isDark ? "#000000ec" : "transparent"} 100%)` }} />
 
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: `radial-gradient(circle, ${C.cyan}13, transparent 65%)`, top: "50%", left: "42%", transform: "translate(-50%,-50%)", animation: "pdp-breathe 11s ease-in-out infinite" }} />
