@@ -967,7 +967,7 @@ export default function AdminDashboard() {
                 {/* Product Type Segmented Switch */}
                 <div className="flex flex-col gap-2">
                   <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                    Product Type / نوع المنتج
+                    Product Type
                   </label>
                   <div className="grid grid-cols-2 gap-2 p-1.5 rounded-xl border" style={{ backgroundColor: isDark ? "rgba(0, 0, 0, 0.4)" : "rgba(0, 0, 0, 0.05)", borderColor: t.borderLight }}>
                     <button 
@@ -1001,7 +1001,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Product Name / الاسم
+                      Product Name
                     </label>
                     <input 
                       type="text" required
@@ -1018,7 +1018,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Brand / العلامة التجارية
+                      Brand
                     </label>
                     <input 
                       type="text" required
@@ -1038,7 +1038,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Retail Price ($) / السعر
+                      Retail Price ($)
                     </label>
                     <input 
                       type="number" required min="1"
@@ -1094,7 +1094,7 @@ export default function AdminDashboard() {
 
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Initial Stock Level / كمية المخزون
+                      Initial Stock Level
                     </label>
                     <input 
                       type="number" required min="0"
@@ -1113,7 +1113,7 @@ export default function AdminDashboard() {
                 {addType === "laptop" && (
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Tagline /Catchphrase / عبارة ترويجية قصيرة
+                      Tagline / Catchphrase
                     </label>
                     <input 
                       type="text"
@@ -1134,7 +1134,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                      Category Name / الفئة الرئيسية
+                      Category Name
                     </label>
                     <input 
                       type="text" required
@@ -1152,7 +1152,7 @@ export default function AdminDashboard() {
                   {addType === "laptop" && (
                     <div className="flex flex-col gap-2">
                       <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                        Subcategory ID / المعرف الفرعي
+                        Subcategory ID
                       </label>
                       <input 
                         type="text"
@@ -1173,7 +1173,7 @@ export default function AdminDashboard() {
                 {/* Media Links */}
                 <div className="flex flex-col gap-2">
                   <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                    Product Images (URLs separated by comma) / روابط الصور (مفصولة بفاصلة)
+                    Product Images (URLs separated by comma)
                   </label>
                   <textarea 
                     rows={2} required
@@ -1192,7 +1192,7 @@ export default function AdminDashboard() {
                 {/* Description */}
                 <div className="flex flex-col gap-2">
                   <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                    Detailed Product Description / وصف تفصيلي للمنتج
+                    Detailed Product Description
                   </label>
                   <textarea 
                     rows={3} required
@@ -1213,7 +1213,7 @@ export default function AdminDashboard() {
                   <div className="flex flex-col gap-2">
                     <div className="flex justify-between items-center">
                       <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                        Display Specs / مواصفات العرض (JSON Array)
+                        Display Specs (JSON Array)
                       </label>
                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
                         isSpecsValid 
@@ -1239,7 +1239,7 @@ export default function AdminDashboard() {
                     <div className="flex flex-col gap-2">
                       <div className="flex justify-between items-center">
                         <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                          Internal Specs / مواصفات الأجهزة (JSON Object)
+                          Internal Specs (JSON Object)
                         </label>
                         <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
                           isMetadataValid 

@@ -1,3 +1,4 @@
+// app/actions/admin.ts
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
@@ -114,8 +115,8 @@ export async function fetchAdminInventoryAction() {
 
     // جلب اللابتوبات وهاردوير بالتوازي
     const [laptopsRes, hardwareRes] = await Promise.all([
-      supabase.from("products").select("id, name, brand, price, stock").order("name"),
-      supabase.from("hardware").select("id, name, brand, price, stock").order("name")
+      supabase.from("products").select("*").order("name"),
+      supabase.from("hardware").select("*").order("name")
     ]);
 
     if (laptopsRes.error) throw laptopsRes.error;
@@ -167,38 +168,19 @@ export async function addNewProductAction(type: 'laptop' | 'hardware', payload: 
     const table = type === "hardware" ? "hardware" : "products";
     const insertData = { ...payload };
 
-    // توليد معرف فريد نصي (Slug) تلقائياً بناءً على اسم المنتج لحل مشكلة (id TEXT PRIMARY KEY)
     if (!insertData.id && insertData.name) {
       const slug = insertData.name
         .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-') // استبدال الرموز والمسافات بـ -
-        .replace(/(^-|-$)+/g, '');   // تنظيف أطراف الكلمة
-      const rand = Math.random().toString(36).substring(2, 7); // إضافة 5 رموز لمنع تكرار الـ ID
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+      const rand = Math.random().toString(36).substring(2, 7);
       insertData.id = `${slug}-${rand}`;
     }
 
-    // تحويل حقل الصور من نص مفصول بفواصل إلى مصفوفة نصوص
     if (insertData.images && typeof insertData.images === 'string') {
       insertData.images = insertData.images.split(',').map((img: string) => img.trim());
     } else if (!insertData.images || insertData.images.length === 0) {
       insertData.images = ["/placeholder.jpg"];
-    }
-
-    // تنسيق حقول الـ JSON المعقدة وتحويلها من نصوص إلى هياكل برمجية (Objects/Arrays)
-    if (type === 'laptop') {
-      if (typeof insertData.specs === 'string') {
-        try { insertData.specs = JSON.parse(insertData.specs); } catch (e) { insertData.specs = []; }
-      }
-      if (typeof insertData.technical_metadata === 'string') {
-        try { insertData.technical_metadata = JSON.parse(insertData.technical_metadata); } catch (e) { insertData.technical_metadata = {}; }
-      }
-      if (typeof insertData.color_variants === 'string') {
-        try { insertData.color_variants = JSON.parse(insertData.color_variants); } catch (e) { insertData.color_variants = []; }
-      }
-    } else {
-      if (typeof insertData.specs === 'string') {
-        try { insertData.specs = JSON.parse(insertData.specs); } catch (e) { insertData.specs = {}; }
-      }
     }
 
     const { data, error } = await supabase
@@ -212,5 +194,59 @@ export async function addNewProductAction(type: 'laptop' | 'hardware', payload: 
   } catch (err: any) {
     console.error("addNewProductAction error:", err);
     return { success: false, error: err.message || "Failed to add product" };
+  }
+}
+
+// 7. تعديل منتج أو قطعة هاردوير بالكامل (Update Existing Product / Hardware)
+export async function updateProductAction(id: string, type: 'laptop' | 'hardware', payload: any) {
+  try {
+    const supabase = await getServerSupabase();
+    const isAdminCheck = await checkAdminRoleAction();
+    if (!isAdminCheck.isAdmin) {
+      return { success: false, error: "Unauthorized access" };
+    }
+
+    const table = type === "hardware" ? "hardware" : "products";
+    const updateData = { ...payload };
+
+    if (updateData.images && typeof updateData.images === 'string') {
+      updateData.images = updateData.images.split(',').map((img: string) => img.trim());
+    }
+
+    const { data, error } = await supabase
+      .from(table)
+      .update(updateData)
+      .eq("id", id)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return { success: true, data };
+  } catch (err: any) {
+    console.error("updateProductAction error:", err);
+    return { success: false, error: err.message || "Failed to update product" };
+  }
+}
+
+// 8. مسح منتج أو قطعة هاردوير (Delete Product / Hardware)
+export async function deleteProductAction(id: string, type: 'laptop' | 'hardware') {
+  try {
+    const supabase = await getServerSupabase();
+    const isAdminCheck = await checkAdminRoleAction();
+    if (!isAdminCheck.isAdmin) {
+      return { success: false, error: "Unauthorized access" };
+    }
+
+    const table = type === "hardware" ? "hardware" : "products";
+    const { error } = await supabase
+      .from(table)
+      .delete()
+      .eq("id", id);
+
+    if (error) throw error;
+    return { success: true };
+  } catch (err: any) {
+    console.error("deleteProductAction error:", err);
+    return { success: false, error: err.message || "Failed to delete product" };
   }
 }
