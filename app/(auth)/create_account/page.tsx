@@ -248,7 +248,8 @@ export default function RegisterPage() {
     setRegisterStep("loading");
     
     try {
-      // 1. تسجيل الحساب مباشرة من المتصفح (Client-side)
+      // تسجيل الحساب مباشرة من المتصفح (Client-side)
+      // الـ Database Trigger سينشئ الـ profile تلقائياً في جدول profiles
       const { data, error } = await supabase.auth.signUp({
         email: emailValue,
         password: passwordValue,
@@ -266,27 +267,16 @@ export default function RegisterPage() {
         return;
       }
 
-      // 2. إدراج الملف الشخصي في جدول profiles
-      if (data.user) {
-        const { error: profileError } = await supabase
-          .from("profiles")
-          .insert({
-            id: data.user.id,
-            full_name: nameValue,
-            email: emailValue,
-            volt_points: 100,
-          });
-
-        if (profileError) {
-          console.error("Profile insert error:", profileError.message);
-          // لا نوقف العملية — الحساب تم إنشاؤه بنجاح
-        }
+      if (!data.user) {
+        setRegisterStep("idle");
+        setErrorMessage("Failed to create account. Please try again.");
+        return;
       }
 
       setRegisterStep("success");
-      // التوجيه لصفحة الدخول بعد التسجيل بنجاح
+      // التوجيه مباشرة للملف الشخصي — المستخدم مسجل دخوله تلقائياً
       setTimeout(() => {
-        router.push("/login");
+        router.push("/profile");
       }, 1500);
     } catch (err: any) {
       setRegisterStep("idle");
