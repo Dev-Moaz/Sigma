@@ -1,9 +1,9 @@
 // components/HardwareCategoryPage.tsx
 "use client";
 
-import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBoxOpen, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,111 +12,38 @@ import { useTheme, useCart, useWishlist } from "@/store/useAppStore";
 import FilterNavbar from "@/components/layout/FilterNavbar";
 import HardwareProductCard from "@/components/ui/HardwareProductCard";
 
-// Types & Data
+// Types
 import { HardwareProduct } from "@/lib/hardware-schema";
-import hardwareData from "@/data/hardware.json";
 
 const ITEMS_PER_PAGE = 12;
 
-// ==========================================
-// 1. Reusable Cinematic Components (Local)
-// ==========================================
-
-function Particles({ count = 30 }: { count?: number }) {
-  const { theme } = useTheme();
-
-  const particles = useMemo(() => {
-    return Array.from({ length: count }).map(() => ({
-      size: Math.random() * 4 + 1,
-      xStart: Math.random() * 100,
-      delay: Math.random() * 10,
-      duration: Math.random() * 10 + 15,
-      opacityBase: Math.random() * 0.4 + 0.1,
-      xEnd: Math.random() * 60 - 30,
-    }));
-  }, [count]);
-
-  return (
-    <>
-      <style dangerouslySetInnerHTML={{
-        __html: `@keyframes floatUpShop {
-          0% { transform: translateY(110vh) translateX(0); opacity: 0; }
-          10% { opacity: var(--op); }
-          90% { opacity: var(--op); }
-          100% { transform: translateY(-10vh) translateX(var(--tx)); opacity: 0; }
-        }`
-      }} />
-      {particles.map((p, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full"
-          style={{
-            width: p.size,
-            height: p.size,
-            left: `${p.xStart}%`,
-            background: theme === "dark" ? "#fff" : "#000",
-            "--op": p.opacityBase,
-            "--tx": `${p.xEnd}px`,
-            animation: `floatUpShop ${p.duration}s linear ${p.delay}s infinite`,
-          } as React.CSSProperties}
-        />
-      ))}
-    </>
-  );
-}
-
-function CinematicScrollReveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px 0px" });
-
-  // تم إزالة filter: "blur(15px)" لمنع أي ضبابية أثناء حركة العناصر
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-// ==========================================
-// 2. Main Category Page Component
-// ==========================================
+import { Particles } from "@/components/ui/Particles";
+import { CinematicReveal as CinematicScrollReveal } from "@/components/ui/CinematicReveal";
+import { AccentLine } from "@/components/ui/AccentLine";
 
 interface CategoryPageProps {
+  initialHardware: HardwareProduct[];
   categoryName: string; 
   title?: string;
   description?: string;
 }
 
-export default function CategoryPage({ categoryName, title, description }: CategoryPageProps) {
-  const { theme, t } = useTheme();
+export default function CategoryPage({ initialHardware, categoryName, title, description }: CategoryPageProps) {
+  const { isDark, t } = useTheme();
   const router = useRouter();
 
-  // 1. فلترة البيانات لتشمل الفئة (Category) المطلوبة فقط
+  // تصفية قطع الهاردوير الحية على مستوى العميل للفئة المطلوبة فقط
   const categoryProducts = useMemo(() => {
-    return (hardwareData as HardwareProduct[]).filter(
+    return initialHardware.filter(
       (product) => product.category.toLowerCase() === categoryName.toLowerCase()
     );
-  }, [categoryName]);
+  }, [initialHardware, categoryName]);
 
-  // 2. State للمنتجات المفلترة
+  // State للمنتجات المفلترة
   const [filteredProducts, setFilteredProducts] = useState<HardwareProduct[]>(categoryProducts);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // تحديث الـ State إذا تغيرت الفئة
+  // تحديث الـ State إذا تغيرت قطع الهاردوير على الخادم أو تغير القسم المتصفح
   useEffect(() => {
     setFilteredProducts(categoryProducts);
     setCurrentPage(1);
@@ -144,9 +71,9 @@ export default function CategoryPage({ categoryName, title, description }: Categ
       className="relative overflow-hidden min-h-screen flex flex-col pt-8 pb-24"
       style={{ backgroundColor: t.bg }}
     >
-      {/* --- BACKGROUND LAYERS (Cleaned from Fogginess) --- */}
-      {/* تم إزالة طبقات radial-gradient التي كانت تسبب الغشاوة والضبابية */}
+      <AccentLine />
       
+      {/* Background Layers */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <svg className="absolute inset-0 w-[110%] h-[110%] left-[-5%] top-[-5%] opacity-[0.07]">
           <defs>
@@ -165,7 +92,7 @@ export default function CategoryPage({ categoryName, title, description }: Categ
         }}
       />
       
-      {/* إضاءات خفيفة جداً في الخلفية (تم تقليل الـ blur و opacity لتجنب الضبابية) */}
+      {/* Background Lighting */}
       <div
         className="absolute rounded-full blur-[100px] z-0 pointer-events-none"
         style={{
@@ -214,8 +141,8 @@ export default function CategoryPage({ categoryName, title, description }: Categ
             />
           </div>
           <h1
-            className={`hf text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r ${
-              theme === "dark"
+            className={`hf text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r ${
+              isDark
                 ? "from-[#06b6d4] via-[#3b82f6] to-[#7c3aed]"
                 : "from-[#0891b2] via-[#2563eb] to-[#7c3aed]"
             }`}
@@ -248,11 +175,12 @@ export default function CategoryPage({ categoryName, title, description }: Categ
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 * (index % ITEMS_PER_PAGE), duration: 0.8 }}
+                transition={{ duration: 0.8 }}
+                className="relative z-10 hover:z-50"
               >
                 <HardwareProductCard
                   product={product}
-                  index={index}
+                  index={0}
                   onQuickView={(p) => router.push(`/hardware/${p.id}`)}
                 />
               </motion.div>

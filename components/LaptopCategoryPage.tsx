@@ -1,9 +1,9 @@
 // components/LaptopCategoryPage.tsx
 "use client";
 
-import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBoxOpen, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,55 +12,44 @@ import { useTheme } from "@/store/useAppStore";
 import FilterNavbar from "@/components/layout/FilterNavbar";
 import ProductCard from "@/components/ui/ProductCard";
 
-// Types & Data
+// Types
 import { Product } from "@/lib/laptop-schema";
-import productsData from "@/data/laptops.json"; 
 
 const ITEMS_PER_PAGE = 12;
 
-// ==========================================
-// 1. Reusable Cinematic Components (Local)
-// ==========================================
-
 import { Particles } from "@/components/ui/Particles";
-
 import { CinematicReveal as CinematicScrollReveal } from "@/components/ui/CinematicReveal";
-
 import { AccentLine } from "@/components/ui/AccentLine";
 
-// ==========================================
-// 2. Main Category Page Component
-// ==========================================
-
-// أضفنا واجهة للـ Props لاستقبال اسم القسم والعنوان والوصف
 interface CategoryPageProps {
-  categoryName: "Gaming" | "Business" | "Ultrabooks" | "2-in-1"; // يمكنك إضافة المزيد
+  initialLaptops: Product[];
+  categoryName: "Gaming" | "Business" | "Ultrabooks" | "2-in-1";
   title?: string;
   description?: string;
 }
 
-export default function CategoryPage({ categoryName, title, description }: CategoryPageProps) {
-  const { theme, t } = useTheme();
+export default function CategoryPage({ initialLaptops, categoryName, title, description }: CategoryPageProps) {
+  const { isDark, t } = useTheme();
   const router = useRouter();
 
-  // 1. فلترة البيانات الأساسية لتشمل فقط القسم المطلوب (مثلاً Gaming فقط)
+  // تصفية المنتجات الحية على مستوى العميل للفئة المطلوبة فقط
   const categoryProducts = useMemo(() => {
-    return (productsData as Product[]).filter(
+    return initialLaptops.filter(
       (product) => product.category.toLowerCase() === categoryName.toLowerCase()
     );
-  }, [categoryName]);
+  }, [initialLaptops, categoryName]);
 
-  // 2. State للمنتجات المفلترة (من خلال FilterNavbar)
+  // State للمنتجات المفلترة
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(categoryProducts);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // تحديث الـ State إذا تغير القسم (لضمان عملها بشكل سليم إذا تم التنقل بين الأقسام)
+  // تحديث الـ State إذا تغيرت المنتجات على الخادم أو تغير القسم المتصفح
   useEffect(() => {
     setFilteredProducts(categoryProducts);
     setCurrentPage(1);
   }, [categoryProducts]);
 
-  // Filter Handler (للفلاتر الإضافية مثل السعر أو الماركة داخل هذا القسم)
+  // Filter Handler
   const handleFilterChange = useCallback((newFiltered: Product[]) => {
     setFilteredProducts(newFiltered);
     setCurrentPage(1);
@@ -87,9 +76,9 @@ export default function CategoryPage({ categoryName, title, description }: Categ
         className="absolute inset-0 pointer-events-none z-0"
         style={{
           background: `radial-gradient(circle at center, transparent 30%, ${
-            theme === "dark" ? "#000000e6" : "#00000040"
+            isDark ? "#000000e6" : "#00000040"
           } 110%)`,
-          mixBlendMode: theme === "dark" ? "normal" : "multiply",
+          mixBlendMode: isDark ? "normal" : "multiply",
         }}
       />
       <AccentLine />
@@ -114,7 +103,7 @@ export default function CategoryPage({ categoryName, title, description }: Categ
       {/* --- MAIN CONTENT --- */}
       <section className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex-1 flex flex-col">
         
-        {/* Page Header (ديناميكي بناءً على القسم) */}
+        {/* Page Header */}
         <CinematicScrollReveal delay={0.1} className="text-center mb-10">
           <div className="inline-flex items-center gap-3 mb-4">
             <span className="w-8 h-1 rounded-full shrink-0" style={{ background: "linear-gradient(90deg,#06b6d4,#3b82f6)", boxShadow: "0 0 10px rgba(6,182,212,0.8)" }} />
@@ -124,8 +113,8 @@ export default function CategoryPage({ categoryName, title, description }: Categ
             <span className="w-8 h-1 rounded-full shrink-0" style={{ background: "linear-gradient(90deg,#3b82f6,#06b6d4)", boxShadow: "0 0 10px rgba(6,182,212,0.8)" }} />
           </div>
           <h1
-            className={`hf text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-6 bg-clip-text text-transparent bg-linear-to-r ${
-              theme === "dark"
+            className={`hf text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-none tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r ${
+              isDark
                 ? "from-[#06b6d4] via-[#3b82f6] to-[#7c3aed]"
                 : "from-[#0891b2] via-[#2563eb] to-[#7c3aed]"
             }`}
@@ -140,25 +129,26 @@ export default function CategoryPage({ categoryName, title, description }: Categ
           </p>
         </CinematicScrollReveal>
 
-        {/* Filter Navbar (الآن يتعامل فقط مع منتجات هذا القسم) */}
+        {/* Filter Navbar */}
         <div className="mb-10 relative z-30">
           <FilterNavbar products={categoryProducts} onFilterChange={handleFilterChange} />
         </div>
 
-        {/* Product Grid Area (3 أعمدة كما طلبت) */}
+        {/* Product Grid Area */}
         {currentProducts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-10 mb-16 relative z-20">
-            {currentProducts.map((product, index) => (
+            {currentProducts.map((product) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.1 * (index % ITEMS_PER_PAGE), duration: 0.8 }}
+                transition={{ duration: 0.8 }}
+                className="relative z-10 hover:z-50"
               >
                 <ProductCard
                   product={product}
-                  index={index}
+                  index={0}
                   onQuickView={(p) => router.push(`/product/${p.id}`)}
                 />
               </motion.div>

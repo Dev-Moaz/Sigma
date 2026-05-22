@@ -1,6 +1,11 @@
+// app/(main)/brands/[brand]/page.tsx
+import { fetchLaptopsAction } from "@/app/actions/products";
 import BrandPage from "@/components/BrandPage";
 
-// في Next.js 16، الـ params يجب أن تكون Promise
+// 🌟 سطر منع التجميد الاستاتيكي لضمان مزامنة البراندات حياً فوراً عند التصفح
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface PageProps {
   params: Promise<{
     brand: string;
@@ -8,17 +13,18 @@ interface PageProps {
 }
 
 export default async function DynamicBrandPage({ params }: PageProps) {
-  // 1. ننتظر فك تشفير الـ params (مهم جداً في Next 16)
   const resolvedParams = await params;
-  
-  // 2. نستخرج اسم الماركة
   const decodedBrand = decodeURIComponent(resolvedParams.brand);
   
-  // 3. نحول أول حرف لـ Capital (مثلاً asus تصبح Asus)
+  // تحويل أول حرف لـ Capital
   const formattedBrandName = decodedBrand.charAt(0).toUpperCase() + decodedBrand.slice(1);
+
+  // جلب حقيقي وحي من السيرفر لكافة المنتجات في المتجر
+  const laptops = await fetchLaptopsAction();
 
   return (
     <BrandPage 
+      initialLaptops={laptops} // 🌟 تمرير المنتجات الحية
       brandName={formattedBrandName} 
       title={`${formattedBrandName} Premium Laptops`}
       description={`Browse our complete lineup of ${formattedBrandName} machines. Filter by specs, price, and find your perfect match.`}
