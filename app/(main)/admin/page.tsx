@@ -51,6 +51,84 @@ function CinematicReveal({ children, delay = 0 }: { children: React.ReactNode; d
   );
 }
 
+const METADATA_FIELDS_INFO = [
+  { key: "cpu", label: "CPU Model", type: "text", placeholder: "e.g. Intel Core i7-13700H" },
+  { key: "gpu", label: "GPU Model", type: "text", placeholder: "e.g. NVIDIA RTX 4060" },
+  { key: "ram_gb", label: "RAM (GB)", type: "number", placeholder: "16" },
+  { key: "storage_gb", label: "Storage (GB)", type: "number", placeholder: "512" },
+  { key: "screen_size", label: "Screen Size (inches)", type: "number", placeholder: "16" },
+  { key: "display_hz", label: "Refresh Rate (Hz)", type: "number", placeholder: "144" },
+  { key: "battery_hours", label: "Battery Life (hours)", type: "number", placeholder: "8" },
+  { key: "nvme_speed_gbs", label: "NVMe Speed (GB/s)", type: "number", placeholder: "7" },
+  { key: "vram_gb", label: "VRAM (GB)", type: "number", placeholder: "8" },
+  { key: "gpu_tdp_watts", label: "GPU TDP (Watts)", type: "number", placeholder: "140" },
+  { key: "gpu_memory_type", label: "GPU Memory Type", type: "text", placeholder: "e.g. GDDR6X" },
+  { key: "cpu_cores", label: "CPU Cores", type: "number", placeholder: "14" },
+  { key: "cpu_threads", label: "CPU Threads", type: "number", placeholder: "20" },
+  { key: "cpu_speed", label: "CPU Boost Speed (GHz)", type: "number", placeholder: "5.0" },
+  { key: "display_type", label: "Display Type", type: "text", placeholder: "e.g. IPS, OLED, Mini-LED" },
+  { key: "display_response_ms", label: "Response Time (ms)", type: "number", placeholder: "3" },
+  { key: "connectivity", label: "Connectivity (Comma-separated)", type: "array", placeholder: "Wi-Fi 6E, Bluetooth 5.2" }
+];
+
+const HARDWARE_SCHEMAS: Record<string, Array<{ key: string; label: string; type: "text" | "number" | "boolean" | "select"; options?: string[]; placeholder?: string }>> = {
+  CPU: [
+    { key: "socket", label: "Socket", type: "text", placeholder: "AM5, LGA1700" },
+    { key: "cores", label: "Cores", type: "number", placeholder: "8" },
+    { key: "threads", label: "Threads", type: "number", placeholder: "16" },
+    { key: "baseClock", label: "Base Clock", type: "text", placeholder: "3.8 GHz" },
+    { key: "boostClock", label: "Boost Clock", type: "text", placeholder: "5.4 GHz" },
+    { key: "tdp", label: "TDP (Watts)", type: "number", placeholder: "65" },
+    { key: "integratedGraphics", label: "Integrated Graphics", type: "boolean" }
+  ],
+  GPU: [
+    { key: "chipset", label: "Chipset", type: "text", placeholder: "RTX 4090, RX 7900 XTX" },
+    { key: "vram", label: "VRAM", type: "text", placeholder: "24GB GDDR6X" },
+    { key: "coreClock", label: "Core Clock", type: "text", placeholder: "2.23 GHz" },
+    { key: "length", label: "Card Length (mm)", type: "number", placeholder: "304" },
+    { key: "tdp", label: "TDP (Watts)", type: "number", placeholder: "450" },
+    { key: "recommendedPSU", label: "Recommended PSU (Watts)", type: "number", placeholder: "850" }
+  ],
+  Motherboard: [
+    { key: "socket", label: "Socket", type: "text", placeholder: "AM5, LGA1700" },
+    { key: "formFactor", label: "Form Factor", type: "select", options: ["ATX", "Micro-ATX", "Mini-ITX", "E-ATX"] },
+    { key: "chipset", label: "Chipset", type: "text", placeholder: "B650, Z790" },
+    { key: "memorySlots", label: "Memory Slots", type: "number", placeholder: "4" },
+    { key: "maxMemory", label: "Max Memory Capacity", type: "text", placeholder: "128GB, 192GB" },
+    { key: "wifiIncluded", label: "Wi-Fi Included", type: "boolean" }
+  ],
+  RAM: [
+    { key: "type", label: "Memory Type", type: "select", options: ["DDR5", "DDR4"] },
+    { key: "capacity", label: "Capacity", type: "text", placeholder: "32GB (2x16GB)" },
+    { key: "speed", label: "Speed (MHz)", type: "number", placeholder: "6000" },
+    { key: "casLatency", label: "CAS Latency", type: "number", placeholder: "30" },
+    { key: "rgb", label: "RGB Lighting", type: "boolean" }
+  ],
+  Storage: [
+    { key: "storageType", label: "Storage Type", type: "select", options: ["NVMe", "SSD", "HDD"] },
+    { key: "capacity", label: "Capacity", type: "text", placeholder: "2TB, 1TB" },
+    { key: "interface", label: "Interface", type: "text", placeholder: "PCIe 4.0 x4, SATA III" },
+    { key: "formFactor", label: "Form Factor", type: "text", placeholder: "M.2 2280, 2.5 inch" },
+    { key: "readSpeed", label: "Read Speed", type: "text", placeholder: "7300 MB/s" },
+    { key: "writeSpeed", label: "Write Speed", type: "text", placeholder: "6000 MB/s" }
+  ],
+  Case: [
+    { key: "type", label: "Case Type", type: "select", options: ["Mid Tower", "Full Tower", "Mini Tower"] },
+    { key: "color", label: "Color", type: "text", placeholder: "Black, White, Gray" },
+    { key: "motherboardSupport", label: "Motherboard Support (Comma-separated)", type: "text", placeholder: "ATX, Micro-ATX, Mini-ITX" },
+    { key: "includedFans", label: "Included Fans", type: "number", placeholder: "3" },
+    { key: "sidePanel", label: "Side Panel Type", type: "select", options: ["Tempered Glass", "Mesh", "Solid"] }
+  ],
+  Monitor: [
+    { key: "size", label: "Display Size (inches)", type: "number", placeholder: "27" },
+    { key: "resolution", label: "Resolution", type: "text", placeholder: "2560 x 1440" },
+    { key: "refreshRate", label: "Refresh Rate (Hz)", type: "number", placeholder: "144" },
+    { key: "panelType", label: "Panel Type", type: "select", options: ["IPS", "VA", "OLED", "TN"] },
+    { key: "responseTime", label: "Response Time", type: "text", placeholder: "1ms" },
+    { key: "curved", label: "Curved Display", type: "boolean" }
+  ]
+};
+
 export default function AdminDashboard() {
   const { t, isDark, toggleTheme } = useTheme();
   const router = useRouter();
@@ -109,6 +187,10 @@ export default function AdminDashboard() {
   const [isMetadataValid, setIsMetadataValid] = useState(true);
   const [isColorsValid, setIsColorsValid] = useState(true);
 
+  // Builder mode states
+  const [specsEditorMode, setSpecsEditorMode] = useState<"visual" | "json">("visual");
+  const [metadataEditorMode, setMetadataEditorMode] = useState<"visual" | "json">("visual");
+
   // Validate JSON blocks in real-time
   useEffect(() => {
     try {
@@ -150,6 +232,55 @@ export default function AdminDashboard() {
   }, [formData.color_variants]);
 
   const isFormJsonValid = isSpecsValid && isMetadataValid && isColorsValid;
+
+  // Visual Builder State Helpers
+  const getParsedSpecs = () => {
+    try {
+      const parsed = JSON.parse(formData.specs);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const updateParsedSpecs = (newSpecs: any[]) => {
+    setFormData(prev => ({
+      ...prev,
+      specs: JSON.stringify(newSpecs, null, 2)
+    }));
+  };
+
+  const getParsedMetadata = () => {
+    try {
+      const parsed = JSON.parse(formData.technical_metadata);
+      return typeof parsed === "object" && parsed !== null ? parsed : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const updateParsedMetadata = (newMetadata: any) => {
+    setFormData(prev => ({
+      ...prev,
+      technical_metadata: JSON.stringify(newMetadata, null, 2)
+    }));
+  };
+
+  const getParsedHardwareSpecs = () => {
+    try {
+      const parsed = JSON.parse(formData.specs);
+      return typeof parsed === "object" && parsed !== null ? parsed : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const updateParsedHardwareSpecs = (newSpecs: any) => {
+    setFormData(prev => ({
+      ...prev,
+      specs: JSON.stringify(newSpecs, null, 2)
+    }));
+  };
 
   // 1. Check permissions on mount
   useEffect(() => {
@@ -1136,18 +1267,59 @@ export default function AdminDashboard() {
                     <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
                       Category Name
                     </label>
-                    <input 
-                      type="text" required
-                      value={formData.category}
-                      onChange={e => setFormData({...formData, category: e.target.value})}
-                      className={`px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:ring-1 ${
-                        isDark 
-                          ? "focus:border-cyan-500/50 focus:ring-cyan-500/30 text-white placeholder-white/25" 
-                          : "focus:border-cyan-600/50 focus:ring-cyan-600/30 text-black placeholder-black/30"
-                      }`} 
-                      style={getFieldStyle()}
-                      placeholder={addType === "laptop" ? "gaming, business, ultrabooks" : "CPU, GPU, RAM, Storage"}
-                    />
+                    {addType === "hardware" ? (
+                      <select
+                        required
+                        value={formData.category}
+                        onChange={e => {
+                          const cat = e.target.value;
+                          setFormData(prev => {
+                            // Populate default specs for that category if available
+                            let defaultSpecs = "{}";
+                            if (cat === "CPU") {
+                              defaultSpecs = JSON.stringify({ socket: "AM5", cores: 8, threads: 16, baseClock: "3.8 GHz", boostClock: "5.4 GHz", tdp: 65, integratedGraphics: true }, null, 2);
+                            } else if (cat === "GPU") {
+                              defaultSpecs = JSON.stringify({ chipset: "RTX 4070", vram: "12GB GDDR6X", coreClock: "2.31 GHz", length: 285, tdp: 200, recommendedPSU: 650 }, null, 2);
+                            } else if (cat === "Motherboard") {
+                              defaultSpecs = JSON.stringify({ socket: "AM5", formFactor: "ATX", chipset: "B650", memorySlots: 4, maxMemory: "128GB", wifiIncluded: true }, null, 2);
+                            } else if (cat === "RAM") {
+                              defaultSpecs = JSON.stringify({ type: "DDR5", capacity: "32GB (2x16GB)", speed: 6000, casLatency: 30, rgb: true }, null, 2);
+                            } else if (cat === "Storage") {
+                              defaultSpecs = JSON.stringify({ storageType: "NVMe", capacity: "2TB", interface: "PCIe 4.0 x4", formFactor: "M.2 2280", readSpeed: "7300 MB/s", writeSpeed: "6000 MB/s" }, null, 2);
+                            } else if (cat === "Case") {
+                              defaultSpecs = JSON.stringify({ type: "Mid Tower", color: "Black", motherboardSupport: "ATX, Micro-ATX", includedFans: 3, sidePanel: "Tempered Glass" }, null, 2);
+                            } else if (cat === "Monitor") {
+                              defaultSpecs = JSON.stringify({ size: 27, resolution: "2560 x 1440", refreshRate: 180, panelType: "IPS", responseTime: "1ms", curved: false }, null, 2);
+                            }
+                            return { ...prev, category: cat, specs: defaultSpecs };
+                          });
+                        }}
+                        className={`px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:ring-1 bg-black/40 text-white`}
+                        style={getFieldStyle()}
+                      >
+                        <option value="" className="bg-neutral-900 text-white">Select Category</option>
+                        <option value="CPU" className="bg-neutral-900 text-white">CPU (Processor)</option>
+                        <option value="GPU" className="bg-neutral-900 text-white">GPU (Graphics Card)</option>
+                        <option value="Motherboard" className="bg-neutral-900 text-white">Motherboard</option>
+                        <option value="RAM" className="bg-neutral-900 text-white">RAM Memory</option>
+                        <option value="Storage" className="bg-neutral-900 text-white">Storage (SSD/NVMe/HDD)</option>
+                        <option value="Case" className="bg-neutral-900 text-white">Case (Chassis)</option>
+                        <option value="Monitor" className="bg-neutral-900 text-white">Monitor</option>
+                      </select>
+                    ) : (
+                      <input 
+                        type="text" required
+                        value={formData.category}
+                        onChange={e => setFormData({...formData, category: e.target.value})}
+                        className={`px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:ring-1 ${
+                          isDark 
+                            ? "focus:border-cyan-500/50 focus:ring-cyan-500/30 text-white placeholder-white/25" 
+                            : "focus:border-cyan-600/50 focus:ring-cyan-600/30 text-black placeholder-black/30"
+                        }`} 
+                        style={getFieldStyle()}
+                        placeholder="gaming, business, ultrabooks"
+                      />
+                    )}
                   </div>
                   {addType === "laptop" && (
                     <div className="flex flex-col gap-2">
@@ -1208,58 +1380,464 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Advanced JSON Spec Editors styled like code IDE */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-2">
+                {/* Advanced Visual Spec Editors */}
+                <div className="flex flex-col gap-6 border-t pt-6" style={{ borderColor: t.borderLight }}>
+                  
+                  {/* DISPLAY SPECS SECTION */}
+                  <div className="flex flex-col gap-3">
                     <div className="flex justify-between items-center">
-                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                        Display Specs (JSON Array)
-                      </label>
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
-                        isSpecsValid 
-                          ? "bg-green-500/15 text-green-500 shadow-sm shadow-green-500/10" 
-                          : "bg-red-500/15 text-red-500 animate-pulse shadow-sm shadow-red-500/20"
-                      }`}>
-                        {isSpecsValid ? "✓ Valid JSON" : "✗ JSON Error"}
-                      </span>
-                    </div>
-                    <textarea 
-                      rows={5} required
-                      value={formData.specs}
-                      onChange={e => setFormData({...formData, specs: e.target.value})}
-                      className={`px-4 py-3 rounded-xl border outline-none font-mono text-[10px] leading-relaxed transition-all focus:ring-1 ${
-                        isDark 
-                          ? "bg-black/50 text-emerald-400 focus:border-emerald-500/50 focus:ring-emerald-500/30" 
-                          : "bg-gray-50 text-emerald-700 focus:border-emerald-600/50 focus:ring-emerald-600/30"
-                      }`}
-                      style={{ borderColor: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.12)" }}
-                    />
-                  </div>
-                  {addType === "laptop" && (
-                    <div className="flex flex-col gap-2">
-                      <div className="flex justify-between items-center">
-                        <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                          Internal Specs (JSON Object)
-                        </label>
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
-                          isMetadataValid 
-                            ? "bg-green-500/15 text-green-500 shadow-sm shadow-green-500/10" 
-                            : "bg-red-500/15 text-red-500 animate-pulse shadow-sm shadow-red-500/20"
+                      <div>
+                        <h4 className="text-xs font-black uppercase tracking-widest" style={{ color: t.text }}>
+                          {addType === "laptop" ? "Display Specs (HUD Badges)" : "Component Specifications"}
+                        </h4>
+                        <p className="text-[10px] font-semibold" style={{ color: t.textSecondary }}>
+                          {addType === "laptop" ? "These badges are displayed on the product cards." : "Hardware details stored in database."}
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        {/* Toggle Mode */}
+                        <div className="flex p-0.5 rounded-lg border text-[10px] font-bold bg-black/20" style={{ borderColor: t.borderLight }}>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (isSpecsValid) setSpecsEditorMode("visual");
+                            }}
+                            className={`px-2.5 py-1 rounded-md transition-all duration-300 ${
+                              specsEditorMode === "visual" && isSpecsValid
+                                ? "bg-cyan-500 text-white font-black shadow-lg shadow-cyan-500/20"
+                                : "text-neutral-400 hover:text-white"
+                            }`}
+                            disabled={!isSpecsValid}
+                            title={!isSpecsValid ? "Please fix JSON syntax errors first" : ""}
+                          >
+                            Visual Builder
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setSpecsEditorMode("json")}
+                            className={`px-2.5 py-1 rounded-md transition-all duration-300 ${
+                              specsEditorMode === "json"
+                                ? "bg-cyan-500 text-white font-black shadow-lg shadow-cyan-500/20"
+                                : "text-neutral-400 hover:text-white"
+                            }`}
+                          >
+                            Raw JSON
+                          </button>
+                        </div>
+                        
+                        <span className={`px-2 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase transition-all duration-300 ${
+                          isSpecsValid 
+                            ? "bg-green-500/15 text-green-500" 
+                            : "bg-red-500/15 text-red-500 animate-pulse"
                         }`}>
-                          {isMetadataValid ? "✓ Valid JSON" : "✗ JSON Error"}
+                          {isSpecsValid ? "✓ Valid" : "✗ Error"}
                         </span>
                       </div>
-                      <textarea 
+                    </div>
+
+                    {specsEditorMode === "visual" && isSpecsValid ? (
+                      addType === "laptop" ? (
+                        /* Laptop specs: Array of { label, value, color }*/
+                        <div className="flex flex-col gap-3 p-4 rounded-2xl border bg-black/25 backdrop-blur-md" style={{ borderColor: t.borderLight }}>
+                          <div className="flex flex-col gap-2">
+                            {getParsedSpecs().map((spec: any, idx: number) => (
+                              <div key={idx} className="flex gap-2 items-center">
+                                <input
+                                  type="text"
+                                  placeholder="Label (e.g. CPU)"
+                                  value={spec.label || ""}
+                                  onChange={e => {
+                                    const arr = getParsedSpecs();
+                                    arr[idx] = { ...arr[idx], label: e.target.value };
+                                    updateParsedSpecs(arr);
+                                  }}
+                                  className="flex-1 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                  style={{ borderColor: t.borderLight }}
+                                />
+                                <input
+                                  type="text"
+                                  placeholder="Value (e.g. Core i7)"
+                                  value={spec.value || ""}
+                                  onChange={e => {
+                                    const arr = getParsedSpecs();
+                                    arr[idx] = { ...arr[idx], value: e.target.value };
+                                    updateParsedSpecs(arr);
+                                  }}
+                                  className="flex-2 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                  style={{ borderColor: t.borderLight }}
+                                />
+                                <select
+                                  value={spec.color || "cyan"}
+                                  onChange={e => {
+                                    const arr = getParsedSpecs();
+                                    arr[idx] = { ...arr[idx], color: e.target.value };
+                                    updateParsedSpecs(arr);
+                                  }}
+                                  className="px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                  style={{ borderColor: t.borderLight }}
+                                >
+                                  {["cyan", "green", "blue", "purple", "red", "gold", "orange", "emerald"].map(col => (
+                                    <option key={col} value={col} className="bg-neutral-900 text-white">{col}</option>
+                                  ))}
+                                </select>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const arr = getParsedSpecs();
+                                    arr.splice(idx, 1);
+                                    updateParsedSpecs(arr);
+                                  }}
+                                  className="w-8 h-8 rounded-lg bg-red-500/10 hover:bg-red-500/25 text-red-500 flex items-center justify-center transition-all active:scale-95"
+                                >
+                                  <FontAwesomeIcon icon={faTimes} />
+                                </button>
+                              </div>
+                            ))}
+                            {getParsedSpecs().length === 0 && (
+                              <p className="text-[10px] font-semibold text-center py-4" style={{ color: t.textSubtle }}>
+                                No display specs configured. Add your first spec badge below!
+                              </p>
+                            )}
+                          </div>
+                          
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const arr = getParsedSpecs();
+                              arr.push({ label: "", value: "", color: "cyan" });
+                              updateParsedSpecs(arr);
+                            }}
+                            className="py-2.5 rounded-xl border border-dashed transition-all hover:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-cyan-400 active:scale-[0.98]"
+                            style={{ borderColor: t.borderLight }}
+                          >
+                            <FontAwesomeIcon icon={faPlus} className="mr-1.5" /> Add Display Spec Row
+                          </button>
+                        </div>
+                      ) : (
+                        /* Hardware specs: Object of { key: value }*/
+                        <div className="flex flex-col gap-4 p-4 rounded-2xl border bg-black/25 backdrop-blur-md" style={{ borderColor: t.borderLight }}>
+                          
+                          {/* Render Schema-based inputs if category matches predefined schema */}
+                          {HARDWARE_SCHEMAS[formData.category] ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b pb-4 mb-2" style={{ borderColor: t.borderLight }}>
+                              {HARDWARE_SCHEMAS[formData.category].map((field) => {
+                                const val = getParsedHardwareSpecs()[field.key];
+                                return (
+                                  <div key={field.key} className="flex flex-col gap-1.5">
+                                    <label className="text-[10px] font-black uppercase tracking-wider text-neutral-400">
+                                      {field.label}
+                                    </label>
+                                    {field.type === "boolean" ? (
+                                      <label className="flex items-center gap-2 cursor-pointer py-2.5 px-3 rounded-xl border bg-black/40 text-xs text-white" style={{ borderColor: t.borderLight }}>
+                                        <input
+                                          type="checkbox"
+                                          checked={!!val}
+                                          onChange={e => {
+                                            const obj = getParsedHardwareSpecs();
+                                            obj[field.key] = e.target.checked;
+                                            updateParsedHardwareSpecs(obj);
+                                          }}
+                                          className="rounded bg-black/40 border-white/10 text-cyan-500 focus:ring-0 w-4 h-4 cursor-pointer"
+                                        />
+                                        <span>Enabled / Included</span>
+                                      </label>
+                                    ) : field.type === "select" ? (
+                                      <select
+                                        value={val || ""}
+                                        onChange={e => {
+                                          const obj = getParsedHardwareSpecs();
+                                          obj[field.key] = e.target.value;
+                                          updateParsedHardwareSpecs(obj);
+                                        }}
+                                        className="px-3 py-2.5 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                        style={{ borderColor: t.borderLight }}
+                                      >
+                                        <option value="" className="bg-neutral-900 text-white">Select...</option>
+                                        {field.options?.map(opt => (
+                                          <option key={opt} value={opt} className="bg-neutral-900 text-white">{opt}</option>
+                                        ))}
+                                      </select>
+                                    ) : (
+                                      <input
+                                        type={field.type}
+                                        placeholder={field.placeholder || ""}
+                                        value={val === undefined ? "" : val}
+                                        onChange={e => {
+                                          const obj = getParsedHardwareSpecs();
+                                          obj[field.key] = field.type === "number" ? (Number(e.target.value) || 0) : e.target.value;
+                                          updateParsedHardwareSpecs(obj);
+                                        }}
+                                        className="px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                        style={{ borderColor: t.borderLight }}
+                                      />
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <p className="text-[10px] font-semibold text-center text-neutral-400 py-2">
+                              No predefined schema keys for this category. Define custom specs below.
+                            </p>
+                          )}
+                          
+                          {/* Custom key-value specs at bottom for hardware */}
+                          <div className="flex flex-col gap-2">
+                            <label className="text-[10px] font-black uppercase tracking-wider text-neutral-400">
+                              Custom Specifications
+                            </label>
+                            {Object.entries(getParsedHardwareSpecs())
+                              .filter(([k]) => !HARDWARE_SCHEMAS[formData.category]?.some(f => f.key === k))
+                              .map(([k, v]: [string, any]) => (
+                                <div key={k} className="flex gap-2 items-center">
+                                  <input
+                                    type="text"
+                                    placeholder="Spec Key"
+                                    value={k}
+                                    onChange={e => {
+                                      const obj = getParsedHardwareSpecs();
+                                      const newKey = e.target.value;
+                                      if (newKey && newKey !== k) {
+                                        obj[newKey] = v;
+                                        delete obj[k];
+                                        updateParsedHardwareSpecs(obj);
+                                      }
+                                    }}
+                                    className="flex-1 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                    style={{ borderColor: t.borderLight }}
+                                  />
+                                  <input
+                                    type="text"
+                                    placeholder="Spec Value"
+                                    value={v === null || v === undefined ? "" : String(v)}
+                                    onChange={e => {
+                                      const obj = getParsedHardwareSpecs();
+                                      obj[k] = e.target.value;
+                                      updateParsedHardwareSpecs(obj);
+                                    }}
+                                    className="flex-2 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                    style={{ borderColor: t.borderLight }}
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const obj = getParsedHardwareSpecs();
+                                      delete obj[k];
+                                      updateParsedHardwareSpecs(obj);
+                                    }}
+                                    className="w-8 h-8 rounded-lg bg-red-500/10 hover:bg-red-500/25 text-red-500 flex items-center justify-center transition-all active:scale-95"
+                                  >
+                                    <FontAwesomeIcon icon={faTimes} />
+                                  </button>
+                                </div>
+                              ))}
+                            
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const obj = getParsedHardwareSpecs();
+                                let counter = 1;
+                                while (obj[`custom_spec_${counter}`] !== undefined) {
+                                  counter++;
+                                }
+                                obj[`custom_spec_${counter}`] = "";
+                                updateParsedHardwareSpecs(obj);
+                              }}
+                              className="py-2.5 rounded-xl border border-dashed transition-all hover:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-cyan-400 active:scale-[0.98]"
+                              style={{ borderColor: t.borderLight }}
+                            >
+                              <FontAwesomeIcon icon={faPlus} className="mr-1.5" /> Add Custom Spec Key-Value
+                            </button>
+                          </div>
+                        </div>
+                      )
+                    ) : (
+                      /* Raw JSON View */
+                      <textarea
                         rows={5} required
-                        value={formData.technical_metadata}
-                        onChange={e => setFormData({...formData, technical_metadata: e.target.value})}
-                        className={`px-4 py-3 rounded-xl border outline-none font-mono text-[10px] leading-relaxed transition-all focus:ring-1 ${
+                        value={formData.specs}
+                        onChange={e => setFormData({...formData, specs: e.target.value})}
+                        className={`px-4 py-3 rounded-xl border outline-none font-mono text-[10px] leading-relaxed transition-all focus:ring-1 w-full ${
                           isDark 
                             ? "bg-black/50 text-emerald-400 focus:border-emerald-500/50 focus:ring-emerald-500/30" 
                             : "bg-gray-50 text-emerald-700 focus:border-emerald-600/50 focus:ring-emerald-600/30"
                         }`}
                         style={{ borderColor: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.12)" }}
                       />
+                    )}
+                  </div>
+
+                  {/* INTERNAL TECHNICAL METADATA (LAPTOP ONLY) */}
+                  {addType === "laptop" && (
+                    <div className="flex flex-col gap-3">
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="text-xs font-black uppercase tracking-widest" style={{ color: t.text }}>
+                            Internal Technical Specs
+                          </h4>
+                          <p className="text-[10px] font-semibold" style={{ color: t.textSecondary }}>
+                            Technical details used in search filters and comparisons.
+                          </p>
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          {/* Toggle Mode */}
+                          <div className="flex p-0.5 rounded-lg border text-[10px] font-bold bg-black/20" style={{ borderColor: t.borderLight }}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (isMetadataValid) setMetadataEditorMode("visual");
+                              }}
+                              className={`px-2.5 py-1 rounded-md transition-all duration-300 ${
+                                metadataEditorMode === "visual" && isMetadataValid
+                                  ? "bg-cyan-500 text-white font-black shadow-lg shadow-cyan-500/20"
+                                  : "text-neutral-400 hover:text-white"
+                              }`}
+                              disabled={!isMetadataValid}
+                              title={!isMetadataValid ? "Please fix JSON syntax errors first" : ""}
+                            >
+                              Visual Builder
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setMetadataEditorMode("json")}
+                              className={`px-2.5 py-1 rounded-md transition-all duration-300 ${
+                                metadataEditorMode === "json"
+                                  ? "bg-cyan-500 text-white font-black shadow-lg shadow-cyan-500/20"
+                                  : "text-neutral-400 hover:text-white"
+                              }`}
+                            >
+                              Raw JSON
+                            </button>
+                          </div>
+                          
+                          <span className={`px-2 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase transition-all duration-300 ${
+                            isMetadataValid 
+                              ? "bg-green-500/15 text-green-500" 
+                              : "bg-red-500/15 text-red-500 animate-pulse"
+                          }`}>
+                            {isMetadataValid ? "✓ Valid" : "✗ Error"}
+                          </span>
+                        </div>
+                      </div>
+
+                      {metadataEditorMode === "visual" && isMetadataValid ? (
+                        <div className="flex flex-col gap-4 p-4 rounded-2xl border bg-black/25 backdrop-blur-md" style={{ borderColor: t.borderLight }}>
+                          {/* Predefined metadata fields */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-b pb-4 mb-2" style={{ borderColor: t.borderLight }}>
+                            {METADATA_FIELDS_INFO.map(field => {
+                              const val = getParsedMetadata()[field.key];
+                              return (
+                                <div key={field.key} className="flex flex-col gap-1.5">
+                                  <label className="text-[10px] font-black uppercase tracking-wider text-neutral-400">
+                                    {field.label} <span className="text-[8px] lowercase font-mono opacity-50">({field.key})</span>
+                                  </label>
+                                  <input
+                                    type={field.type === "number" ? "number" : "text"}
+                                    placeholder={field.placeholder}
+                                    value={val === undefined ? "" : field.type === "array" && Array.isArray(val) ? val.join(", ") : val}
+                                    onChange={e => {
+                                      const obj = getParsedMetadata();
+                                      if (field.type === "number") {
+                                        obj[field.key] = Number(e.target.value) || 0;
+                                      } else if (field.type === "array") {
+                                        obj[field.key] = e.target.value.split(",").map(s => s.trim()).filter(Boolean);
+                                      } else {
+                                        obj[field.key] = e.target.value;
+                                      }
+                                      updateParsedMetadata(obj);
+                                    }}
+                                    className="px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                    style={{ borderColor: t.borderLight }}
+                                  />
+                                </div>
+                              );
+                            })}
+                          </div>
+                          
+                          {/* Custom metadata keys */}
+                          <div className="flex flex-col gap-2">
+                            <label className="text-[10px] font-black uppercase tracking-wider text-neutral-400">
+                              Custom Parameters
+                            </label>
+                            {Object.entries(getParsedMetadata())
+                              .filter(([k]) => !METADATA_FIELDS_INFO.some(f => f.key === k))
+                              .map(([k, v]: [string, any]) => (
+                                <div key={k} className="flex gap-2 items-center">
+                                  <input
+                                    type="text"
+                                    placeholder="Param Key"
+                                    value={k}
+                                    onChange={e => {
+                                      const obj = getParsedMetadata();
+                                      const newKey = e.target.value;
+                                      if (newKey && newKey !== k) {
+                                        obj[newKey] = v;
+                                        delete obj[k];
+                                        updateParsedMetadata(obj);
+                                      }
+                                    }}
+                                    className="flex-1 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                    style={{ borderColor: t.borderLight }}
+                                  />
+                                  <input
+                                    type="text"
+                                    placeholder="Param Value"
+                                    value={v === null || v === undefined ? "" : String(v)}
+                                    onChange={e => {
+                                      const obj = getParsedMetadata();
+                                      obj[k] = e.target.value;
+                                      updateParsedMetadata(obj);
+                                    }}
+                                    className="flex-2 px-3 py-2 text-xs rounded-xl border bg-black/40 text-white outline-none focus:border-cyan-500/50"
+                                    style={{ borderColor: t.borderLight }}
+                                  />
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      const obj = getParsedMetadata();
+                                      delete obj[k];
+                                      updateParsedMetadata(obj);
+                                    }}
+                                    className="w-8 h-8 rounded-lg bg-red-500/10 hover:bg-red-500/25 text-red-500 flex items-center justify-center transition-all active:scale-95"
+                                  >
+                                    <FontAwesomeIcon icon={faTimes} />
+                                  </button>
+                                </div>
+                              ))}
+                            
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const obj = getParsedMetadata();
+                                let counter = 1;
+                                while (obj[`custom_param_${counter}`] !== undefined) {
+                                  counter++;
+                                }
+                                obj[`custom_param_${counter}`] = "";
+                                updateParsedMetadata(obj);
+                              }}
+                              className="py-2.5 rounded-xl border border-dashed transition-all hover:bg-white/5 text-[10px] font-bold uppercase tracking-wider text-cyan-400 active:scale-[0.98]"
+                              style={{ borderColor: t.borderLight }}
+                            >
+                              <FontAwesomeIcon icon={faPlus} className="mr-1.5" /> Add Custom Parameter Key-Value
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <textarea
+                          rows={5} required
+                          value={formData.technical_metadata}
+                          onChange={e => setFormData({...formData, technical_metadata: e.target.value})}
+                          className={`px-4 py-3 rounded-xl border outline-none font-mono text-[10px] leading-relaxed transition-all focus:ring-1 w-full ${
+                            isDark 
+                              ? "bg-black/50 text-emerald-400 focus:border-emerald-500/50 focus:ring-emerald-500/30" 
+                              : "bg-gray-50 text-emerald-700 focus:border-emerald-600/50 focus:ring-emerald-600/30"
+                          }`}
+                          style={{ borderColor: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.12)" }}
+                        />
+                      )}
                     </div>
                   )}
                 </div>
