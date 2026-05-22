@@ -104,6 +104,53 @@ export default function AdminDashboard() {
     color_variants: "[]"
   });
 
+  // JSON Validation States
+  const [isSpecsValid, setIsSpecsValid] = useState(true);
+  const [isMetadataValid, setIsMetadataValid] = useState(true);
+  const [isColorsValid, setIsColorsValid] = useState(true);
+
+  // Validate JSON blocks in real-time
+  useEffect(() => {
+    try {
+      if (!formData.specs.trim()) {
+        setIsSpecsValid(true);
+      } else {
+        JSON.parse(formData.specs);
+        setIsSpecsValid(true);
+      }
+    } catch {
+      setIsSpecsValid(false);
+    }
+  }, [formData.specs]);
+
+  useEffect(() => {
+    try {
+      if (!formData.technical_metadata.trim()) {
+        setIsMetadataValid(true);
+      } else {
+        JSON.parse(formData.technical_metadata);
+        setIsMetadataValid(true);
+      }
+    } catch {
+      setIsMetadataValid(false);
+    }
+  }, [formData.technical_metadata]);
+
+  useEffect(() => {
+    try {
+      if (!formData.color_variants.trim()) {
+        setIsColorsValid(true);
+      } else {
+        JSON.parse(formData.color_variants);
+        setIsColorsValid(true);
+      }
+    } catch {
+      setIsColorsValid(false);
+    }
+  }, [formData.color_variants]);
+
+  const isFormJsonValid = isSpecsValid && isMetadataValid && isColorsValid;
+
   // 1. Check permissions on mount
   useEffect(() => {
     async function checkAccess() {
@@ -252,6 +299,10 @@ export default function AdminDashboard() {
 
   const handleAddProductSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormJsonValid) {
+      alert("Please fix the JSON format errors before saving.");
+      return;
+    }
     setSubmittingProduct(true);
     try {
       const payload: any = {
@@ -306,6 +357,13 @@ export default function AdminDashboard() {
   const activeUsersCount = Array.from(new Set(orders.map(o => o.customer_email))).length;
 
   const lowStockItemsCount = [...laptops, ...hardware].filter(item => item.stock < 5).length;
+
+  // Input Field Styles Generator
+  const getFieldStyle = () => ({
+    backgroundColor: theme === "dark" ? "rgba(255, 255, 255, 0.03)" : "rgba(0, 0, 0, 0.02)",
+    borderColor: theme === "dark" ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.1)",
+    color: t.text
+  });
 
   // ----------------------------------------------------
   // 1. RENDER LOADING STATE
@@ -862,36 +920,37 @@ export default function AdminDashboard() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-50 overflow-hidden"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 z-[999] overflow-hidden"
           >
             <motion.div 
               initial={{ scale: 0.95, y: 30 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 30 }}
-              className="max-w-3xl w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-2xl max-h-[92vh] overflow-y-auto flex flex-col gap-6 shadow-2xl relative scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+              className="max-w-3xl w-full rounded-3xl border p-6 sm:p-8 backdrop-blur-2xl max-h-[92vh] overflow-y-auto flex flex-col gap-6 shadow-2xl relative scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent z-[1000]"
               style={{ 
-                background: theme === "dark" ? "rgba(20, 20, 20, 0.85)" : t.cardBg, 
-                borderColor: theme === "dark" ? "rgba(255, 255, 255, 0.08)" : t.borderLight,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)"
+                background: theme === "dark" ? "rgba(20, 20, 20, 0.95)" : t.cardBg, 
+                borderColor: t.borderLight,
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                color: t.text
               }}
             >
               {/* Top ambient color bar for subtle cinematic accent */}
               <div className="absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl" style={{ background: `linear-gradient(90deg, ${t.accentText}, #06b6d4)` }} />
 
               {/* Header */}
-              <div className="flex justify-between items-center pb-4 border-b" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
+              <div className="flex justify-between items-center pb-4 border-b" style={{ borderColor: t.borderLight }}>
                 <div>
-                  <h3 className="hf text-xl font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "#fff" : t.text }}>
+                  <h3 className="hf text-xl font-black uppercase tracking-wider" style={{ color: t.text }}>
                     Catalog New Hardware
                   </h3>
-                  <p className="text-[11px] font-semibold mt-1" style={{ color: "rgba(255, 255, 255, 0.5)" }}>
+                  <p className="text-[11px] font-semibold mt-1" style={{ color: t.textSecondary }}>
                     Insert structural metadata directly into live cloud matrices.
                   </p>
                 </div>
                 <button 
                   onClick={() => setIsAddModalOpen(false)}
                   className="w-9 h-9 rounded-full flex items-center justify-center border transition-all hover:bg-white/5 active:scale-95"
-                  style={{ borderColor: "rgba(255, 255, 255, 0.1)", color: theme === "dark" ? "#fff" : t.text }}
+                  style={{ borderColor: t.borderLight, color: t.text }}
                 >
                   <FontAwesomeIcon icon={faTimes} />
                 </button>
@@ -902,10 +961,10 @@ export default function AdminDashboard() {
                 
                 {/* Product Type Segmented Switch */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                    Database Target Table
+                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                    Product Type / نوع المنتج
                   </label>
-                  <div className="grid grid-cols-2 gap-2 p-1.5 rounded-xl border bg-black/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}>
+                  <div className="grid grid-cols-2 gap-2 p-1.5 rounded-xl border bg-black/40 backdrop-blur-md" style={{ borderColor: t.borderLight }}>
                     <button 
                       type="button"
                       onClick={() => setAddType("laptop")}
@@ -916,7 +975,7 @@ export default function AdminDashboard() {
                         boxShadow: addType === "laptop" ? `0 0 15px ${t.accentText}30` : "none"
                       }}
                     >
-                      Laptops Table
+                      Laptop
                     </button>
                     <button 
                       type="button"
@@ -928,7 +987,7 @@ export default function AdminDashboard() {
                         boxShadow: addType === "hardware" ? `0 0 15px ${t.accentText}30` : "none"
                       }}
                     >
-                      Hardware Components
+                      Hardware Component
                     </button>
                   </div>
                 </div>
@@ -936,28 +995,28 @@ export default function AdminDashboard() {
                 {/* Standard Fields Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Product Name
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Product Name / الاسم
                     </label>
                     <input 
                       type="text" required
                       value={formData.name}
                       onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                      style={getFieldStyle()}
                       placeholder="e.g. ROG Strix SCAR 16"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Brand
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Brand / العلامة التجارية
                     </label>
                     <input 
                       type="text" required
                       value={formData.brand}
                       onChange={e => setFormData({...formData, brand: e.target.value})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                      style={getFieldStyle()}
                       placeholder="e.g. Asus, Intel, AMD"
                     />
                   </div>
@@ -965,74 +1024,74 @@ export default function AdminDashboard() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Retail Price ($)
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Retail Price ($) / السعر
                     </label>
                     <input 
                       type="number" required min="1"
                       value={formData.price || ""}
                       onChange={e => setFormData({...formData, price: Number(e.target.value)})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20 font-semibold" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-semibold" 
+                      style={getFieldStyle()}
                       placeholder="2499"
                     />
                   </div>
                   
                   {addType === "laptop" ? (
                     <div className="flex flex-col gap-2">
-                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
+                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
                         Original Price ($) <span className="text-[9px] lowercase opacity-65">(For discount calculations)</span>
                       </label>
                       <input 
                         type="number"
                         value={formData.original_price || ""}
                         onChange={e => setFormData({...formData, original_price: Number(e.target.value)})}
-                        className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20 font-semibold" 
-                        style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                        className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-semibold" 
+                        style={getFieldStyle()}
                         placeholder="2799"
                       />
                     </div>
                   ) : (
                     <div className="flex flex-col gap-2">
-                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
+                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
                         Discount Price ($) <span className="text-[9px] lowercase opacity-65">(Deal price if active)</span>
                       </label>
                       <input 
                         type="number"
                         value={formData.discount_price || ""}
                         onChange={e => setFormData({...formData, discount_price: Number(e.target.value)})}
-                        className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20 font-semibold" 
-                        style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                        className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-semibold" 
+                        style={getFieldStyle()}
                         placeholder="2199"
                       />
                     </div>
                   )}
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Initial Stock Level
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Initial Stock Level / كمية المخزون
                     </label>
                     <input 
                       type="number" required min="0"
                       value={formData.stock}
                       onChange={e => setFormData({...formData, stock: Number(e.target.value)})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20 font-semibold" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-semibold" 
+                      style={getFieldStyle()}
                     />
                   </div>
                 </div>
 
                 {addType === "laptop" && (
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Tagline / Catchphrase
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Tagline /Catchphrase / عبارة ترويجية قصيرة
                     </label>
                     <input 
                       type="text"
                       value={formData.tagline}
                       onChange={e => setFormData({...formData, tagline: e.target.value})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                      style={getFieldStyle()}
                       placeholder="Uncompromising speed for competitive gamers."
                     />
                   </div>
@@ -1041,29 +1100,29 @@ export default function AdminDashboard() {
                 {/* Categories Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      Category Name
+                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                      Category Name / الفئة الرئيسية
                     </label>
                     <input 
                       type="text" required
                       value={formData.category}
                       onChange={e => setFormData({...formData, category: e.target.value})}
-                      className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                      className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                      style={getFieldStyle()}
                       placeholder={addType === "laptop" ? "gaming, business, ultrabooks" : "CPU, GPU, RAM, Storage"}
                     />
                   </div>
                   {addType === "laptop" && (
                     <div className="flex flex-col gap-2">
-                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                        Subcategory ID
+                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                        Subcategory ID / المعرف الفرعي
                       </label>
                       <input 
                         type="text"
                         value={formData.sub_category}
                         onChange={e => setFormData({...formData, sub_category: e.target.value})}
-                        className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                        style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                        className="px-4 py-3 rounded-xl border outline-none transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                        style={getFieldStyle()}
                         placeholder="rtx-40-series, amd-ryzen"
                       />
                     </div>
@@ -1072,30 +1131,30 @@ export default function AdminDashboard() {
 
                 {/* Media Links */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                    Product Images (URLs separated by comma)
+                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                    Product Images (URLs separated by comma) / روابط الصور (مفصولة بفاصلة)
                   </label>
                   <textarea 
                     rows={2} required
                     value={formData.images}
                     onChange={e => setFormData({...formData, images: e.target.value})}
-                    className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none font-mono transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20 text-xs" 
-                    style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                    className="px-4 py-3 rounded-xl border outline-none font-mono transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 text-xs" 
+                    style={getFieldStyle()}
                     placeholder="https://example.com/img1.png, https://example.com/img2.png"
                   />
                 </div>
 
                 {/* Description */}
                 <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                    Detailed Product Description
+                  <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                    Detailed Product Description / وصف تفصيلي للمنتج
                   </label>
                   <textarea 
                     rows={3} required
                     value={formData.description}
                     onChange={e => setFormData({...formData, description: e.target.value})}
-                    className="px-4 py-3 rounded-xl border bg-white/[0.02] text-white outline-none leading-relaxed transition-all duration-300 focus:bg-white/[0.04] focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 placeholder-white/20" 
-                    style={{ borderColor: "rgba(255,255,255,0.1)", color: "#fff" }}
+                    className="px-4 py-3 rounded-xl border outline-none leading-relaxed transition-all duration-300 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30" 
+                    style={getFieldStyle()}
                     placeholder="Describe the cinematic features and structural architectural highlights..."
                   />
                 </div>
@@ -1103,36 +1162,54 @@ export default function AdminDashboard() {
                 {/* Advanced JSON Spec Editors styled like code IDE */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-2">
-                    <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                      HUD Visual Specifications (JSON Array/Object)
-                    </label>
+                    <div className="flex justify-between items-center">
+                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                        Display Specs / مواصفات العرض (JSON Array)
+                      </label>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
+                        isSpecsValid 
+                          ? "bg-green-500/15 text-green-500 shadow-sm shadow-green-500/10" 
+                          : "bg-red-500/15 text-red-500 animate-pulse shadow-sm shadow-red-500/20"
+                      }`}>
+                        {isSpecsValid ? "✓ Valid JSON" : "✗ JSON Error"}
+                      </span>
+                    </div>
                     <textarea 
                       rows={5} required
                       value={formData.specs}
                       onChange={e => setFormData({...formData, specs: e.target.value})}
-                      className="px-4 py-3 rounded-xl border bg-black/60 text-emerald-400 outline-none font-mono text-[10px] leading-relaxed transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 scrollbar-thin" 
-                      style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                      className="px-4 py-3 rounded-xl border bg-black/50 text-emerald-400 outline-none font-mono text-[10px] leading-relaxed transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 scrollbar-thin" 
+                      style={{ borderColor: theme === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)" }}
                     />
                   </div>
                   {addType === "laptop" && (
                     <div className="flex flex-col gap-2">
-                      <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "rgba(255,255,255,0.6)" : t.textSecondary }}>
-                        Technical Metadata (JSON Object)
-                      </label>
+                      <div className="flex justify-between items-center">
+                        <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
+                          Internal Specs / مواصفات الأجهزة (JSON Object)
+                        </label>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase transition-all ${
+                          isMetadataValid 
+                            ? "bg-green-500/15 text-green-500 shadow-sm shadow-green-500/10" 
+                            : "bg-red-500/15 text-red-500 animate-pulse shadow-sm shadow-red-500/20"
+                        }`}>
+                          {isMetadataValid ? "✓ Valid JSON" : "✗ JSON Error"}
+                        </span>
+                      </div>
                       <textarea 
                         rows={5} required
                         value={formData.technical_metadata}
                         onChange={e => setFormData({...formData, technical_metadata: e.target.value})}
-                        className="px-4 py-3 rounded-xl border bg-black/60 text-emerald-400 outline-none font-mono text-[10px] leading-relaxed transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 scrollbar-thin" 
-                        style={{ borderColor: "rgba(255,255,255,0.1)" }}
+                        className="px-4 py-3 rounded-xl border bg-black/50 text-emerald-400 outline-none font-mono text-[10px] leading-relaxed transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/30 scrollbar-thin" 
+                        style={{ borderColor: theme === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)" }}
                       />
                     </div>
                   )}
                 </div>
 
                 {/* Switchable toggles */}
-                <div className="flex gap-6 py-3 border-t border-b" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-                  <label className="flex items-center gap-2.5 cursor-pointer text-xs font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "#fff" : t.text }}>
+                <div className="flex gap-6 py-3 border-t border-b" style={{ borderColor: t.borderLight }}>
+                  <label className="flex items-center gap-2.5 cursor-pointer text-xs font-black uppercase tracking-wider" style={{ color: t.text }}>
                     <input 
                       type="checkbox"
                       checked={formData.is_deal}
@@ -1143,7 +1220,7 @@ export default function AdminDashboard() {
                   </label>
 
                   {addType === "hardware" && (
-                    <label className="flex items-center gap-2.5 cursor-pointer text-xs font-black uppercase tracking-wider" style={{ color: theme === "dark" ? "#fff" : t.text }}>
+                    <label className="flex items-center gap-2.5 cursor-pointer text-xs font-black uppercase tracking-wider" style={{ color: t.text }}>
                       <input 
                         type="checkbox"
                         checked={formData.is_new}
@@ -1161,18 +1238,22 @@ export default function AdminDashboard() {
                     type="button"
                     onClick={() => setIsAddModalOpen(false)}
                     className="px-6 py-3.5 rounded-xl border transition-all duration-300 hover:bg-white/5 font-black uppercase tracking-widest text-[10px] active:scale-95"
-                    style={{ borderColor: "rgba(255,255,255,0.1)", color: theme === "dark" ? "#fff" : t.text }}
+                    style={{ borderColor: t.borderLight, color: t.text }}
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    disabled={submittingProduct}
-                    className="px-8 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 shadow-lg"
+                    disabled={submittingProduct || !isFormJsonValid}
+                    className={`px-8 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                      isFormJsonValid 
+                        ? "hover:scale-[1.02] active:scale-95 cursor-pointer shadow-lg" 
+                        : "opacity-40 cursor-not-allowed"
+                    }`}
                     style={{ 
-                      background: t.accentText, 
-                      color: "#fff",
-                      boxShadow: `0 4px 20px ${t.accentText}40`
+                      background: isFormJsonValid ? t.accentText : "rgba(100,100,100,0.2)", 
+                      color: isFormJsonValid ? "#fff" : "rgba(255,255,255,0.4)",
+                      boxShadow: isFormJsonValid ? `0 4px 20px ${t.accentText}40` : "none"
                     }}
                   >
                     {submittingProduct ? (
