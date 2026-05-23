@@ -2389,6 +2389,7 @@
 //     </div>
 //   );
 // }
+
 // app/(main)/admin/page.tsx
 "use client";
 
@@ -2575,7 +2576,7 @@ export default function AdminDashboard() {
 
   const [authChecking, setAuthChecking] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
-  const [activeTab, setActiveTab] = useState<"analytics" | "orders" | "inventory" >("analytics");
+  const [activeTab, setActiveTab] = useState<"analytics" | "orders" | "inventory">("analytics");
 
   const [orders, setOrders] = useState<any[]>([]);
   const [laptops, setLaptops] = useState<any[]>([]);
@@ -2660,7 +2661,7 @@ export default function AdminDashboard() {
         setIsColorsValid(true);
       } else {
         JSON.parse(formData.color_variants);
-        setIsColorsValid(true);
+        setIsColorsValid(false);
       }
     } catch {
       setIsColorsValid(false);
@@ -2894,7 +2895,6 @@ export default function AdminDashboard() {
     }
     setSubmittingProduct(true);
     try {
-      // تجهيز الـ Payload ومطابقته مع الـ DB Columns المكتشفة في الكواليس
       const payload: any = {
         name: formData.name,
         brand: formData.brand,
@@ -2906,7 +2906,6 @@ export default function AdminDashboard() {
         category: formData.category
       };
 
-      // معالجة Specs القطع الصلبة لضمان تطابق مصفوفات النصوص مثل كيسات الكمبيوتر
       if (addType === "hardware") {
         payload.discount_price = Number(formData.discount_price || 0);
         payload.is_new = formData.is_new;
@@ -3652,11 +3651,27 @@ export default function AdminDashboard() {
         </AnimatePresence>
       )}
 
-      {/* MODAL FOR ORDER DETAILS */}
+      {/* DETAIL MODAL FOR ORDER DETAIL VIEW */}
       <AnimatePresence>
         {selectedOrder && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="max-w-2xl w-full rounded-3xl border p-6 backdrop-blur-xl flex flex-col gap-6" style={{ background: t.cardBg, borderColor: t.borderLight }}>
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }} 
+            // رفع الـ z-index ليصبح فوق الـ Header بالكامل بنسبة 100%
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-[99999]"
+          >
+            <motion.div 
+              initial={{ scale: 0.95 }} 
+              animate={{ scale: 1 }} 
+              exit={{ scale: 0.95 }} 
+              className="max-w-2xl w-full rounded-3xl border p-6 backdrop-blur-xl flex flex-col gap-6" 
+              style={{ 
+                // جعل الخلفية صلبة وواضحة جداً لحل مشكلة اللون الرمادي المتداخل بالثيم الفاتح
+                background: isDark ? "rgba(20, 20, 20, 0.98)" : "rgba(255, 255, 255, 0.98)", 
+                borderColor: t.borderLight 
+              }}
+            >
               <div className="flex justify-between items-start">
                 <div>
                   <span className="text-[10px] font-black uppercase text-neutral-400">Order Detail View</span>
