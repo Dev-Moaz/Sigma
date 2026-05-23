@@ -2,23 +2,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-// Icons removed, using text symbol for Sigma
 import { useTheme } from "@/store/useAppStore";
-import Image from "next/image";
 
 interface LogoProps {
   /**
-   * "responsive" → header variant: w-9 sm:w-10 icon, text-lg sm:text-[22px]
-   * "fixed"      → footer variant: w-10 icon, text-[22px]
+   * "responsive" → header variant: ارتفاع أكبر للتجاوب بوضوح
+   * "fixed"      → footer variant: ارتفاع مخصص وثابت للفوتر
    */
   variant?: "responsive" | "fixed";
 }
 
 export function Logo({ variant = "responsive" }: LogoProps) {
-  const { t, isDark } = useTheme();
+  const { isDark } = useTheme();
 
-  const iconBox  = variant === "responsive" ? "h-10 sm:h-12" : "h-12";
-  const shimmerDelay = variant === "responsive" ? 2.5 : 3;
+  // زيادة حجم الارتفاع لتبدو تفاصيل وشعار اللوجو واضحة ومقروءة بالكامل
+  const iconBox = variant === "responsive" ? "h-22 sm:h-26" : "h-26";
 
   return (
     <motion.div 
@@ -29,11 +27,11 @@ export function Logo({ variant = "responsive" }: LogoProps) {
     >
       <div className={`relative flex items-center justify-center ${iconBox}`}>
         <img
-          src="/sigma-logo.png" 
-          alt="Sigma Computer" 
+          src="/alfernsia.png" 
+          alt="Alfernsia Store" 
           className="h-full w-auto object-contain transition-all duration-300"
           style={{ 
-            // تقنية ذكية: قلب الألوان (لتحويل الأسود لأبيض) ثم تدوير الهيو (لإرجاع الأزرق لأصله)
+            // تقنية ذكية: قلب الألوان (لتحويل الأسود لأبيض في الـ Dark Mode) ثم تدوير الهيو (لإرجاع الأزرق لأصله)
             filter: isDark ? "invert(1) hue-rotate(180deg) brightness(1.2)" : "none"
           }}
           onError={(e) => {

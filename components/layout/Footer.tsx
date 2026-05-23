@@ -154,9 +154,9 @@ export default function Footer() {
               <Logo variant="fixed" />
               <span 
                 className="text-lg font-black tracking-wider uppercase transition-all duration-300 group-hover:opacity-85 select-none"
-                style={{ color: "#ef4444" }}
+                style={{ color: "#5148d3ff" }}
               >
-                Recovery trade
+                Alfernsia
               </span>
             </a>
             <p className="text-[14px] leading-relaxed max-w-md font-medium" style={{ color: t.textSecondary }}>
@@ -222,7 +222,7 @@ export default function Footer() {
           className="flex flex-col lg:flex-row items-center justify-between gap-5 pt-6 text-center lg:text-left"
         >
           <p className="text-[12px] font-bold tracking-wide uppercase order-3 lg:order-1" style={{ color: t.textSubtle }}>
-            © {new Date().getFullYear()} Sigma. All rights reserved.
+            © {new Date().getFullYear()} Alfernsia. All rights reserved.
           </p>
           
           <div className="flex items-center gap-3 flex-wrap justify-center order-1 lg:order-2">
