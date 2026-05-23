@@ -1041,17 +1041,17 @@ export default function HeroSection() {
           {/* ========================================================
             SECTION 3: 📰 WHY CHOOSE SIGMA (Cinematic Grid)
            ======================================================== */}
-          <section aria-label="Why Choose Sigma" className="relative">
+          <section aria-label="Why Choose Recovery Trade" className="relative">
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-3 mb-3">
                 <span className="w-8 h-1 rounded-full shrink-0" style={{ background: "linear-gradient(90deg,#0ea5e9,#8b5cf6)", boxShadow: "0 0 10px rgba(139,92,246,0.8)" }} />
                 <h3 className="hf text-[12px] font-extrabold uppercase tracking-[0.2em]" style={{ color: t.accentText }}>
-                  The Sigma Standard
+                  The Recovery Trade Standard
                 </h3>
                 <span className="w-8 h-1 rounded-full shrink-0" style={{ background: "linear-gradient(90deg,#8b5cf6,#0ea5e9)", boxShadow: "0 0 10px rgba(139,92,246,0.8)" }} />
               </div>
               <h2 className="hf text-[clamp(1.8rem,3.5vw,3rem)] font-extrabold tracking-tighter" style={{ color: t.text }}>
-                📰 Why Choose Sigma
+                📰 Why Choose Recovery Trade
               </h2>
               <p className="text-sm font-medium mt-1 max-w-xl mx-auto" style={{ color: t.textSecondary }}>
                 We build machines to defy expectations. Discover the values that define our products and support.
