@@ -228,10 +228,16 @@ Originally built as a frontend showcase, the platform has been fully upgraded to
   - **Transactional Safety:** Dispatches order details to the `orders` and `order_items` tables in Supabase, updating stock counts atomically.
 
 ### 28. `app/(main)/admin/page.tsx` (The Admin Control Center - COMPLETED)
-- **Role:** A premium, secure command center dashboard for site administrators to manage live inventory and process customer orders.
+- **Role:** A premium, secure command center dashboard for site administrators to manage live inventory, process customer orders, and monitor real-time analytics.
 - **Key Features:**
   - **Role-Based Protection:** Strictly guarded at the layout/server-action level, requiring users to have `role = 'admin'` in their `profiles` table to access or modify data.
-  - **Full CRUD Lifecycle:** Each product row in the inventory table features **Edit Details** and **Delete** action buttons. Editing opens the unified product modal pre-populated with all existing data (including parsed JSON specs). Deleting triggers a confirmation dialog and permanently removes the product from the database with instant UI synchronization.
+  - **Full CRUD Lifecycle:** Each product row in the inventory table features **Edit Details** and **Delete** action buttons. Editing opens the unified product modal pre-populated with all existing data (including parsed JSON specs). Deleting triggers a custom glassmorphism confirmation dialog and permanently removes the product from the database with instant UI synchronization.
+  - **Custom Toast Notification System:** All native `alert()` calls have been replaced with a non-blocking, animated toast queue. Toasts auto-dismiss after 4 seconds with cinematic blur/scale transitions, color-coded by type (success: cyan, error: red, info: blue).
+  - **Custom Confirmation Modal:** Native `confirm()` replaced with a premium glassmorphism dialog featuring "Abort Action" / "Confirm Execute" buttons and backdrop blur overlay.
+  - **Paginated Data Tables:** Both the Orders HUD and Inventory tables render 20 items per page with numbered pagination controls featuring gradient-styled active page indicators and chevron navigation.
+  - **Accessible Status Dropdowns:** Order status selectors use React state-controlled toggles (`openDropdownId`) with click-outside auto-dismiss listeners, replacing inaccessible CSS `group-hover` patterns.
+  - **Edit Mode Guard:** A defensive `useEffect` guard prevents the add-type switch from overwriting product form data when editing an existing product, solving a critical data-loss bug.
+  - **DRY Form Constants:** Form default values extracted to top-level `DEFAULT_LAPTOP_FORM` and `DEFAULT_HARDWARE_FORM` constants, eliminating 3 duplicate inline object declarations.
   - **Visual Spec Builders:** Instead of raw JSON textareas, administrators interact with interactive, schema-aware Key-Value editors:
     - **Laptop Display Specs:** Visual badge builder with `label`, `value`, and `color` selectors mapped to the `ProductSpec` schema.
     - **Laptop Technical Metadata:** Dynamic form with typed inputs (numbers, text, arrays) mapped to `METADATA_FIELDS_INFO` from `laptop-schema.ts`.
@@ -239,7 +245,12 @@ Originally built as a frontend showcase, the platform has been fully upgraded to
     - **Dual-Mode Toggle:** Each spec section supports switching between Visual Builder and Raw JSON modes. Invalid JSON in raw mode safely locks the visual tab with error feedback.
   - **Unified Add/Edit Modal:** A single adaptive modal serves both creation and editing. During edit, the Product Type switch is locked to prevent schema mismatches, and header/button text adapts contextually.
   - **Order Pipeline Manager:** A real-time interface for administrators to view customer orders, inspect item details, and transition order statuses (Pending ➔ Processing ➔ Shipped ➔ Completed) with direct DB updates.
-  - **Analytics Panel:** Displays dynamic counters for Total Revenue, Total Orders, Average Order Value, and active accounts.
+  - **Dynamic Recharts Analytics Panel:** Powered by `recharts`, the Analytics tab renders fully dynamic, theme-aware visualizations driven entirely by live Supabase data:
+    - **Revenue Trend AreaChart:** Aggregates order revenue chronologically by date, displaying the last 7 active transaction days with a gradient fill. Shows a graceful empty-state message when no orders exist.
+    - **Catalog Composition BarChart:** Breaks down the entire product inventory by actual product categories (Gaming, Business, CPU, GPU, RAM, etc.) with an 8-color rotating palette.
+    - **Order Dispatch Matrix:** Animated horizontal progress bars showing the percentage breakdown of order statuses (Pending, Processing, Shipped, Delivered, Cancelled).
+    - **Inventory Depot Status:** Real-time low-stock and out-of-stock warnings for products under 5 units.
+    - **Stat Cards:** Dynamic counters for Total Revenue, Active Orders, Unique Buyers, and Critical Stock Warnings.
 
 ### 29. `components/AuthSync.tsx` (Token & Session Sync Engine - COMPLETED)
 - **Role:** A client-side listener that bridges the gap between client-side Supabase Auth and Server Actions.

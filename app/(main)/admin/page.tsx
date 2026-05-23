@@ -629,22 +629,28 @@ export default function AdminDashboard() {
       }
     });
     
-    const res = Object.values(dailyMap);
-    return res.length > 0 ? res.slice(-7) : [
-      { date: "Sync Node A", revenue: 1200, ordersCount: 1 },
-      { date: "Sync Node B", revenue: 2500, ordersCount: 2 },
-      { date: "Sync Node C", revenue: 1900, ordersCount: 1 },
-      { date: "Sync Node D", revenue: 3400, ordersCount: 3 }
-    ];
+    return Object.values(dailyMap).slice(-7);
   };
 
-  // Real-time composition data for Catalog Composition
+  // Real-time composition data — breaks down inventory by actual product categories
   const getStockCompositionData = () => {
-    return [
-      { name: "Laptops", count: laptops.length },
-      { name: "Hardware", count: hardware.length }
-    ];
+    const categoryMap: { [key: string]: number } = {};
+    
+    laptops.forEach(l => {
+      const cat = l.category || "Uncategorized";
+      categoryMap[cat] = (categoryMap[cat] || 0) + 1;
+    });
+    
+    hardware.forEach(h => {
+      const cat = h.category || "Uncategorized";
+      categoryMap[cat] = (categoryMap[cat] || 0) + 1;
+    });
+    
+    return Object.entries(categoryMap).map(([name, count]) => ({ name, count }));
   };
+
+  // Color palette for BarChart cells
+  const CHART_COLORS = ["#06b6d4", "#a855f7", "#10b981", "#f59e0b", "#3b82f6", "#ef4444", "#ec4899", "#14b8a6"];
 
   // Input Field Styles Generator
   const getFieldStyle = () => ({
@@ -808,29 +814,35 @@ export default function AdminDashboard() {
                   <p className="text-[10px] font-semibold" style={{ color: t.textSecondary }}>Chronological sales history for the last 7 active transaction days</p>
                 </div>
                 <div className="flex-grow w-full h-[220px]">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={getSalesTimelineData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                      <defs>
-                        <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.4}/>
-                          <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
-                        </linearGradient>
-                      </defs>
-                      <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"} />
-                      <XAxis dataKey="date" stroke={t.textSecondary} fontSize={10} tickLine={false} />
-                      <YAxis stroke={t.textSecondary} fontSize={10} tickLine={false} />
-                      <Tooltip 
-                        contentStyle={{
-                          backgroundColor: isDark ? "rgba(15,15,15,0.95)" : "rgba(255,255,255,0.95)",
-                          borderColor: t.borderLight,
-                          borderRadius: "12px",
-                          fontSize: "10px",
-                          fontFamily: "inherit"
-                        }}
-                      />
-                      <Area type="monotone" dataKey="revenue" name="Revenue ($)" stroke="#06b6d4" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" />
-                    </AreaChart>
-                  </ResponsiveContainer>
+                  {getSalesTimelineData().length === 0 ? (
+                    <div className="flex items-center justify-center h-full">
+                      <p className="text-xs font-semibold" style={{ color: t.textSecondary }}>No transaction data available yet. Charts will populate from live orders.</p>
+                    </div>
+                  ) : (
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={getSalesTimelineData()} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.4}/>
+                            <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" stroke={isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"} />
+                        <XAxis dataKey="date" stroke={t.textSecondary} fontSize={10} tickLine={false} />
+                        <YAxis stroke={t.textSecondary} fontSize={10} tickLine={false} />
+                        <Tooltip 
+                          contentStyle={{
+                            backgroundColor: isDark ? "rgba(15,15,15,0.95)" : "rgba(255,255,255,0.95)",
+                            borderColor: t.borderLight,
+                            borderRadius: "12px",
+                            fontSize: "10px",
+                            fontFamily: "inherit"
+                          }}
+                        />
+                        <Area type="monotone" dataKey="revenue" name="Revenue ($)" stroke="#06b6d4" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  )}
                 </div>
               </div>
 
@@ -857,7 +869,7 @@ export default function AdminDashboard() {
                       />
                       <Bar dataKey="count" name="Item Count" radius={[6, 6, 0, 0]}>
                         {getStockCompositionData().map((entry, idx) => (
-                          <Cell key={`cell-${idx}`} fill={idx === 0 ? "#06b6d4" : "#a855f7"} />
+                          <Cell key={`cell-${idx}`} fill={CHART_COLORS[idx % CHART_COLORS.length]} />
                         ))}
                       </Bar>
                     </BarChart>
