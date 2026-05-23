@@ -1585,7 +1585,7 @@ export default function AdminDashboard() {
                   {addType === "laptop" ? (
                     <div className="flex flex-col gap-2">
                       <label className="text-[11px] font-black uppercase tracking-wider" style={{ color: t.textSecondary }}>
-                        Original Price ($) <span className="text-[9px] lowercase opacity-65">(For discount calculations)</span>
+                        Original Price ($) {/* <span className="text-[9px] lowercase opacity-65">(For discount calculations)</span>*/} 
                       </label>
                       <input 
                         type="number"
